@@ -1,0 +1,96 @@
+{
+  "schema": "topic16-a-provided-sanitized-summary-v1",
+  "source": "A supplied independent second-batch evidence; B did not rerun server checks",
+  "code_sha": "dbdf9653f98d16ea3234d20c4779e314ad6b8d60",
+  "source_sha256": {
+    "README.md": "43610ca6b40dc86d86f826e5a007be18a4a70f0381062b2ef5c0d5bfe154cc88",
+    "short-verification.json": "e46a57236cb2201c4fe260070dc3a2ec42a91f7f05f57988a6558bebe4b788b7",
+    "short-closed.json": "79340179d9652394740f27cf50c60b2aa598577abfde12f841655b28fc71f949",
+    "linux-validation.json": "e608e038af68d66aa45c22f5a4985dfab6be382ff2e049d437dde4732cbdf4cb"
+  },
+  "linux": {
+    "app": {
+      "executed": 47,
+      "passed": 47,
+      "skip": 0,
+      "exit": 0
+    },
+    "price": {
+      "executed": 96,
+      "passed": 96,
+      "skip": 0,
+      "exit": 0
+    },
+    "observation": {
+      "executed": 17,
+      "passed": 17,
+      "skip": 0,
+      "exit": 0
+    }
+  },
+  "short_native": {
+    "window_id": "topic16-scheduler-real-short-20261110",
+    "native_checks": [
+      {
+        "slot_id": "slot-1",
+        "task_key": "P-STOCK|2026-11-09T09:30:00+08:00",
+        "status": "completed",
+        "call_id_sha256_12": "1736154eee2c",
+        "signal_count": 0,
+        "pass": true,
+        "problems": []
+      },
+      {
+        "slot_id": "slot-2",
+        "task_key": "P-STOCK|2026-11-09T10:00:00+08:00",
+        "status": "completed",
+        "call_id_sha256_12": "1857983f1916",
+        "signal_count": 1,
+        "pass": true,
+        "problems": []
+      }
+    ],
+    "native_receipt_count": 2,
+    "database_counts": {
+      "signals": 1,
+      "monitor_runs": 2,
+      "push_records": 1,
+      "push_attempts": 1
+    },
+    "protected_file_count": 78,
+    "protected_files_unchanged": true,
+    "all_pass": true,
+    "scope": "real Nexent scheduler hit and explicit zero over frozen synthetic input; local mock pushes only",
+    "is_24h_observation": false
+  },
+  "short_closed": {
+    "on_time": 2,
+    "late": 0,
+    "failed": 0,
+    "missing": 0,
+    "pending": 0,
+    "retries": 0,
+    "manual": 0,
+    "unknown": 0,
+    "planned": 2,
+    "counts_balance": true,
+    "worker_final_exit": 0,
+    "report_exit": 0,
+    "is_24h_observation": false
+  },
+  "first_24h_window": {
+    "window_id": "topic16-observe-20261110-104200",
+    "fixed_sha": "dbdf9653f98d16ea3234d20c4779e314ad6b8d60",
+    "status": "in_progress_in_A_startup_summary",
+    "start": "2026-11-10T10:42:00+08:00",
+    "end": "2026-11-11T10:42:00+08:00",
+    "cutoff": "2026-11-11T10:47:00+08:00",
+    "planned_slots": 144,
+    "holding_cells": 288,
+    "data_scope": "frozen-synthetic-market",
+    "gateway": "local-mock",
+    "final_result": "pending independent final report"
+  },
+  "real_wechat_delivery_proven": false,
+  "clean_instance_import_proven": false
+}

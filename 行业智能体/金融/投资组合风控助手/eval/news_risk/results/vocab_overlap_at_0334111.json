@@ -1,0 +1,91 @@
+{
+  "schema": "topic16-news-risk-vocab-overlap-v1",
+  "scope": "overfit-diagnostic",
+  "diagnostic_only": true,
+  "not_acceptance_evidence": true,
+  "not_an_agreement_metric": true,
+  "samples": "data/news_risk/dev_eval_samples.json",
+  "rules": "<outside-repo>/rules_v2_at_0334111.py",
+  "sample_count": 50,
+  "total_markers": 178,
+  "verbatim_in_samples": 143,
+  "verbatim_rate": 0.8034,
+  "breakdown": {
+    "ADVERSE_PATTERNS": {
+      "markers": 76,
+      "verbatim_in_50_samples": 75,
+      "rate": 0.9868
+    },
+    "CLARIFICATION_MARKERS": {
+      "markers": 13,
+      "verbatim_in_50_samples": 7,
+      "rate": 0.5385
+    },
+    "DENIAL_MARKERS": {
+      "markers": 6,
+      "verbatim_in_50_samples": 1,
+      "rate": 0.1667
+    },
+    "ENTITY_EXCLUSION_MARKERS": {
+      "markers": 16,
+      "verbatim_in_50_samples": 10,
+      "rate": 0.625
+    },
+    "EXPLANATORY_MARKERS": {
+      "markers": 29,
+      "verbatim_in_50_samples": 29,
+      "rate": 1.0
+    },
+    "GENERIC_MARKERS": {
+      "markers": 8,
+      "verbatim_in_50_samples": 4,
+      "rate": 0.5
+    },
+    "HISTORICAL_MARKERS": {
+      "markers": 8,
+      "verbatim_in_50_samples": 3,
+      "rate": 0.375
+    },
+    "HYPOTHETICAL_MARKERS": {
+      "markers": 8,
+      "verbatim_in_50_samples": 7,
+      "rate": 0.875
+    },
+    "INSUFFICIENT_MARKERS": {
+      "markers": 8,
+      "verbatim_in_50_samples": 4,
+      "rate": 0.5
+    },
+    "PARTIAL_CONFIRMATION_MARKERS": {
+      "markers": 9,
+      "verbatim_in_50_samples": 6,
+      "rate": 0.6667
+    }
+  },
+  "not_verbatim_examples": [
+    "评级下调",
+    "核对后确认",
+    "已辟谣",
+    "澄清公告",
+    "系不实信息",
+    "原报道已撤回",
+    "核查后确认",
+    "并不属实",
+    "并非",
+    "不存在",
+    "并未",
+    "没有发生",
+    "无股权关系",
+    "无关联",
+    "与本公司无关",
+    "并非本公司",
+    "与该公司无关",
+    "没有供货关系",
+    "行业整体",
+    "板块整体"
+  ],
+  "adverse_patterns_included": true,
+  "audit_note": "复核方指出旧提取器漏掉带类型注解的 ADVERSE_PATTERNS；本文件用修正后的提取器对提交 0334111 的规则版本复算，用于核对复核结论。",
+  "note": "比例越高，说明词表越贴近本批原文，开发评测的高一致率越可能是同批拟合；该数字不能证明或否定泛化能力，只提示正式验收须用独立人工判定，并建议增加留出集或新增样本。",
+  "disclaimer": "风险提示仅供参考，不构成投资建议；系统输出为辅助建议，重大舆情须人工核实。"
+}

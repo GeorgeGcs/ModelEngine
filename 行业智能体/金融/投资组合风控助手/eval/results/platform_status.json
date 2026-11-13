@@ -1,0 +1,71 @@
+{
+  "status": "unavailable",
+  "platform_label": null,
+  "platform_version": null,
+  "model": null,
+  "mcp_url": null,
+  "agent_name": null,
+  "api_prefix": "/nb/v1",
+  "api_paths": {
+    "health": "<base>/<base>n<base>b<base>/<base>v<base>1<base>/<base>h<base>e<base>a<base>l<base>t<base>h<base>",
+    "agents": "<base>/<base>n<base>b<base>/<base>v<base>1<base>/<base>a<base>g<base>e<base>n<base>t<base>s<base>",
+    "chat_run": "<base>/<base>n<base>b<base>/<base>v<base>1<base>/<base>c<base>h<base>a<base>t<base>/<base>r<base>u<base>n<base>"
+  },
+  "health_contract": {
+    "status": "healthy",
+    "service": "northbound-api"
+  },
+  "tool_event_types": [
+    "tool_call",
+    "tool_result",
+    "tool_response",
+    "tool_output",
+    "tool_use",
+    "tool_success",
+    "tool_execution_result",
+    "mcp_call",
+    "mcp_tool",
+    "tool"
+  ],
+  "checks": [
+    {
+      "check": "required_environment",
+      "ok": false,
+      "detail": "缺少 ['NEXENT_AGENT_NAME', 'NEXENT_API_TOKEN', 'NEXENT_BASE_URL']"
+    }
+  ],
+  "required_environment": [
+    "NEXENT_BASE_URL",
+    "NEXENT_API_TOKEN",
+    "NEXENT_AGENT_NAME"
+  ],
+  "optional_environment": [
+    "NEXENT_API_PREFIX",
+    "NEXENT_VERSION",
+    "NEXENT_MODEL",
+    "NEXENT_MCP_URL",
+    "NEXENT_HEALTH_STATUS",
+    "NEXENT_HEALTH_SERVICE",
+    "NEXENT_TOOL_EVENT_TYPES",
+    "NEXENT_MCP_CALL_LOG",
+    "NEXENT_EXECUTION_RECORDS"
+  ],
+  "credential_handling": "API Token 仅经 NEXENT_API_TOKEN 环境变量读取；探测只记录是否设置，绝不写出取值或写入证据文件。",
+  "blocked_at": "平台配置不全，未发起任何请求",
+  "schema": "topic16-platform-status-v3",
+  "checked_at": "2026-11-08T12:29:15+00:00",
+  "needed_from_user": [
+    "可访问的 Nexent 实例地址（NEXENT_BASE_URL）与 Bearer API Key（NEXENT_API_TOKEN，仅本机环境变量）",
+    "在该实例已发布、且绑定 evaluate_portfolio_snapshot 的 Agent 名称（NEXENT_AGENT_NAME）",
+    "若网关前缀不是 /nb/v1，用 NEXENT_API_PREFIX 指定",
+    "真实工具事件样例（含工具调用事件的实际入参与同一次调用标识），或可关联的 MCP 服务端调用记录（NEXENT_MCP_CALL_LOG）",
+    "若 SSE 只返回工具调用与 execution_key：该键唯一对应的平台执行记录或 MCP 服务端回执（NEXENT_EXECUTION_RECORDS），须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联则保持证据不足",
+    "可选：NEXENT_VERSION、NEXENT_MODEL、NEXENT_MCP_URL、NEXENT_HEALTH_STATUS、NEXENT_HEALTH_SERVICE、NEXENT_TOOL_EVENT_TYPES"
+  ],
+  "artifacts_not_generated": [
+    "eval/results/nexent_final_signals.json",
+    "eval/results/compare_report_end_to_end.json",
+    "eval/results/nexent_task_reconciliation.json"
+  ],
+  "note": "平台不可用时只完成数据库、导出器与本地测试；不生成端到端通过报告。"
+}

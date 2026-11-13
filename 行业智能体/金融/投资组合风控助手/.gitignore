@@ -1,0 +1,51 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ci-results/
+.env
+.env.*
+!.env.example
+
+# 本地 fixture 运行态：可由 python eval/nexent/run_local_fixture.py 一键重建。
+# 证据以 eval/results/*.json 为准，此处不提交二进制 DB 与替身原始载荷。
+eval/nexent/state/
+
+# 真实平台原始 SSE 响应与 MCP 调用审计：默认只留在运行机器本机。
+# 仓库只提交脱敏摘要、哈希与对账报告；原始响应可能含业务数据与会话信息。
+eval/nexent/platform_records/
+*.mcp_calls.jsonl
+*audit_log.jsonl
+# 平台执行记录导出 / MCP 服务端回执：含会话与业务数据，默认只留本机。
+*execution_records*.json
+*execution_records*.jsonl
+*.execution-record.jsonl
+
+# 舆情人工判定原表：由标注者填写，可能含标注人信息，只留本机。
+# 空白盲标表 blind_annotation_sheet.csv 是交付物，需要提交，不在此列。
+data/news_risk/human_labels.csv
+data/news_risk/human_labels.json
+data/news_risk/*_filled*.csv
+
+# 开发评测的 50 条系统预测由命令重跑生成，不入库（避免被误当答案集）；
+# 评分报告含误报/漏报与原文摘要，提交留痕。
+eval/news_risk/results/dev_eval_predictions*.json
+
+# 审计加固：换名的人工判定表、外部 AI 参考/原文文件、运行状态文件都不入库。
+# 注意 annotation_registration*.json 是「运行前登记」证据，必须提交，不能忽略。
+data/news_risk/*human*.csv
+data/news_risk/*labels*.csv
+data/news_risk/*verdict*.csv
+data/news_risk/*_filled*.csv
+舆情参考判断*.json
+舆情输入*.json
+eval/news_risk/results/*.status.json
+
+# P2 修复前后复现时临时导出的旧提交树（git archive 2786c70），不入库。
+p2-before/
+
+# 本地可操作演示的 SQLite 运行态：组合/信号/推送回执由页面或公开接口实时产生，
+# 不预置成功状态、不入库；演示每次默认新建带时间戳的库，不覆盖已有数据。
+data/*.db
+data/*.db-wal
+data/*.db-shm

@@ -1,0 +1,37 @@
+{
+  "tools": [
+    {
+      "name": "send_wechat_risk_notification",
+      "description": "Push one persisted risk event. The deployment supplies the recipient and channel.",
+      "inputSchema": {
+        "properties": {
+          "event_id": {
+            "title": "Event Id",
+            "type": "string"
+          },
+          "run_id": {
+            "title": "Run Id",
+            "type": "string"
+          },
+          "authorization": {
+            "title": "Authorization",
+            "type": "string"
+          }
+        },
+        "required": [
+          "event_id",
+          "run_id",
+          "authorization"
+        ],
+        "title": "send_wechat_risk_notificationArguments",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "portfolio_count": 3,
+  "snapshot_count": 8,
+  "signal_count": 20,
+  "signals": [
+    {
+      "event_id": "33351df92561385fae9909f593f8bec2c6c4c5912f590634e899d3ccfa82d8b6",
+      "portfolio_id": "P-STOCK",
+      "timestamp": "2026-11-09T02:00:00Z",
+      "symbol": "SIM-A",
+      "rule": "stop_loss",
+      "price": "95.00",
+      "threshold": "95.00"
+    },
+    {
+      "event_id": "fc3953e7d0794a3379b4579927d3c4d98f98338dcce284509e23b559b8632a05",
+      "portfolio_id": "P-STOCK",
+      "timestamp": "2026-11-09T02:30:00Z",
+      "symbol": "SIM-B",
+      "rule": "stop_loss",
+      "price": "47.99",
+      "threshold": "48.00"
+    },
+    {
+      "event_id": "ceb43eadc8bf5fa87a788227ea58f048c4e2b69c5cb85f8ec7ffd00fa1651c1a",
+      "portfolio_id": "P-STOCK",
+      "timestamp": "2026-11-09T03:00:00Z",
+      "symbol": "SIM-A",
+      "rule": "stop_loss",
+      "price": "94.99",
+      "threshold": "95.00"
+    },
+    {
+      "event_id": "dc983cf91dae972ff8492ab1dbcf01436f1e68873801c519f84f89ccba493af9",
+      "portfolio_id": "P-FUND",
+      "timestamp": "2026-11-09T03:00:00Z",
+      "symbol": "SIM-C",
+      "rule": "stop_loss",
+      "price": "1.8999",
+      "threshold": "1.9000"
+    },
+    {
+      "event_id": "b7d283446effa13dc51559419c83c7888e0d10f2f194e812bca0318e7146e0e5",
+      "portfolio_id": "P-STOCK",
+      "timestamp": "2026-11-09T05:00:00Z",
+      "symbol": "SIM-A",
+      "rule": "take_profit",
+      "price": "106.00",
+      "threshold": "106.00"
+    },
+    {
+      "event_id": "3d4fcca534155048904ece942b989a4ed4a251a0fadb401917165865162b202f",
+      "portfolio_id": "P-FUND",
+      "timestamp": "2026-11-09T05:00:00Z",
+      "symbol": "SIM-C",
+      "rule": "stop_loss",
+      "price": "1.9000",
+      "threshold": "1.9000"
+    },
+    {
+      "event_id": "8573d92229fd6aecaf47c875b014c5312292a91d047e1135e57d61be5781912d",
+      "portfolio_id": "P-STOCK",
+      "timestamp": "2026-11-09T05:30:00Z",
+      "symbol": "SIM-B",
+      "rule": "take_profit",
+      "price": "55.01",
+      "threshold": "55.00"
+    },
+    {
+      "event_id": "5b26109ed9a20f7192e9f1c0522769c0c4d111169c7160930b1f0ac23803f021",
+      "portfolio_id": "P-MIXED",
+      "timestamp": "2026-11-09T05:30:00Z",
+      "symbol": "SIM-D",
+      "rule": "take_profit",
+      "price": "2.5000",
+      "threshold": "2.5000"
+    },
+    {
+      "event_id": "5ab1e83e0243cc1d156d03509785b9afd857fb30ff84318a69be84c70dae5624",
+      "portfolio_id": "P-STOCK",
+      "timestamp": "2026-11-09T06:00:00Z",
+      "symbol": "SIM-A",
+      "rule": "stop_loss",
+      "price": "92.00",
+      "threshold": "95.00"
+    },
+    {
+      "event_id": "061e1e173b39af66b342ac2cc68ed641d30bdf6ed0f77e44ed14849a7d4938db",
+      "portfolio_id": "P-STOCK",
+      "timestamp": "2026-11-09T06:00:00Z",
+      "symbol": "SIM-B",
+      "rule": "stop_loss",
+      "price": "44.99",
+      "threshold": "48.00"
+    },
+    {
+      "event_id": "4c8e6615dffa8b44c611f8e5bd102da8bcab7698776aeb6515a44885ef2a9e86",
+      "portfolio_id": "P-FUND",
+      "timestamp": "2026-11-09T06:00:00Z",
+      "symbol": "SIM-A",
+      "rule": "stop_loss",
+      "price": "92.00",
+      "threshold": "92.00"
+    },
+    {
+      "event_id": "40efea375d21e67b012e0a0753868e9dea99802977f89ae90fc521cbaf2efe5c",
+      "portfolio_id": "P-FUND",
+      "timestamp": "2026-11-09T06:00:00Z",
+      "symbol": "SIM-C",
+      "rule": "take_profit",
+      "price": "2.1300",
+      "threshold": "2.1200"
+    },
+    {
+      "event_id": "1339eb304f756a4e447fc8b7b25822d0e1a7c4af029cec234de681ddf97368e9",
+      "portfolio_id": "P-MIXED",
+      "timestamp": "2026-11-09T06:00:00Z",
+      "symbol": "SIM-B",
+      "rule": "stop_loss",
+      "price": "44.99",
+      "threshold": "45.00"
+    },
+    {
+      "event_id": "5d508c8c58b1ac2de755240e0019ec63c98222966955db0d6a06e7a91c658306",
+      "portfolio_id": "P-MIXED",
+      "timestamp": "2026-11-09T06:00:00Z",
+      "symbol": "SIM-D",
+      "rule": "take_profit",
+      "price": "2.6000",
+      "threshold": "2.5000"
+    },
+    {
+      "event_id": "572d144321d227bf824e8adbd2eba4a6325a0c6dd54d6b77449c203b9019c822",
+      "portfolio_id": "P-STOCK",
+      "timestamp": "2026-11-09T06:30:00Z",
+      "symbol": "SIM-A",
+      "rule": "take_profit",
+      "price": "110.00",
+      "threshold": "106.00"
+    },
+    {
+      "event_id": "28de5047e9306d07bffa49883d32be56d25ff71ab16cdf0748c0172904d52b10",
+      "portfolio_id": "P-STOCK",
+      "timestamp": "2026-11-09T06:30:00Z",
+      "symbol": "SIM-B",
+      "rule": "take_profit",
+      "price": "58.00",
+      "threshold": "55.00"
+    },
+    {
+      "event_id": "0863492fce0d0dc674f341bc45234184a7f1eb23477de5cc8408be1098450418",
+      "portfolio_id": "P-FUND",
+      "timestamp": "2026-11-09T06:30:00Z",
+      "symbol": "SIM-A",
+      "rule": "take_profit",
+      "price": "110.00",
+      "threshold": "110.00"
+    },
+    {
+      "event_id": "fe235075b79bb9a7e06a01409067e1e3af510999a8f40cda98c8f5cb1663689e",
+      "portfolio_id": "P-FUND",
+      "timestamp": "2026-11-09T06:30:00Z",
+      "symbol": "SIM-C",
+      "rule": "stop_loss",
+      "price": "1.8999",
+      "threshold": "1.9000"
+    },
+    {
+      "event_id": "a0d64812d97f57f901a74f0a3df4f48ec359ce565c1db087b1ba0cfec5b09e3b",
+      "portfolio_id": "P-MIXED",
+      "timestamp": "2026-11-09T06:30:00Z",
+      "symbol": "SIM-B",
+      "rule": "take_profit",
+      "price": "58.00",
+      "threshold": "58.00"
+    },
+    {
+      "event_id": "27783878b3f9c752424079b614182b3d4477f3edbd78bdfbe011bf82ac8e73a6",
+      "portfolio_id": "P-MIXED",
+      "timestamp": "2026-11-09T06:30:00Z",
+      "symbol": "SIM-D",
+      "rule": "stop_loss",
+      "price": "2.0000",
+      "threshold": "2.0000"
+    }
+  ]
+}

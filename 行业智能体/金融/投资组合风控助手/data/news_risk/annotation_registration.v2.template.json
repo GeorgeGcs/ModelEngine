@@ -1,0 +1,17 @@
+{
+  "schema": "topic16-human-annotation-registration-v2",
+  "template_only": true,
+  "sample_set_id": "NR-2026-11-09",
+  "samples_sha256": "22dfb8652a0d5b6d69bb611525bccc97a591c5c2e4f1b959e65ad86b08635878",
+  "entities_sha256": "4a27094d4e428d1395eb635ad34db6a3191f865311eea320f4763e427455ef12",
+  "profile": "v2",
+  "code_identity": null,
+  "preregistered_commit": "<actual 40-character preregistration commit>",
+  "registered_at": "<actual ISO date-time with offset>",
+  "annotation_started_at": "<actual ISO date-time with offset>",
+  "sealed_at": "<actual ISO date-time with offset>",
+  "annotator": "<independent human reviewer, not an AI-generated identity>",
+  "independent_review": false,
+  "human_labels_sha256": "<hash after real human annotation is sealed>",
+  "note": "TEMPLATE ONLY. Prepare code identity and registration before annotation; retain committed preregistration evidence and separately append the actual completion metadata. Do not fabricate historical times or signatures. Machine checks cannot prove human independence. Human labels remain private."
+}

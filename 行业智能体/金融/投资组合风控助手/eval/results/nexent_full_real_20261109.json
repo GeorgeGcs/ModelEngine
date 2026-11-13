@@ -1,0 +1,120 @@
+{
+  "schema": "topic16-real-full-threshold-summary-v1",
+  "run_id": "topic16-live-20261109-133209",
+  "scope": "frozen-synthetic-price-threshold-end-to-end",
+  "acceptance_pass": false,
+  "full_exit_code": 3,
+  "verification_exit_codes": {
+    "query_run": 0,
+    "export_final_signals": 0,
+    "compare": 1,
+    "verify_tasks": 1
+  },
+  "platform_version": "Nexent v2.8.3 with pinned optional receipt observation",
+  "server_execution_base_commit": "d91169aa767c1f8793f237383b2dbf6181961dab",
+  "completed_before": 4,
+  "completed_added": 6,
+  "completed_total": 10,
+  "expected_unique_tasks": 24,
+  "actual_unique_tasks": 10,
+  "expected_position_cells": 48,
+  "completed_position_cells": 20,
+  "verified_zero_hit_completed_tasks": 7,
+  "signal_counts": {
+    "database_raw": 3,
+    "exported": 3,
+    "comparator_read": 3,
+    "expected": 20
+  },
+  "metrics": {
+    "TP": 3,
+    "FP": 0,
+    "FN": 17,
+    "duplicates": 0,
+    "mismatches": 0,
+    "expected_triggers": 20,
+    "expected_cells": 48,
+    "actual_signals": 3
+  },
+  "difference_count": 17,
+  "structural_error_count": 0,
+  "comparer_pass": false,
+  "task_verifier_pass": false,
+  "verified_record_count": 10,
+  "run_status": "failed",
+  "original_smoke_preserved": true,
+  "original_tasks_not_reinvoked": true,
+  "new_native_receipt_count": 6,
+  "first_failure": {
+    "task_key": "P-FUND|2026-11-09T11:00:00+08:00",
+    "category": "insufficient-target-tool-evidence",
+    "target_tool_call_id_count": 0,
+    "event_count": 305
+  },
+  "first_comparison_difference": {
+    "type": "MISSING",
+    "key": "P-FUND | 2026-11-09T03:00:00Z | SIM-C | stop_loss",
+    "annotation_id": "T04",
+    "case": "四位小数，止损线下方 0.0001",
+    "reason": "预期触发信号缺失（漏报）",
+    "expected": {
+      "rule": "stop_loss",
+      "price": "1.8999",
+      "threshold": "1.9000"
+    }
+  },
+  "artifact_sha256": {
+    "final_signals.json": "5526587a222a28ddff662bb9227082411850781f93869fad69e41bb84e0d6058",
+    "export_trace.json": "4a06d5db55bc7007647946183e377438c75b1aec21dad536e3f445a633d07367",
+    "compare_report.json": "9259a2fb54266b5624011576bebdc043fa522f8929c4731473002eb744009632",
+    "verify_tasks.json": "bc37f5fc41e5f077ef4c6d51b98ea035c85855809075b57bf8b0b1a7d772827b"
+  },
+  "frozen_lock_contents": {
+    "data/eval_20.json.sha256": "d33871cd2dcc2ba18964cdb28f10543e5a392e4329c6bf1353aa6c7c3e983b71  eval_20.json",
+    "eval/expected_20.json.sha256": "386fb579b50f34a5841700c2e92efb3fcaec7b3c9be289d563ee642ded65418e  expected_20.json",
+    "eval/nexent/task_manifest.json.sha256": "79e12464adbfbb9696fdbb9a41b482de241aea0a8488eaadccb4b629e3c1c338  task_manifest.json"
+  },
+  "conclusion_limit": "Only the frozen synthetic take-profit/stop-loss chain; not whole-project acceptance.",
+  "raw_evidence_location": "retained on original server; excluded from repository",
+  "started_at": "2026-11-09T06:26:05.978061+00:00",
+  "finished_at": "2026-11-09T06:31:01.038435+00:00",
+  "execution_code_sha256": {
+    "portfolio_rules_server_py": "b28ec8bc338bdf9fc0112472655d22eef0a8397acee855be8e1ac5d3ddebccfb",
+    "nexent_sdk_observation_patch": "1bd147ecf044974f2fc91591b0073c4bae051d8223835a5fbe5a986474391037",
+    "private_receipt_sink": "64fb1f22ce9545910278c6811a715b73dca72b771061425e56382d64ab840815",
+    "observation_startup_hook": "7156d57a7c3996ee515e7b2e3c8de51b0118c9e95db470f40396ef74e6260095",
+    "nexent_sdk_managed_mcp": "d64ffb9157d6407398cd481d7af09ddd56abf0b2adef34ebbabf66706fed3d96",
+    "nexent_sdk_run_agent": "ff63686b478d484beb8ec45e84a460be7c18fd7d8a76df8f172a3334fadb8e95"
+  },
+  "attempted_without_verified_completion": 1,
+  "not_attempted_tasks": 13,
+  "retry_limit": "The failed full cannot resume through the existing smoke-to-full gate; no database/preflight edits or replacement run were used.",
+  "code_regressions": {
+    "mcp_transport": {
+      "tests_run": 4,
+      "skipped": 0,
+      "exit_code": 0,
+      "environment": "original MCP 2.3 project environment"
+    },
+    "runtime_receipt_observation": {
+      "tests_run": 17,
+      "skipped": 0,
+      "exit_code": 0,
+      "environment": "original patched Nexent v2.8.3 Linux runtime; isolated RPC"
+    },
+    "prepare_overlay_safety": {
+      "tests_run": 3,
+      "skipped": 0,
+      "exit_code": 0,
+      "environment": "Windows Python 3.12; private temporary directory"
+    },
+    "existing_rule_tests": {
+      "tests_run": 8,
+      "skipped": 0,
+      "exit_code": 0,
+      "environment": "Windows Python 3.12"
+    },
+    "evaluation_database_unchanged_by_regressions": true,
+    "scope": "Code regressions only; full acceptance remains false"
+  }
+}

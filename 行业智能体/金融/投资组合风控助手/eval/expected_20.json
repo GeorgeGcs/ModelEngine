@@ -1,0 +1,91 @@
+{
+  "schema": "topic16-threshold-frozen-v1",
+  "scope": "offline-replay-layer",
+  "annotation_method": "manual",
+  "frozen_at": "2026-11-08",
+  "independence": "预期答案由人工依据下方阈值表逐格推导并写死，未调用 portfolio_risk.rules.evaluate_snapshot、未调用回放 CLI、也未用任何被测代码生成。event_id 刻意不写入标注：它是被测引擎的产物，写进来会破坏独立性。比对只按业务键（组合/UTC 时间/标的/规则）加 price、threshold 字段核对。",
+  "verification_scope_note": "本轮只证明离线回放层的阈值判定准确性，不是端到端准确率证据。接入 Nexent 后，须用本文件原封不动的标注去核对编排后的最终持久化信号；届时才形成端到端证据。",
+  "source": {
+    "replay_input": "data/eval_20.json",
+    "portfolio_count": 3,
+    "snapshot_count": 8,
+    "cells_total": 48,
+    "trigger_count": 20,
+    "non_trigger_count": 28,
+    "thresholds": [
+      {"portfolio_id": "P-STOCK", "symbol": "SIM-A", "stop_loss": "95.00", "take_profit": "106.00"},
+      {"portfolio_id": "P-STOCK", "symbol": "SIM-B", "stop_loss": "48.00", "take_profit": "55.00"},
+      {"portfolio_id": "P-FUND", "symbol": "SIM-A", "stop_loss": "92.00", "take_profit": "110.00"},
+      {"portfolio_id": "P-FUND", "symbol": "SIM-C", "stop_loss": "1.9000", "take_profit": "2.1200"},
+      {"portfolio_id": "P-MIXED", "symbol": "SIM-B", "stop_loss": "45.00", "take_profit": "58.00"},
+      {"portfolio_id": "P-MIXED", "symbol": "SIM-D", "stop_loss": "2.0000", "take_profit": "2.5000"}
+    ],
+    "timestamps_utc": [
+      "2026-11-09T01:30:00Z",
+      "2026-11-09T02:00:00Z",
+      "2026-11-09T02:30:00Z",
+      "2026-11-09T03:00:00Z",
+      "2026-11-09T05:00:00Z",
+      "2026-11-09T05:30:00Z",
+      "2026-11-09T06:00:00Z",
+      "2026-11-09T06:30:00Z"
+    ]
+  },
+  "triggers": [
+    {"annotation_id": "T01", "case": "等于止损线；同标的在 P-FUND 阈值为 92.00，同刻不应触发", "portfolio_id": "P-STOCK", "timestamp": "2026-11-09T02:00:00Z", "symbol": "SIM-A", "rule": "stop_loss", "price": "95.00", "threshold": "95.00"},
+    {"annotation_id": "T02", "case": "止损线下方 0.01；同标的在 P-MIXED 阈值为 45.00，同刻不应触发", "portfolio_id": "P-STOCK", "timestamp": "2026-11-09T02:30:00Z", "symbol": "SIM-B", "rule": "stop_loss", "price": "47.99", "threshold": "48.00"},
+    {"annotation_id": "T03", "case": "止损线下方 0.01（与 T01 的等于阈值构成两侧边界）", "portfolio_id": "P-STOCK", "timestamp": "2026-11-09T03:00:00Z", "symbol": "SIM-A", "rule": "stop_loss", "price": "94.99", "threshold": "95.00"},
+    {"annotation_id": "T04", "case": "四位小数，止损线下方 0.0001", "portfolio_id": "P-FUND", "timestamp": "2026-11-09T03:00:00Z", "symbol": "SIM-C", "rule": "stop_loss", "price": "1.8999", "threshold": "1.9000"},
+    {"annotation_id": "T05", "case": "等于止盈线；本快照输入为 Z 时区，验证时间归一化；P-FUND 阈值 110.00 同刻不触发", "portfolio_id": "P-STOCK", "timestamp": "2026-11-09T05:00:00Z", "symbol": "SIM-A", "rule": "take_profit", "price": "106.00", "threshold": "106.00"},
+    {"annotation_id": "T06", "case": "等于止损线（四位小数）", "portfolio_id": "P-FUND", "timestamp": "2026-11-09T05:00:00Z", "symbol": "SIM-C", "rule": "stop_loss", "price": "1.9000", "threshold": "1.9000"},
+    {"annotation_id": "T07", "case": "止盈线上方 0.01；同标的在 P-MIXED 阈值为 58.00，同刻不应触发", "portfolio_id": "P-STOCK", "timestamp": "2026-11-09T05:30:00Z", "symbol": "SIM-B", "rule": "take_profit", "price": "55.01", "threshold": "55.00"},
+    {"annotation_id": "T08", "case": "等于止盈线（四位小数）", "portfolio_id": "P-MIXED", "timestamp": "2026-11-09T05:30:00Z", "symbol": "SIM-D", "rule": "take_profit", "price": "2.5000", "threshold": "2.5000"},
+    {"annotation_id": "T09", "case": "明显跌破止损线；同价同刻 P-FUND 亦触发但阈值不同（见 T11）", "portfolio_id": "P-STOCK", "timestamp": "2026-11-09T06:00:00Z", "symbol": "SIM-A", "rule": "stop_loss", "price": "92.00", "threshold": "95.00"},
+    {"annotation_id": "T10", "case": "明显跌破止损线；同价同刻 P-MIXED 亦触发但阈值不同（见 T13）", "portfolio_id": "P-STOCK", "timestamp": "2026-11-09T06:00:00Z", "symbol": "SIM-B", "rule": "stop_loss", "price": "44.99", "threshold": "48.00"},
+    {"annotation_id": "T11", "case": "等于另一组合的止损线 92.00；与 T09 同标的同价同刻，阈值不同", "portfolio_id": "P-FUND", "timestamp": "2026-11-09T06:00:00Z", "symbol": "SIM-A", "rule": "stop_loss", "price": "92.00", "threshold": "92.00"},
+    {"annotation_id": "T12", "case": "明显突破止盈线", "portfolio_id": "P-FUND", "timestamp": "2026-11-09T06:00:00Z", "symbol": "SIM-C", "rule": "take_profit", "price": "2.1300", "threshold": "2.1200"},
+    {"annotation_id": "T13", "case": "与 T10 同标的同价同刻，阈值 45.00 不同", "portfolio_id": "P-MIXED", "timestamp": "2026-11-09T06:00:00Z", "symbol": "SIM-B", "rule": "stop_loss", "price": "44.99", "threshold": "45.00"},
+    {"annotation_id": "T14", "case": "明显突破止盈线", "portfolio_id": "P-MIXED", "timestamp": "2026-11-09T06:00:00Z", "symbol": "SIM-D", "rule": "take_profit", "price": "2.6000", "threshold": "2.5000"},
+    {"annotation_id": "T15", "case": "同价同刻 P-FUND 阈值 110.00 亦触发（见 T17）", "portfolio_id": "P-STOCK", "timestamp": "2026-11-09T06:30:00Z", "symbol": "SIM-A", "rule": "take_profit", "price": "110.00", "threshold": "106.00"},
+    {"annotation_id": "T16", "case": "同价同刻 P-MIXED 阈值 58.00 亦触发（见 T19）", "portfolio_id": "P-STOCK", "timestamp": "2026-11-09T06:30:00Z", "symbol": "SIM-B", "rule": "take_profit", "price": "58.00", "threshold": "55.00"},
+    {"annotation_id": "T17", "case": "等于止盈线 110.00；与 T15 同标的同价同刻，阈值不同", "portfolio_id": "P-FUND", "timestamp": "2026-11-09T06:30:00Z", "symbol": "SIM-A", "rule": "take_profit", "price": "110.00", "threshold": "110.00"},
+    {"annotation_id": "T18", "case": "与 T04 同价但不同时刻，应分别产生信号；重复告警抑制属推送层职责", "portfolio_id": "P-FUND", "timestamp": "2026-11-09T06:30:00Z", "symbol": "SIM-C", "rule": "stop_loss", "price": "1.8999", "threshold": "1.9000"},
+    {"annotation_id": "T19", "case": "等于止盈线 58.00；与 T16 同标的同价同刻，阈值不同", "portfolio_id": "P-MIXED", "timestamp": "2026-11-09T06:30:00Z", "symbol": "SIM-B", "rule": "take_profit", "price": "58.00", "threshold": "58.00"},
+    {"annotation_id": "T20", "case": "等于止损线 2.0000", "portfolio_id": "P-MIXED", "timestamp": "2026-11-09T06:30:00Z", "symbol": "SIM-D", "rule": "stop_loss", "price": "2.0000", "threshold": "2.0000"}
+  ],
+  "non_trigger_cells": [
+    {"portfolio_id": "P-STOCK", "timestamp": "2026-11-09T01:30:00Z", "symbol": "SIM-A", "price": "95.01", "stop_loss": "95.00", "take_profit": "106.00", "case": "止损线上方 0.01，不应触发"},
+    {"portfolio_id": "P-STOCK", "timestamp": "2026-11-09T01:30:00Z", "symbol": "SIM-B", "price": "54.99", "stop_loss": "48.00", "take_profit": "55.00", "case": "止盈线下方 0.01，不应触发"},
+    {"portfolio_id": "P-FUND", "timestamp": "2026-11-09T01:30:00Z", "symbol": "SIM-A", "price": "95.01", "stop_loss": "92.00", "take_profit": "110.00", "case": "同标的跨组合，阈值更低，区间内"},
+    {"portfolio_id": "P-FUND", "timestamp": "2026-11-09T01:30:00Z", "symbol": "SIM-C", "price": "1.9001", "stop_loss": "1.9000", "take_profit": "2.1200", "case": "四位小数，止损线上方 0.0001，不应触发"},
+    {"portfolio_id": "P-MIXED", "timestamp": "2026-11-09T01:30:00Z", "symbol": "SIM-B", "price": "54.99", "stop_loss": "45.00", "take_profit": "58.00", "case": "同标的跨组合，阈值更宽，区间内"},
+    {"portfolio_id": "P-MIXED", "timestamp": "2026-11-09T01:30:00Z", "symbol": "SIM-D", "price": "2.4999", "stop_loss": "2.0000", "take_profit": "2.5000", "case": "四位小数，止盈线下方 0.0001，不应触发"},
+
+    {"portfolio_id": "P-STOCK", "timestamp": "2026-11-09T02:00:00Z", "symbol": "SIM-B", "price": "50.00", "stop_loss": "48.00", "take_profit": "55.00", "case": "区间内"},
+    {"portfolio_id": "P-FUND", "timestamp": "2026-11-09T02:00:00Z", "symbol": "SIM-A", "price": "95.00", "stop_loss": "92.00", "take_profit": "110.00", "case": "同价同刻，P-STOCK 触发而本组合不触发"},
+    {"portfolio_id": "P-FUND", "timestamp": "2026-11-09T02:00:00Z", "symbol": "SIM-C", "price": "2.0000", "stop_loss": "1.9000", "take_profit": "2.1200", "case": "区间内"},
+    {"portfolio_id": "P-MIXED", "timestamp": "2026-11-09T02:00:00Z", "symbol": "SIM-B", "price": "50.00", "stop_loss": "45.00", "take_profit": "58.00", "case": "区间内"},
+    {"portfolio_id": "P-MIXED", "timestamp": "2026-11-09T02:00:00Z", "symbol": "SIM-D", "price": "2.2000", "stop_loss": "2.0000", "take_profit": "2.5000", "case": "区间内"},
+
+    {"portfolio_id": "P-STOCK", "timestamp": "2026-11-09T02:30:00Z", "symbol": "SIM-A", "price": "100.00", "stop_loss": "95.00", "take_profit": "106.00", "case": "区间内"},
+    {"portfolio_id": "P-FUND", "timestamp": "2026-11-09T02:30:00Z", "symbol": "SIM-A", "price": "100.00", "stop_loss": "92.00", "take_profit": "110.00", "case": "区间内"},
+    {"portfolio_id": "P-FUND", "timestamp": "2026-11-09T02:30:00Z", "symbol": "SIM-C", "price": "2.0000", "stop_loss": "1.9000", "take_profit": "2.1200", "case": "区间内"},
+    {"portfolio_id": "P-MIXED", "timestamp": "2026-11-09T02:30:00Z", "symbol": "SIM-B", "price": "47.99", "stop_loss": "45.00", "take_profit": "58.00", "case": "同价同刻，P-STOCK 触发而本组合不触发"},
+    {"portfolio_id": "P-MIXED", "timestamp": "2026-11-09T02:30:00Z", "symbol": "SIM-D", "price": "2.2000", "stop_loss": "2.0000", "take_profit": "2.5000", "case": "区间内"},
+
+    {"portfolio_id": "P-STOCK", "timestamp": "2026-11-09T03:00:00Z", "symbol": "SIM-B", "price": "50.00", "stop_loss": "48.00", "take_profit": "55.00", "case": "区间内"},
+    {"portfolio_id": "P-FUND", "timestamp": "2026-11-09T03:00:00Z", "symbol": "SIM-A", "price": "94.99", "stop_loss": "92.00", "take_profit": "110.00", "case": "同价同刻，P-STOCK 触发而本组合不触发"},
+    {"portfolio_id": "P-MIXED", "timestamp": "2026-11-09T03:00:00Z", "symbol": "SIM-B", "price": "50.00", "stop_loss": "45.00", "take_profit": "58.00", "case": "区间内"},
+    {"portfolio_id": "P-MIXED", "timestamp": "2026-11-09T03:00:00Z", "symbol": "SIM-D", "price": "2.2000", "stop_loss": "2.0000", "take_profit": "2.5000", "case": "区间内"},
+
+    {"portfolio_id": "P-STOCK", "timestamp": "2026-11-09T05:00:00Z", "symbol": "SIM-B", "price": "50.00", "stop_loss": "48.00", "take_profit": "55.00", "case": "区间内；本快照输入为 Z 时区"},
+    {"portfolio_id": "P-FUND", "timestamp": "2026-11-09T05:00:00Z", "symbol": "SIM-A", "price": "106.00", "stop_loss": "92.00", "take_profit": "110.00", "case": "同价同刻，P-STOCK 触发而本组合不触发"},
+    {"portfolio_id": "P-MIXED", "timestamp": "2026-11-09T05:00:00Z", "symbol": "SIM-B", "price": "50.00", "stop_loss": "45.00", "take_profit": "58.00", "case": "区间内"},
+    {"portfolio_id": "P-MIXED", "timestamp": "2026-11-09T05:00:00Z", "symbol": "SIM-D", "price": "2.2000", "stop_loss": "2.0000", "take_profit": "2.5000", "case": "区间内"},
+
+    {"portfolio_id": "P-STOCK", "timestamp": "2026-11-09T05:30:00Z", "symbol": "SIM-A", "price": "105.99", "stop_loss": "95.00", "take_profit": "106.00", "case": "止盈线下方 0.01，不应触发"},
+    {"portfolio_id": "P-FUND", "timestamp": "2026-11-09T05:30:00Z", "symbol": "SIM-A", "price": "105.99", "stop_loss": "92.00", "take_profit": "110.00", "case": "区间内"},
+    {"portfolio_id": "P-FUND", "timestamp": "2026-11-09T05:30:00Z", "symbol": "SIM-C", "price": "2.1199", "stop_loss": "1.9000", "take_profit": "2.1200", "case": "四位小数，止盈线下方 0.0001，不应触发"},
+    {"portfolio_id": "P-MIXED", "timestamp": "2026-11-09T05:30:00Z", "symbol": "SIM-B", "price": "55.01", "stop_loss": "45.00", "take_profit": "58.00", "case": "同价同刻，P-STOCK 触发而本组合不触发"}
+  ]
+}

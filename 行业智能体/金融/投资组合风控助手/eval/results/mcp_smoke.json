@@ -1,0 +1,124 @@
+{
+  "scope": "local-mcp-smoke",
+  "platform_evidence": false,
+  "note": "本地 MCP 客户端直连服务的自检；不是 Nexent Agent 调试/发布入口的调用记录。",
+  "sdk": "mcp==2.3.0",
+  "transports": [
+    {
+      "transport": "sse",
+      "url": "http://127.0.0.1:8768/sse",
+      "server_command": "-m mcps.portfolio_rules.server --transport sse --port 8768",
+      "platform_evidence": false,
+      "port_free_before_start": true,
+      "port_owner_verified": true,
+      "started_pid": 7952,
+      "listener_pids": [
+        "41864"
+      ],
+      "port_pid_matches_started_pid": false,
+      "pass": false,
+      "error": "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)",
+      "innermost_errors": [
+        "MCPError: Connection closed",
+        "ClosedResourceError: ",
+        "WouldBlock: "
+      ],
+      "server_stderr_tail": "INFO:     Started server process [41864]\nINFO:     Waiting for application startup.\nINFO:     Application startup complete.\nINFO:     Uvicorn running on http://127.0.0.1:8768 (Press CTRL+C to quit)\n",
+      "http_error_evidence": [],
+      "port_released_after_terminate": true,
+      "port_owner_method": "启动前端口空闲；启动后 netstat 记录监听 PID；终止本次启动进程后端口释放，据此确认端口归属本次启动链",
+      "port_owner_note": "venv python.exe 是启动器，实际监听在子进程；不按 PID 相等硬判，改用终止后端口释放作为归属判据"
+    },
+    {
+      "transport": "streamable-http",
+      "url": "http://127.0.0.1:8769/mcp",
+      "server_command": "-m mcps.portfolio_rules.server --transport streamable-http --port 8769",
+      "platform_evidence": false,
+      "port_free_before_start": true,
+      "port_owner_verified": true,
+      "started_pid": 40028,
+      "listener_pids": [
+        "35052"
+      ],
+      "port_pid_matches_started_pid": false,
+      "tools": [
+        {
+          "name": "evaluate_portfolio_snapshot",
+          "annotations": {
+            "read_only_hint": true,
+            "destructive_hint": false,
+            "idempotent_hint": true,
+            "open_world_hint": false
+          }
+        }
+      ],
+      "hit": {
+        "arguments": {
+          "portfolio": {
+            "id": "P-STOCK",
+            "holdings": [
+              {
+                "symbol": "SIM-A",
+                "stop_loss": "95.00",
+                "take_profit": "106.00"
+              }
+            ]
+          },
+          "snapshot": {
+            "timestamp": "2026-11-09T02:00:00Z",
+            "prices": {
+              "SIM-A": "95.00"
+            }
+          }
+        },
+        "is_error": false,
+        "signals": [
+          {
+            "event_id": "33351df92561385fae9909f593f8bec2c6c4c5912f590634e899d3ccfa82d8b6",
+            "portfolio_id": "P-STOCK",
+            "timestamp": "2026-11-09T02:00:00Z",
+            "symbol": "SIM-A",
+            "rule": "stop_loss",
+            "price": "95.00",
+            "threshold": "95.00"
+          }
+        ],
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"event_id\": \"33351df92561385fae9909f593f8bec2c6c4c5912f590634e899d3ccfa82d8b6\",\n  \"portfolio_id\": \"P-STOCK\",\n  \"timestamp\": \"2026-11-09T02:00:00Z\",\n  \"symbol\": \"SIM-A\",\n  \"rule\": \"stop_loss\",\n  \"price\": \"95.00\",\n  \"threshold\": \"95.00\"\n}"
+          }
+        ]
+      },
+      "zero_hit": {
+        "arguments": {
+          "portfolio": {
+            "id": "P-STOCK",
+            "holdings": [
+              {
+                "symbol": "SIM-A",
+                "stop_loss": "95.00",
+                "take_profit": "106.00"
+              }
+            ]
+          },
+          "snapshot": {
+            "timestamp": "2026-11-09T02:00:00Z",
+            "prices": {
+              "SIM-A": "100.00"
+            }
+          }
+        },
+        "is_error": false,
+        "signals": [],
+        "content": []
+      },
+      "pass": true,
+      "port_released_after_terminate": true,
+      "port_owner_method": "启动前端口空闲；启动后 netstat 记录监听 PID；终止本次启动进程后端口释放，据此确认端口归属本次启动链",
+      "port_owner_note": "venv python.exe 是启动器，实际监听在子进程；不按 PID 相等硬判，改用终止后端口释放作为归属判据"
+    }
+  ],
+  "startup_wait_seconds": 3.0,
+  "pass": true
+}

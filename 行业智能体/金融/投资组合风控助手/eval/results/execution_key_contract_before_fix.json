@@ -1,0 +1,32 @@
+{
+  "schema": "topic16-execution-key-pre-fix-reproduction-v1",
+  "scope": "pre-fix-reproduction",
+  "platform_evidence": false,
+  "checked_at": "2026-11-08T13:51:08+00:00",
+  "baseline_commit": "0ef85e5",
+  "note": "从 0ef85e5 原样源码加载旧客户端，与当前工作区客户端使用同一组本地构造的 SSE 事件和执行回执。全部为本地 mock，不是真实 Nexent 平台记录。",
+  "input": {
+    "sse_shape": "tool_call(execution_key=EX-7788) + execution_started；SSE 无结构化工具结果",
+    "execution_key": "EX-7788",
+    "mcp_server_log_present": true,
+    "mcp_log_contains_tool_result": true,
+    "execution_receipt_available": true
+  },
+  "observed": {
+    "status": "insufficient",
+    "signal_count": null,
+    "zero_hit": null,
+    "pairing": null,
+    "execution_key": null,
+    "actual_arguments_source": null,
+    "gaps": [
+      "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+      "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。"
+    ]
+  },
+  "full_mode_gate": {
+    "smoke_preflight_gate_in_driver": false,
+    "note": "旧驱动没有 smoke 预检门禁：--mode full 可直接跑全量 24 任务，不需要先交付一条命中与一条零命中的可追溯记录。"
+  },
+  "assessment": "旧客户端保持 insufficient 是正确且必要的保守行为（本地日志里有结果但无法唯一关联到该次调用，不能误报成功）；缺的是按 SSE execution_key 查唯一执行记录的补证通路，以及暂缓全量的 smoke 预检门禁。"
+}

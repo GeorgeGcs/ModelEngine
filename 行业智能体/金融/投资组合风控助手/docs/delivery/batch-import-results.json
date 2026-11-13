@@ -1,0 +1,10 @@
+{
+  "scope": "application bulk holding import; no monitoring or push",
+  "http": 200,
+  "portfolios": 100,
+  "holdings": 1000,
+  "unique_symbols": 1000,
+  "elapsed_seconds": 2.183,
+  "limit_seconds": 1800,
+  "passed": true
+}

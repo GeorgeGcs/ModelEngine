@@ -1,0 +1,262 @@
+{
+  "schema": "topic16-execution-key-post-fix-verification-v1",
+  "scope": "post-fix-reproduction",
+  "platform_evidence": false,
+  "checked_at": "2026-11-08T13:51:08+00:00",
+  "note": "当前工作区客户端的本地 mock 实测。SSE 显式 execution_key 可查唯一执行记录补证，SSE 工具调用标识可查唯一 MCP 服务端回执补证；无法唯一关联、缺成功标记、错误标记、入参不一致、键不来自 SSE、fixture 来源或与 SSE 结果冲突，一律保留 insufficient。",
+  "execution_keys_collected_from_sse": [
+    "EX-7788"
+  ],
+  "tool_call_ids_collected_from_sse": [
+    "TC-1"
+  ],
+  "positive": {
+    "unique_hit_receipt": {
+      "status": "verified",
+      "signal_count": 1,
+      "zero_hit": false,
+      "pairing": "execution-key",
+      "execution_key": "EX-7788",
+      "actual_arguments_source": "execution-record",
+      "gaps": []
+    },
+    "unique_zero_hit_receipt": {
+      "status": "verified",
+      "signal_count": 0,
+      "zero_hit": true,
+      "pairing": "execution-key",
+      "execution_key": "EX-7788",
+      "actual_arguments_source": "execution-record",
+      "gaps": []
+    },
+    "mcp_receipt_linked_by_tool_call_id": {
+      "status": "verified",
+      "signal_count": 1,
+      "zero_hit": false,
+      "pairing": "tool-call-id",
+      "execution_key": null,
+      "actual_arguments_source": "execution-record",
+      "gaps": []
+    }
+  },
+  "negative": {
+    "no_execution_records": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+        "SSE 暴露 execution_key=['EX-7788'] / tool_call_id=['TC-1']，但在执行记录 / MCP 服务端回执中找不到同时满足『同一执行键或同一工具调用标识 + 显式成功标记 + 无错误标记 + 工具名一致 + 实际入参可核实 + 显式结果数组』的记录；本次保留 insufficient。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。",
+        "若平台 SSE 只给 execution_key：把该键对应的平台执行记录导出或 MCP 服务端回执配置到 NEXENT_EXECUTION_RECORDS，记录须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联时保持 insufficient。"
+      ]
+    },
+    "unrelated_mcp_log_only": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+        "SSE 暴露 execution_key=['EX-7788'] / tool_call_id=['TC-1']，但在执行记录 / MCP 服务端回执中找不到同时满足『同一执行键或同一工具调用标识 + 显式成功标记 + 无错误标记 + 工具名一致 + 实际入参可核实 + 显式结果数组』的记录；本次保留 insufficient。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。",
+        "若平台 SSE 只给 execution_key：把该键对应的平台执行记录导出或 MCP 服务端回执配置到 NEXENT_EXECUTION_RECORDS，记录须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联时保持 insufficient。"
+      ]
+    },
+    "ambiguous_records": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+        "execution_key=['EX-7788'] / tool_call_id=['TC-1'] 对应 2 条执行记录，无法唯一关联到这一次调用；按指令保留 insufficient，不误报成功。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。",
+        "若平台 SSE 只给 execution_key：把该键对应的平台执行记录导出或 MCP 服务端回执配置到 NEXENT_EXECUTION_RECORDS，记录须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联时保持 insufficient。"
+      ]
+    },
+    "missing_success_marker": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+        "SSE 暴露 execution_key=['EX-7788'] / tool_call_id=['TC-1']，但在执行记录 / MCP 服务端回执中找不到同时满足『同一执行键或同一工具调用标识 + 显式成功标记 + 无错误标记 + 工具名一致 + 实际入参可核实 + 显式结果数组』的记录；本次保留 insufficient。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。",
+        "若平台 SSE 只给 execution_key：把该键对应的平台执行记录导出或 MCP 服务端回执配置到 NEXENT_EXECUTION_RECORDS，记录须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联时保持 insufficient。"
+      ]
+    },
+    "error_marker": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+        "SSE 暴露 execution_key=['EX-7788'] / tool_call_id=['TC-1']，但在执行记录 / MCP 服务端回执中找不到同时满足『同一执行键或同一工具调用标识 + 显式成功标记 + 无错误标记 + 工具名一致 + 实际入参可核实 + 显式结果数组』的记录；本次保留 insufficient。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。",
+        "若平台 SSE 只给 execution_key：把该键对应的平台执行记录导出或 MCP 服务端回执配置到 NEXENT_EXECUTION_RECORDS，记录须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联时保持 insufficient。"
+      ]
+    },
+    "wrong_actual_arguments": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "工具实际入参与冻结清单的计划入参不一致：计划组合='P-STOCK' 实际组合='P-BOND'；即便返回空数组也不得计为零命中。"
+      ]
+    },
+    "execution_key_not_from_sse": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+        "SSE 暴露 execution_key=['EX-7788'] / tool_call_id=['TC-1']，但在执行记录 / MCP 服务端回执中找不到同时满足『同一执行键或同一工具调用标识 + 显式成功标记 + 无错误标记 + 工具名一致 + 实际入参可核实 + 显式结果数组』的记录；本次保留 insufficient。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。",
+        "若平台 SSE 只给 execution_key：把该键对应的平台执行记录导出或 MCP 服务端回执配置到 NEXENT_EXECUTION_RECORDS，记录须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联时保持 insufficient。"
+      ]
+    },
+    "fixture_source_rejected": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+        "SSE 暴露 execution_key=['EX-7788'] / tool_call_id=['TC-1']，但在执行记录 / MCP 服务端回执中找不到同时满足『同一执行键或同一工具调用标识 + 显式成功标记 + 无错误标记 + 工具名一致 + 实际入参可核实 + 显式结果数组』的记录；本次保留 insufficient。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。",
+        "若平台 SSE 只给 execution_key：把该键对应的平台执行记录导出或 MCP 服务端回执配置到 NEXENT_EXECUTION_RECORDS，记录须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联时保持 insufficient。"
+      ]
+    },
+    "receipt_conflicts_with_sse_result": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "工具调用与结果未能按同一次调用标识配对；SSE 流未暴露实际入参，且没有可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录。",
+        "SSE 暴露 execution_key=['EX-7788'] / tool_call_id=['TC-1']，但在执行记录 / MCP 服务端回执中找不到同时满足『同一执行键或同一工具调用标识 + 显式成功标记 + 无错误标记 + 工具名一致 + 实际入参可核实 + 显式结果数组』的记录；本次保留 insufficient。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。",
+        "若平台 SSE 只给 execution_key：把该键对应的平台执行记录导出或 MCP 服务端回执配置到 NEXENT_EXECUTION_RECORDS，记录须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联时保持 insufficient。"
+      ]
+    },
+    "call_id_receipt_with_unrelated_call_id": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+        "SSE 暴露 execution_key=['EX-7788'] / tool_call_id=['TC-1']，但在执行记录 / MCP 服务端回执中找不到同时满足『同一执行键或同一工具调用标识 + 显式成功标记 + 无错误标记 + 工具名一致 + 实际入参可核实 + 显式结果数组』的记录；本次保留 insufficient。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。",
+        "若平台 SSE 只给 execution_key：把该键对应的平台执行记录导出或 MCP 服务端回执配置到 NEXENT_EXECUTION_RECORDS，记录须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联时保持 insufficient。"
+      ]
+    },
+    "call_id_receipt_without_success_marker": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+        "SSE 暴露 execution_key=['EX-7788'] / tool_call_id=['TC-1']，但在执行记录 / MCP 服务端回执中找不到同时满足『同一执行键或同一工具调用标识 + 显式成功标记 + 无错误标记 + 工具名一致 + 实际入参可核实 + 显式结果数组』的记录；本次保留 insufficient。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。",
+        "若平台 SSE 只给 execution_key：把该键对应的平台执行记录导出或 MCP 服务端回执配置到 NEXENT_EXECUTION_RECORDS，记录须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联时保持 insufficient。"
+      ]
+    },
+    "call_id_receipt_with_timeout_marker": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+        "SSE 暴露 execution_key=['EX-7788'] / tool_call_id=['TC-1']，但在执行记录 / MCP 服务端回执中找不到同时满足『同一执行键或同一工具调用标识 + 显式成功标记 + 无错误标记 + 工具名一致 + 实际入参可核实 + 显式结果数组』的记录；本次保留 insufficient。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。",
+        "若平台 SSE 只给 execution_key：把该键对应的平台执行记录导出或 MCP 服务端回执配置到 NEXENT_EXECUTION_RECORDS，记录须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联时保持 insufficient。"
+      ]
+    },
+    "ambiguous_call_id_receipts": {
+      "status": "insufficient",
+      "signal_count": null,
+      "zero_hit": null,
+      "pairing": null,
+      "execution_key": null,
+      "actual_arguments_source": null,
+      "gaps": [
+        "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+        "execution_key=['EX-7788'] / tool_call_id=['TC-1'] 对应 2 条执行记录，无法唯一关联到这一次调用；按指令保留 insufficient，不误报成功。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。",
+        "若平台 SSE 只给 execution_key：把该键对应的平台执行记录导出或 MCP 服务端回执配置到 NEXENT_EXECUTION_RECORDS，记录须带同一执行键（或与 SSE 工具调用事件相同的 tool_call_id/call_id）、显式成功标记、实际入参与返回信号；无法唯一关联时保持 insufficient。"
+      ]
+    }
+  },
+  "preflight_contract": {
+    "schema": "topic16-northbound-preflight-v2",
+    "required_fields": [
+      "run_id",
+      "platform_evidence",
+      "pass",
+      "hit_task_found",
+      "zero_hit_task_found"
+    ],
+    "per_record_checks": [
+      "平台请求/会话 ID",
+      "实际工具入参与同次调用配对",
+      "成功返回值与 SQLite 查询结果一致",
+      "执行记录补证键（execution_key 或 tool_call_id/call_id）来自本次 SSE",
+      "零命中由工具成功 + 显式 [] + 配对共同证明"
+    ]
+  },
+  "full_mode_gate": {
+    "missing_preflight": {
+      "allowed": false,
+      "problems": [
+        "预检报告不存在：nexent_preflight.json"
+      ]
+    },
+    "valid_preflight_same_run_id": {
+      "allowed": true,
+      "problems": []
+    },
+    "preflight_without_zero_hit": {
+      "allowed": false,
+      "problems": [
+        "预检缺少可追溯的零命中记录"
+      ]
+    },
+    "different_run_id": {
+      "allowed": false
+    },
+    "full_mode_exit_code_when_gate_denied": 4
+  }
+}

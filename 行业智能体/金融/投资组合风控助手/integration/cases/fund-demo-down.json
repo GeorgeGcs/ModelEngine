@@ -1,0 +1,42 @@
+{
+  "case_id": "fund-demo-down",
+  "scope": "independent-synthetic-demo",
+  "portfolios": [
+    {
+      "id": "fund-demo",
+      "name": "虚构基金组合",
+      "type": "基金",
+      "holdings": [
+        {
+          "symbol": "SIM-FUND-B",
+          "cost": "1.0000",
+          "quantity": 1000,
+          "holding_date": "2026-11-02",
+          "stop_loss": "0.9500",
+          "take_profit": "1.0800"
+        }
+      ]
+    }
+  ],
+  "snapshot": {
+    "timestamp": "2026-11-10T11:00:00+08:00",
+    "prices": {
+      "SIM-FUND-B": "0.900000"
+    }
+  },
+  "news_items": [
+    {
+      "symbol": "SIM-FUND-B",
+      "name": "松野材料",
+      "text": "松野材料收到行政处罚决定书。",
+      "published_at": "2026-11-10T10:00:00+08:00",
+      "source": "project-synthetic-demo"
+    }
+  ],
+  "knowledge_queries": [
+    {
+      "portfolio_id": "fund-demo",
+      "query": "止损阈值如何触发"
+    }
+  ]
+}

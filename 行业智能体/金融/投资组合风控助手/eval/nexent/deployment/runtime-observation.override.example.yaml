@@ -1,0 +1,23 @@
+# Environment values are operator-owned deployment paths, never repository data.
+services:
+  nexent-runtime:
+    environment:
+      PYTHONPATH: "/topic16-observe:${NEXENT_ORIGINAL_PYTHONPATH:-}"
+      TOPIC16_RECEIPTS_DIR: "/topic16-state"
+      TOPIC16_OBSERVATION_RUN_ID: "topic16"
+    volumes:
+      - type: bind
+        source: "${TOPIC16_OVERLAY_DIR:?set}/sdk/nexent/core/agents/managed_mcp.py"
+        target: "${NEXENT_MANAGED_MCP_MODULE:?inspect actual module path}"
+        read_only: true
+      - type: bind
+        source: "${TOPIC16_OVERLAY_DIR:?set}/sdk/nexent/core/agents/run_agent.py"
+        target: "${NEXENT_RUN_AGENT_MODULE:?inspect actual module path}"
+        read_only: true
+      - type: bind
+        source: "${TOPIC16_OVERLAY_DIR:?set}/startup"
+        target: "/topic16-observe"
+        read_only: true
+      - type: bind
+        source: "${TOPIC16_PRIVATE_RECEIPTS_DIR:?set private receipt directory}"
+        target: "/topic16-state"

@@ -1,0 +1,122 @@
+{
+  "portfolios": [
+    {
+      "id": "stock-demo",
+      "name": "虚构股票组合",
+      "type": "股票",
+      "holdings": [
+        {
+          "symbol": "SIM-STOCK-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "95.00",
+          "take_profit": "106.00"
+        }
+      ]
+    },
+    {
+      "id": "fund-demo",
+      "name": "虚构基金组合",
+      "type": "基金",
+      "holdings": [
+        {
+          "symbol": "SIM-FUND-B",
+          "cost": "1.0000",
+          "quantity": 1000,
+          "holding_date": "2026-11-02",
+          "stop_loss": "0.9500",
+          "take_profit": "1.0800"
+        }
+      ]
+    },
+    {
+      "id": "mixed-demo",
+      "name": "虚构混合组合",
+      "type": "混合",
+      "holdings": [
+        {
+          "symbol": "SIM-STOCK-C",
+          "cost": "50.00",
+          "quantity": 15,
+          "holding_date": "2026-11-02",
+          "stop_loss": "47.50",
+          "take_profit": "54.00"
+        },
+        {
+          "symbol": "SIM-FUND-D",
+          "cost": "2.0000",
+          "quantity": 300,
+          "holding_date": "2026-11-02",
+          "stop_loss": "1.9000",
+          "take_profit": "2.1200"
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "timestamp": "2026-11-06T09:30:00+08:00",
+      "prices": {
+        "SIM-STOCK-A": "100.00",
+        "SIM-FUND-B": "1.0000",
+        "SIM-STOCK-C": "50.00",
+        "SIM-FUND-D": "2.0000"
+      }
+    },
+    {
+      "timestamp": "2026-11-06T10:00:00+08:00",
+      "prices": {
+        "SIM-STOCK-A": "94.90",
+        "SIM-FUND-B": "1.0200",
+        "SIM-STOCK-C": "51.00",
+        "SIM-FUND-D": "2.0100"
+      }
+    },
+    {
+      "timestamp": "2026-11-06T10:30:00+08:00",
+      "prices": {
+        "SIM-STOCK-A": "99.50",
+        "SIM-FUND-B": "1.0300",
+        "SIM-STOCK-C": "50.50",
+        "SIM-FUND-D": "2.0400"
+      }
+    },
+    {
+      "timestamp": "2026-11-06T11:00:00+08:00",
+      "prices": {
+        "SIM-STOCK-A": "101.20",
+        "SIM-FUND-B": "1.0900",
+        "SIM-STOCK-C": "51.40",
+        "SIM-FUND-D": "2.0300"
+      }
+    },
+    {
+      "timestamp": "2026-11-06T13:00:00+08:00",
+      "prices": {
+        "SIM-STOCK-A": "101.50",
+        "SIM-FUND-B": "1.0300",
+        "SIM-STOCK-C": "52.00",
+        "SIM-FUND-D": "2.0500"
+      }
+    },
+    {
+      "timestamp": "2026-11-06T14:00:00+08:00",
+      "prices": {
+        "SIM-STOCK-A": "102.00",
+        "SIM-FUND-B": "1.0200",
+        "SIM-STOCK-C": "47.40",
+        "SIM-FUND-D": "2.1300"
+      }
+    },
+    {
+      "timestamp": "2026-11-06T14:30:00+08:00",
+      "prices": {
+        "SIM-STOCK-A": "102.50",
+        "SIM-FUND-B": "1.0100",
+        "SIM-STOCK-C": "50.00",
+        "SIM-FUND-D": "2.0600"
+      }
+    }
+  ]
+}

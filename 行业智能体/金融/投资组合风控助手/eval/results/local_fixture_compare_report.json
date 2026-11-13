@@ -1,0 +1,21 @@
+{
+  "schema": "topic16-compare-report-v1",
+  "scope": "local-fixture",
+  "pass": true,
+  "metrics": {
+    "TP": 20,
+    "FP": 0,
+    "FN": 0,
+    "duplicates": 0,
+    "mismatches": 0,
+    "expected_triggers": 20,
+    "expected_cells": 48,
+    "actual_signals": 20
+  },
+  "expected_file": "eval/expected_20.json",
+  "expected_sha256": "386fb579b50f34a5841700c2e92efb3fcaec7b3c9be289d563ee642ded65418e",
+  "actual_file": "eval/results/local_fixture_final_signals.json",
+  "actual_sha256": "ed811072358707215109d8f88cedaa99a9ca1573e1f59b45795456ee1c4fdf9c",
+  "differences": [],
+  "structural_errors": []
+}

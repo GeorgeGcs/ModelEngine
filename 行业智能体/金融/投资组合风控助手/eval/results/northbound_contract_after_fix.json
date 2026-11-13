@@ -1,0 +1,76 @@
+{
+  "schema": "topic16-northbound-post-fix-verification-v1",
+  "scope": "post-fix-reproduction",
+  "platform_evidence": false,
+  "note": "修复后本地 mock 实测：官方 health 通过；错误/超时/推理/入参不一致一律被拒；只有配对成功、实际入参一致的显式 [] 才计零命中。非真实平台记录。",
+  "checks": {
+    "official_health_accepted": {
+      "probe_status": "reachable",
+      "contract_matched": true,
+      "response_header_ids": {
+        "x_request_id": "XR-1",
+        "conversation_id": "C-1"
+      }
+    },
+    "tool_error_with_empty_array": {
+      "evidence_status": "failed",
+      "signals": null,
+      "gaps": [
+        "事件 #0（tool_error）：工具事件类型为 tool_error",
+        "检测到工具错误/超时/失败标记：本次调用不得计为成功命中，也不得计为零命中。"
+      ],
+      "actual_arguments_checked": true
+    },
+    "timeout_marker_with_empty_array": {
+      "evidence_status": "failed",
+      "signals": null,
+      "gaps": [
+        "事件 #0（tool_result）：事件带 error 错误/超时标记",
+        "检测到工具错误/超时/失败标记：本次调用不得计为成功命中，也不得计为零命中。"
+      ],
+      "actual_arguments_checked": true
+    },
+    "reasoning_event_with_tool_result_empty_array": {
+      "evidence_status": "insufficient",
+      "signals": null,
+      "gaps": [
+        "SSE 流中没有带显式工具名 evaluate_portfolio_snapshot 的已识别成功工具结果；不能从 final_answer 或任意 result 数组推断工具已执行。",
+        "补证要求：提供可与本次平台会话/请求/任务标识关联的 MCP 服务端调用记录（工具名、实际入参、返回信号、时间戳、call_id 或 conversation_id/request_id/run_id/task_key），配置到 NEXENT_MCP_CALL_LOG。"
+      ],
+      "actual_arguments_checked": true
+    },
+    "planned_A_actual_B_even_with_empty_array": {
+      "evidence_status": "insufficient",
+      "signals": null,
+      "gaps": [
+        "工具实际入参与冻结清单的计划入参不一致：计划组合='P-STOCK' 实际组合='P-BOND'；即便返回空数组也不得计为零命中。"
+      ],
+      "actual_arguments_checked": true
+    },
+    "valid_paired_zero_hit": {
+      "evidence_status": "verified",
+      "signals": [],
+      "gaps": [],
+      "actual_arguments_checked": true,
+      "pairing": "sse-call-id",
+      "actual_tool_arguments": {
+        "portfolio": {
+          "id": "P-STOCK",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "stop_loss": "95.00",
+              "take_profit": "106.00"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T10:00:00+08:00",
+          "prices": {
+            "SIM-A": "95.00"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "topic16-news-sample-registry-v1",
+  "note": "运行前登记的冻结样本集清单。只有在此登记、且 SHA256 与实际样本一致的集合，才允许正式评分器出具 formal=true 的结论。登记文件的 Git 提交历史用于证明样本集在人工标注/规则定版之前已选定。单靠样本旁边的 .sha256 锁无法证明事先选定。",
+  "registered_sets": [
+    {
+      "sample_set_id": "NR-2026-11-09",
+      "file": "data/news_risk/samples_50.json",
+      "sha256": "22dfb8652a0d5b6d69bb611525bccc97a591c5c2e4f1b959e65ad86b08635878",
+      "id_range": "NR-001..NR-050",
+      "blind_sheet": "data/news_risk/blind_annotation_sheet.csv",
+      "entities_file": "data/news_risk/sim_entities.json",
+      "entities_sha256": "4a27094d4e428d1395eb635ad34db6a3191f865311eea320f4763e427455ef12",
+      "used_for_rule_development": false,
+      "labels_public_in_repo": false,
+      "not_recommended_for_blind_acceptance": false
+    },
+    {
+      "sample_set_id": "NEWS-DEV-2026-11-09",
+      "file": "data/news_risk/dev_eval_samples.json",
+      "sha256": "11f92d6db0294eb6931e8cc55d62ddd61fba9edbdb50e84ae28dbd6214794767",
+      "id_range": "N001..N050",
+      "blind_sheet": "data/news_risk/blind_annotation_sheet_dev_eval.csv",
+      "used_for_rule_development": true,
+      "labels_public_in_repo": true,
+      "not_recommended_for_blind_acceptance": true,
+      "reason": "本批 50 条原文用于归纳 v2 词表；仓库内 baseline 报告加三条差异 ID 足以还原全部二分类标签，因此只可作开发评测，正式盲评须另用未参与开发且标签未公开的独立样本集。"
+    }
+  ],
+  "disclaimer": "风险提示仅供参考，不构成投资建议；系统输出为辅助建议，重大舆情须人工核实。"
+}

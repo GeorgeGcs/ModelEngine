@@ -1,0 +1,21 @@
+{
+  "schema": "topic16-compare-report-v1",
+  "scope": "offline-replay-layer",
+  "pass": true,
+  "metrics": {
+    "TP": 20,
+    "FP": 0,
+    "FN": 0,
+    "duplicates": 0,
+    "mismatches": 0,
+    "expected_triggers": 20,
+    "expected_cells": 48,
+    "actual_signals": 20
+  },
+  "expected_file": "eval/expected_20.json",
+  "expected_sha256": "386fb579b50f34a5841700c2e92efb3fcaec7b3c9be289d563ee642ded65418e",
+  "actual_file": "eval/results/replay_actual.json",
+  "actual_sha256": "7064f6d9fdbf9614c8d10c513831c63403e98a06e90f41c2f045bd5305aeda00",
+  "differences": [],
+  "structural_errors": []
+}

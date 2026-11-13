@@ -1,0 +1,31 @@
+{
+  "schema": "topic16-ai-reference-agreement-v2",
+  "scope": "ai-reference-development-evaluation",
+  "metric_name": "与 AI 参考答案的一致率",
+  "not_human_judgment_agreement": true,
+  "not_acceptance_evidence": true,
+  "not_an_acceptance_threshold": true,
+  "label_origin": "AI 起草的参考判断",
+  "human_review_status": "未经独立人工判定",
+  "reference_read_after_prediction_validation": true,
+  "ai_reference_sample_count": 50,
+  "ai_reference_match_count": 50,
+  "ai_reference_match_rate": 1.0,
+  "false_positive_count": 0,
+  "false_negative_count": 0,
+  "false_positives": [],
+  "false_negatives": [],
+  "differences": [],
+  "structural_errors": [],
+  "profile": "v2",
+  "variant": "final",
+  "run_id": "DEV-EVAL-V2",
+  "evidence": {
+    "samples": "data/news_risk/dev_eval_samples.json",
+    "predictions": "eval/news_risk/results/dev_eval_predictions.json",
+    "ai_reference": "<outside-repo>/舆情参考判断_50条.json"
+  },
+  "note": "本结果仅与 AI 起草的参考答案比对，不是与人工判定一致率，不可作为活动验收证据。报告不含任何达标布尔值：达到 43/50 才达标的门槛只属于正式人工评测。报告只含差异条目的参考摘录，不含完整答案集。",
+  "generalization_caveat": "研判词表由本批原文归纳，本结果属于同批样本上的开发评测，不能外推到未见样本；正式验收应另用独立人工判定，并建议增加留出集或新增样本检验泛化能力。",
+  "disclaimer": "风险提示仅供参考，不构成投资建议；系统输出为辅助建议，重大舆情须人工核实。"
+}

@@ -1,0 +1,148 @@
+{
+  "note": "课题 16 冻结阈值评测集输入。全部组合、标的与价格均为人工构造的模拟数据，不含任何真实行情或个人信息。与 data/demo.json 相互独立，demo.json 仅用于快速演示。",
+  "portfolios": [
+    {
+      "id": "P-STOCK",
+      "name": "虚构股票组合（评测）",
+      "type": "股票",
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "95.00",
+          "take_profit": "106.00"
+        },
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "48.00",
+          "take_profit": "55.00"
+        }
+      ]
+    },
+    {
+      "id": "P-FUND",
+      "name": "虚构基金组合（评测）",
+      "type": "基金",
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "92.00",
+          "take_profit": "110.00"
+        },
+        {
+          "symbol": "SIM-C",
+          "cost": "2.0000",
+          "quantity": 1000,
+          "holding_date": "2026-11-02",
+          "stop_loss": "1.9000",
+          "take_profit": "2.1200"
+        }
+      ]
+    },
+    {
+      "id": "P-MIXED",
+      "name": "虚构混合组合（评测）",
+      "type": "混合",
+      "holdings": [
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "45.00",
+          "take_profit": "58.00"
+        },
+        {
+          "symbol": "SIM-D",
+          "cost": "2.2000",
+          "quantity": 500,
+          "holding_date": "2026-11-02",
+          "stop_loss": "2.0000",
+          "take_profit": "2.5000"
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "timestamp": "2026-11-09T09:30:00+08:00",
+      "prices": {
+        "SIM-A": "95.01",
+        "SIM-B": "54.99",
+        "SIM-C": "1.9001",
+        "SIM-D": "2.4999"
+      }
+    },
+    {
+      "timestamp": "2026-11-09T10:00:00+08:00",
+      "prices": {
+        "SIM-A": "95.00",
+        "SIM-B": "50.00",
+        "SIM-C": "2.0000",
+        "SIM-D": "2.2000"
+      }
+    },
+    {
+      "timestamp": "2026-11-09T10:30:00+08:00",
+      "prices": {
+        "SIM-A": "100.00",
+        "SIM-B": "47.99",
+        "SIM-C": "2.0000",
+        "SIM-D": "2.2000"
+      }
+    },
+    {
+      "timestamp": "2026-11-09T11:00:00+08:00",
+      "prices": {
+        "SIM-A": "94.99",
+        "SIM-B": "50.00",
+        "SIM-C": "1.8999",
+        "SIM-D": "2.2000"
+      }
+    },
+    {
+      "timestamp": "2026-11-09T05:00:00Z",
+      "prices": {
+        "SIM-A": "106.00",
+        "SIM-B": "50.00",
+        "SIM-C": "1.9000",
+        "SIM-D": "2.2000"
+      }
+    },
+    {
+      "timestamp": "2026-11-09T13:30:00+08:00",
+      "prices": {
+        "SIM-A": "105.99",
+        "SIM-B": "55.01",
+        "SIM-C": "2.1199",
+        "SIM-D": "2.5000"
+      }
+    },
+    {
+      "timestamp": "2026-11-09T14:00:00+08:00",
+      "prices": {
+        "SIM-A": "92.00",
+        "SIM-B": "44.99",
+        "SIM-C": "2.1300",
+        "SIM-D": "2.6000"
+      }
+    },
+    {
+      "timestamp": "2026-11-09T14:30:00+08:00",
+      "prices": {
+        "SIM-A": "110.00",
+        "SIM-B": "58.00",
+        "SIM-C": "1.8999",
+        "SIM-D": "2.0000"
+      }
+    }
+  ]
+}

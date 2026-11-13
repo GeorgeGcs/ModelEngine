@@ -1,0 +1,19 @@
+# Keep byte-level SHA256 evidence reproducible across Git clients.
+data/eval_20.json text eol=lf
+data/eval_20.json.sha256 text eol=lf
+eval/expected_20.json text eol=lf
+eval/expected_20.json.sha256 text eol=lf
+eval/results/*.json text eol=lf
+# 任务清单及其冻结锁也必须按 LF 检出，否则 Windows autocrlf 会改变字节、破坏 SHA256 证据链。
+eval/nexent/task_manifest.json text eol=lf
+eval/nexent/task_manifest.json.sha256 text eol=lf
+eval/nexent/platform_records/*.json text eol=lf
+# 舆情冻结样本、盲标表、锁与评测报告固定 LF，保证 SHA256 与可复制命令一致。
+data/news_risk/*.json text eol=lf
+data/news_risk/*.sha256 text eol=lf
+data/news_risk/*.csv text eol=lf
+mcps/portfolio_rules/schema.json text eol=lf
+mcps/news_risk/schema.json text eol=lf
+mcps/knowledge/schema.json text eol=lf
+mcps/wechat/schema.json text eol=lf
+eval/news_risk/results/*.json text eol=lf

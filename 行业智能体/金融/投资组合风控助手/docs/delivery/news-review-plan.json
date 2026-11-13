@@ -1,0 +1,31 @@
+{
+  "status": "registered-awaiting-human-annotation",
+  "prepared_at": "2026-11-11T23:17:00.133013+08:00",
+  "candidate_commit": "43f80e1fb2814cd39374e4c2e387852922e32b9d",
+  "sample_set_id": "NR-2026-11-09",
+  "profile": "v2",
+  "denominator": 50,
+  "threshold": 43,
+  "samples_sha256": "22dfb8652a0d5b6d69bb611525bccc97a591c5c2e4f1b959e65ad86b08635878",
+  "entities_sha256": "4a27094d4e428d1395eb635ad34db6a3191f865311eea320f4763e427455ef12",
+  "code_identity": {
+    "schema": "topic16-news-code-v1",
+    "normalization": "UTF-8 source LF",
+    "files": {
+      "news_risk/__main__.py": "217fb54dce92e2100879b0608910add590015345c73d0fc1a21427a1856635cc",
+      "news_risk/rules.py": "78f08ff7d6803b25d6eca00c428c6f1972fc44cf91a0390c1f65b86e7c228caa",
+      "news_risk/rules_v2.py": "96001189f6264865431271edb6384854aa92185a5c256c267f97aeca29e0eda5",
+      "news_risk/penalty.py": "2f7a0817ad1d76514d5682d4ab3fec7e539837a1915aeaa21eb4cf8bcd1a2a0d",
+      "eval/news_risk/provenance.py": "527f19ebc0e78188bfcd7fe2602fbd5bb51c30038495fb940c6092733b9dad52"
+    },
+    "sha256": "20aa9417e27abc5cc36eb985ebcfed6e5af624b4e0b3b69e93b1e4cca4f7bdee"
+  },
+  "human_labels_present": false,
+  "system_predictions_generated": false,
+  "proposed_reviewer": "wpp",
+  "registered_at": "2026-11-12T00:21:07.929911+08:00",
+  "note": "User explicitly confirmed independent blind annotation. Actual annotation start, human labels, seal and scoring remain pending.",
+  "annotator": "wpp",
+  "independent_review": true,
+  "registration_file": "data/news_risk/annotation_registration.wpp_20261112.json"
+}

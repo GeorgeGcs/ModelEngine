@@ -1,0 +1,104 @@
+{
+  "candidate_sha": "aeafe7e52193fefb3d5b9e0c25995b825e7de81f",
+  "capture_exit": 0,
+  "elapsed_seconds": 213,
+  "scope": "synthetic inputs entered in the real product, native monitoring API and simulated pushes",
+  "cases": [
+    {
+      "case_id": "stock-demo-up",
+      "run_id": "review-1794383322538-run-1",
+      "portfolio_id": "review-1794383322538-1",
+      "signals": 1,
+      "pushes": 1,
+      "all_pushes_simulated": true,
+      "exact_saved_holdings": true,
+      "tool_names": [
+        "evaluate_portfolio_snapshot",
+        "assess_news_risk_v2",
+        "search_portfolio_knowledge"
+      ],
+      "unique_verified_native_calls": 3
+    },
+    {
+      "case_id": "fund-demo-down",
+      "run_id": "review-1794383322538-run-2",
+      "portfolio_id": "review-1794383322538-2",
+      "signals": 2,
+      "pushes": 2,
+      "all_pushes_simulated": true,
+      "exact_saved_holdings": true,
+      "tool_names": [
+        "evaluate_portfolio_snapshot",
+        "assess_news_risk_v2",
+        "search_portfolio_knowledge"
+      ],
+      "unique_verified_native_calls": 3
+    },
+    {
+      "case_id": "mixed-demo-down",
+      "run_id": "review-1794383322538-run-3",
+      "portfolio_id": "review-1794383322538-3",
+      "signals": 3,
+      "pushes": 3,
+      "all_pushes_simulated": true,
+      "exact_saved_holdings": true,
+      "tool_names": [
+        "evaluate_portfolio_snapshot",
+        "assess_news_risk_v2",
+        "search_portfolio_knowledge"
+      ],
+      "unique_verified_native_calls": 3
+    }
+  ],
+  "artifacts": {
+    "01-stock-entry.png": {
+      "bytes": 132918,
+      "sha256": "ba554ccb564708845aa67cc48f23305a0d434449aceaa65b44a48d852ff31344"
+    },
+    "04-native-signals.png": {
+      "bytes": 220869,
+      "sha256": "37a4ca5401289c321295fbdc0a134bef8164f7c0bfad73c12a2af5500f7c9241"
+    },
+    "03-native-signals.png": {
+      "bytes": 207551,
+      "sha256": "bed97e21915012a20f5c24bcedfd706bec6504c12cdd550c4a17c4820784da90"
+    },
+    "08-simulated-push.png": {
+      "bytes": 309313,
+      "sha256": "1370bd316c2580a27065383b97f4e0c58d63973bc6c856f8fca39518ce8744a5"
+    },
+    "05-native-signals.png": {
+      "bytes": 233781,
+      "sha256": "f53130ce870070162da9b76fc87d4d2fdaf6f665dd02c3358738316d6e614153"
+    },
+    "topic16-demo.webm": {
+      "bytes": 15255108,
+      "sha256": "d4334f701c13ca7c9e7d30308f89e2b807e4914a825e0053fa5e6470105b87fc"
+    },
+    "02-bulk-import.png": {
+      "bytes": 142625,
+      "sha256": "954c56ded5faa64e78a26725baaa01c62d93a8add14183d7298b105adad3f06a"
+    },
+    "07-simulated-push.png": {
+      "bytes": 310622,
+      "sha256": "974380397e7cf79792a10a80b7e2d048cdcd653e36f8646365e69dd06d6c32d1"
+    },
+    "06-simulated-push.png": {
+      "bytes": 309649,
+      "sha256": "4d20489b92fa5030fd8427910c996a32a5e6f311824d45e36e3c4333d6b679aa"
+    }
+  },
+  "playback_check": {
+    "duration_seconds": 209.28,
+    "width": 1280,
+    "height": 800,
+    "sampled_seconds": [
+      4,
+      54,
+      111,
+      173,
+      202
+    ],
+    "decode_error": false
+  }
+}

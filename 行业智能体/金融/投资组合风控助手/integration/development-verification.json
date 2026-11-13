@@ -1,0 +1,77 @@
+{
+  "scope": "development tests; mocked/native SDK handler only; no real Agent calls",
+  "suites": {
+    "integration": {
+      "executed": 35,
+      "passed": 35,
+      "skip": 0,
+      "exit_code": 0
+    },
+    "app": {
+      "executed": 49,
+      "passed": 49,
+      "skip": 0,
+      "exit_code": 0
+    },
+    "knowledge": {
+      "executed": 28,
+      "passed": 28,
+      "skip": 0,
+      "exit_code": 0
+    },
+    "news": {
+      "executed": 136,
+      "passed": 136,
+      "skip": 0,
+      "exit_code": 0
+    },
+    "price": {
+      "executed": 96,
+      "passed": 96,
+      "skip": 0,
+      "exit_code": 0
+    },
+    "base": {
+      "executed": 8,
+      "passed": 8,
+      "skip": 0,
+      "exit_code": 0
+    },
+    "compare": {
+      "executed": 8,
+      "passed": 8,
+      "skip": 0,
+      "exit_code": 0
+    },
+    "observation": {
+      "executed": 28,
+      "passed": 20,
+      "skip": 8,
+      "exit_code": 0
+    },
+    "news-mcp": {
+      "executed": 10,
+      "passed": 10,
+      "skip": 0,
+      "exit_code": 0
+    },
+    "knowledge-mcp": {
+      "executed": 5,
+      "passed": 5,
+      "skip": 0,
+      "exit_code": 0
+    },
+    "price-mcp": {
+      "executed": 4,
+      "passed": 4,
+      "skip": 0,
+      "exit_code": 0
+    }
+  },
+  "total_executed": 407,
+  "total_passed": 399,
+  "total_skipped": 8,
+  "sdk_schema_match": true,
+  "javascript_syntax_exit": 0,
+  "live_platform_pending": true
+}

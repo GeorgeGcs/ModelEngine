@@ -1,0 +1,63 @@
+{
+  "schema": "topic16-knowledge-assets-v1",
+  "query_roles": [
+    "asset_admin",
+    "risk_reader"
+  ],
+  "documents": [
+    {
+      "doc_id": "topic16-policy",
+      "title": "投资组合风控项目规则说明",
+      "source_type": "project-authored",
+      "source": "knowledge/assets/policy-v1.txt",
+      "version": "1.0",
+      "authored_date": "2026-11-10",
+      "effective_at": null,
+      "sha256": "bda76581ccab6df1344340cde25e30254130fc95b83229d8a26d083dee70c96f",
+      "scope": "价格阈值与新闻辅助研判",
+      "license": "CC0-1.0",
+      "visible_roles": [
+        "asset_admin",
+        "risk_reader"
+      ],
+      "import_status": "not_imported",
+      "file": "assets/policy-v1.txt"
+    },
+    {
+      "doc_id": "topic16-review",
+      "title": "证据与人工复核指引",
+      "source_type": "project-authored",
+      "source": "knowledge/assets/review-v1.txt",
+      "version": "1.0",
+      "authored_date": "2026-11-10",
+      "effective_at": null,
+      "sha256": "e917637df70856a3624b52374c7bb3830504c3ee88852b663902ee400d5dd2c2",
+      "scope": "来源、冲突、引用与推送证据",
+      "license": "CC0-1.0",
+      "visible_roles": [
+        "asset_admin",
+        "risk_reader"
+      ],
+      "import_status": "not_imported",
+      "file": "assets/review-v1.txt"
+    },
+    {
+      "doc_id": "topic16-guide",
+      "title": "组合监控使用说明",
+      "source_type": "project-authored",
+      "source": "knowledge/assets/guide-v1.txt",
+      "version": "1.0",
+      "authored_date": "2026-11-10",
+      "effective_at": null,
+      "sha256": "134c8f82b368872043a3410549bcaa87bb2c86fae0d0ecc0c2d7f1f83fbaa500",
+      "scope": "三组合操作与证据查询",
+      "license": "CC0-1.0",
+      "visible_roles": [
+        "asset_admin",
+        "risk_reader"
+      ],
+      "import_status": "not_imported",
+      "file": "assets/guide-v1.txt"
+    }
+  ]
+}

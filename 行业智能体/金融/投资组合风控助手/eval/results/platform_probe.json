@@ -1,0 +1,111 @@
+{
+  "schema": "topic16-platform-probe-v1",
+  "status": "pending-platform",
+  "checked_at": "2026-11-08T12:29:14+00:00",
+  "conclusion": "本机没有可用的 Nexent 实例；按指令报告「待平台实跑」，不生成端到端通过报告。",
+  "container_runtime": {
+    "docker": "absent",
+    "docker compose": "absent",
+    "podman": "absent",
+    "kubectl": "absent",
+    "wsl": "present"
+  },
+  "local_http_ports": {
+    "3000": "no listener",
+    "3001": "no listener",
+    "5010": "no listener",
+    "7860": "no listener",
+    "8000": "no listener",
+    "8080": "no listener",
+    "8768": "no listener",
+    "8769": "no listener"
+  },
+  "cloud": {
+    "https://nexent.tech/zh": "unreachable (URLError)",
+    "https://nexent.tech": "unreachable (URLError)"
+  },
+  "environment": {
+    "NEXENT_BASE_URL": {
+      "set": false,
+      "value": "<redacted>"
+    },
+    "NEXENT_API_TOKEN": {
+      "set": false,
+      "value": "<redacted>"
+    },
+    "NEXENT_AGENT_NAME": {
+      "set": false,
+      "value": "<redacted>"
+    },
+    "NEXENT_API_PREFIX": {
+      "set": false,
+      "value": "<redacted>"
+    },
+    "NEXENT_VERSION": {
+      "set": false,
+      "value": "<redacted>"
+    },
+    "NEXENT_MODEL": {
+      "set": false,
+      "value": "<redacted>"
+    },
+    "NEXENT_MCP_URL": {
+      "set": false,
+      "value": "<redacted>"
+    },
+    "NEXENT_HEALTH_STATUS": {
+      "set": false,
+      "value": "<redacted>"
+    },
+    "NEXENT_HEALTH_SERVICE": {
+      "set": false,
+      "value": "<redacted>"
+    },
+    "NEXENT_TOOL_EVENT_TYPES": {
+      "set": false,
+      "value": "<redacted>"
+    },
+    "NEXENT_MCP_CALL_LOG": {
+      "set": false,
+      "value": "<redacted>"
+    },
+    "NEXENT_EXECUTION_RECORDS": {
+      "set": false,
+      "value": "<redacted>"
+    }
+  },
+  "local_nexent_paths": [
+    "portfolio-risk-nexent"
+  ],
+  "official_docs": {
+    "northbound_api": "https://modelengine-group.github.io/nexent/en/integration/integration-out/northbound-api.html",
+    "northbound_source_v283": "https://github.com/ModelEngine-Group/nexent/blob/v2.8.3/backend/apps/northbound_app.py",
+    "mcp": "https://modelengine-group.github.io/nexent/en/integration/integration-in/mcp.html",
+    "agent_development": "https://modelengine-group.github.io/nexent/en/user-guide/agent-development.html",
+    "agent_export": "https://modelengine-group.github.io/nexent/en/integration/integration-out/agents-export.html"
+  },
+  "northbound_api": {
+    "target_version": "v2.8.3",
+    "paths": {
+      "health": "GET /nb/v1/health",
+      "agents": "GET /nb/v1/agents",
+      "chat_run": "POST /nb/v1/chat/run (agent_name + query, SSE)"
+    },
+    "client_status": "已按上述路径实现；真实网关前缀与工具事件结构仍待实例验证"
+  },
+  "blocked_at": [
+    "无 Docker Desktop / podman / kubectl，无法本地拉起 Nexent 容器",
+    "常见端口无监听，云端试用站点亦不可达",
+    "缺少 NEXENT_BASE_URL / NEXENT_API_TOKEN / NEXENT_AGENT_NAME",
+    "平台尚未发布绑定 evaluate_portfolio_snapshot 的 Agent，或 API Key 未在本机配置",
+    "真实 SSE 工具事件结构与网关前缀需要在实例上核对"
+  ],
+  "needed_from_user": [
+    "确定一台可访问的 Nexent 实例（地址 + 版本）",
+    "在该实例发布绑定规则 MCP 的 Agent，并把 Agent 名称配置为 NEXENT_AGENT_NAME",
+    "在本机环境变量配置 API Key（NEXENT_API_TOKEN）；不贴聊天、不进日志或仓库",
+    "一次真实 chat/run SSE 响应样例，用于核对工具事件名与结构化结果字段",
+    "若网关前缀不是 /nb/v1，配置 NEXENT_API_PREFIX"
+  ],
+  "credential_handling": "凭据仅通过环境变量传入，本探测只记录是否设置，绝不写出取值。"
+}

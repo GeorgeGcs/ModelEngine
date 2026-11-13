@@ -1,0 +1,44 @@
+{
+  "schema": "topic16-news-acceptance-preregistration-v1",
+  "scope": "formal-acceptance-preregistration",
+  "note": "验收口径的固定预登记摘要。正式候选样本集、主体映射、profile、分母与门槛在此写定；评分器同时内置同一份关键常量并交叉核对，自供的 --sample-registry 只能补充记录，不能覆盖或重新登记本摘要。AI 起草的参考判断 50/50 只属于开发评测结果，不是人工判定，也不是验收证据。",
+  "preregistered_at": "2026-11-10",
+  "preregistration_note": "本摘要于 2026-11-10 人工标注开始前写定并随代码提交；引用的 NR 样本集与实体映射分别冻结于 2026-11-09 的 9d0dc86 / 995827f，此前哈希未变。",
+  "preregistration_evidence": {
+    "formal_sample_commit": "9d0dc86",
+    "formal_sample_commit_note": "NR 集 samples_50.json 首次提交，此后哈希未变",
+    "entity_map_commit": "995827f",
+    "entity_map_commit_note": "sim_entities.json 首次提交，与 NR 集配合写定 v2 profile",
+    "dev_set_commit": "0334111",
+    "dev_set_commit_note": "开发评测集 dev_eval_samples.json 首次提交；其标签可由公开开发报告还原，永久禁用为正式集"
+  },
+  "formal_candidate": {
+    "sample_set_id": "NR-2026-11-09",
+    "samples_file": "data/news_risk/samples_50.json",
+    "samples_sha256": "22dfb8652a0d5b6d69bb611525bccc97a591c5c2e4f1b959e65ad86b08635878",
+    "id_range": "NR-001..NR-050",
+    "blind_sheet": "data/news_risk/blind_annotation_sheet.csv",
+    "profile": "v2",
+    "entities_file": "data/news_risk/sim_entities.json",
+    "entities_sha256": "4a27094d4e428d1395eb635ad34db6a3191f865311eea320f4763e427455ef12",
+    "denominator": 50,
+    "threshold": 43,
+    "threshold_note": "≥43/50 才达到 ≥85%；是否达标与正式评测是否有效是两个独立结论"
+  },
+  "forbidden_sets": [
+    {
+      "sample_set_id": "NEWS-DEV-2026-11-09",
+      "samples_file": "data/news_risk/dev_eval_samples.json",
+      "samples_sha256": "11f92d6db0294eb6931e8cc55d62ddd61fba9edbdb50e84ae28dbd6214794767",
+      "reason": "本批 50 条原文用于归纳 v2 词表，且仓库内 baseline 报告加三条差异 ID 足以还原全部二分类标签；已公开答案，永久禁止用作正式盲评集。无论自供清单如何改写 not_recommended_for_blind_acceptance，评分器都按此指纹硬性拒绝。"
+    }
+  ],
+  "rules": [
+    "正式候选只用 NR-2026-11-09；--samples 的实际 SHA256 必须等于 formal_candidate.samples_sha256。",
+    "禁止用自供的 --sample-registry 把已公开答案的开发集转为正式集：命中 forbidden_sets 指纹即拒绝，且自供清单里 NR 条目的 sha256 / entities_sha256 必须与本摘要一致。",
+    "人工判定 CSV 必须带 symbol 列并逐行与样本一致（显式合成夹具模式除外）。",
+    "formal 只表示证据链有效；meets_85_percent 才表示达到 43/50；pass = 两者同时成立。真实 42/50 记为 formal=true / meets_85_percent=false / pass=false / status=formal-not-met。",
+    "标签必须由一位未看过 AI 参考答案、系统输出或开发报告的复核者按原文独立作出，标注前提交封存记录。脚本只能核对记录齐全，不能证明独立性。"
+  ],
+  "disclaimer": "风险提示仅供参考，不构成投资建议；系统输出为辅助建议，重大舆情须人工核实。"
+}

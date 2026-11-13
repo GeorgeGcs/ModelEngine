@@ -1,0 +1,126 @@
+{
+  "window_id": "topic16-observe2-20261111-231800",
+  "start": "2026-11-11T23:18:00+08:00",
+  "end": "2026-11-12T23:18:00+08:00",
+  "cutoff": "2026-11-12T23:23:00+08:00",
+  "planned": 144,
+  "on_time": 3,
+  "late": 0,
+  "failed": 0,
+  "missing": 0,
+  "pending": 141,
+  "attempts": 3,
+  "retries": 0,
+  "manual": 0,
+  "unknown": 0,
+  "verified_slots": 3,
+  "native_ids_unique": true,
+  "successful_zero_hit_slots": 3,
+  "native_checks": [
+    {
+      "slot_id": "slot-000001",
+      "pass": true,
+      "problems": [],
+      "native_id_sha256_12": "c2af45996931",
+      "signals": 0
+    },
+    {
+      "slot_id": "slot-000002",
+      "pass": true,
+      "problems": [],
+      "native_id_sha256_12": "8e23f2894cf9",
+      "signals": 0
+    },
+    {
+      "slot_id": "slot-000003",
+      "pass": true,
+      "problems": [],
+      "native_id_sha256_12": "c9af3f1190e6",
+      "signals": 0
+    }
+  ],
+  "persisted_unique_signals": 0,
+  "push_attempts": 0,
+  "push_statuses": {},
+  "all_pushes_simulated": true,
+  "plan_matches_database": true,
+  "largest_worker_heartbeat_gap_seconds": 2.7733242511749268,
+  "collection_closed": false,
+  "counts_balance": true,
+  "real_wechat_delivery_proven": false,
+  "first_evidence_failure": null,
+  "project_sha": "aeafe7e52193fefb3d5b9e0c25995b825e7de81f",
+  "checked_at": "2026-11-11T15:36:51.787621+00:00",
+  "worker_running": true,
+  "worker_exit": 0,
+  "worker_restarts": 0,
+  "source_hashes_unchanged": true,
+  "adapter_hashes_unchanged": true,
+  "plan_hash_unchanged": true,
+  "protected_file_count": 80,
+  "protected_changed_count": 0,
+  "preflight_receipt_prefix_unchanged": true,
+  "independent_liveness": {
+    "samples": 36,
+    "not_running": 0,
+    "ntp_unsynchronized": 0,
+    "largest_sample_gap_seconds": 31.447571277618408
+  },
+  "passed": false,
+  "published_agent_unchanged": true,
+  "companion_running": true,
+  "short_regression": {
+    "window_id": "topic16-window2-short-20261111",
+    "start": "2026-11-11T23:12:45.402807+08:00",
+    "end": "2026-11-11T23:17:47.402807+08:00",
+    "cutoff": "2026-11-11T23:18:17.402807+08:00",
+    "planned": 2,
+    "on_time": 2,
+    "late": 0,
+    "failed": 0,
+    "missing": 0,
+    "pending": 0,
+    "attempts": 3,
+    "retries": 1,
+    "manual": 0,
+    "unknown": 0,
+    "verified_slots": 2,
+    "native_ids_unique": true,
+    "successful_zero_hit_slots": 1,
+    "native_checks": [
+      {
+        "slot_id": "slot-1",
+        "pass": true,
+        "problems": [],
+        "native_id_sha256_12": "c2e10554a969",
+        "signals": 1
+      },
+      {
+        "slot_id": "slot-2",
+        "pass": true,
+        "problems": [],
+        "native_id_sha256_12": "ebd23b7975f4",
+        "signals": 0
+      }
+    ],
+    "persisted_unique_signals": 1,
+    "push_attempts": 2,
+    "push_statuses": {
+      "delivered": 1
+    },
+    "all_pushes_simulated": true,
+    "plan_matches_database": true,
+    "largest_worker_heartbeat_gap_seconds": 6.8575592041015625,
+    "collection_closed": false,
+    "counts_balance": true,
+    "real_wechat_delivery_proven": false,
+    "first_evidence_failure": null,
+    "fresh_linux_process": true,
+    "pass": true,
+    "linux_tests": {
+      "count": 13,
+      "skips": 0,
+      "exit": 0
+    }
+  }
+}

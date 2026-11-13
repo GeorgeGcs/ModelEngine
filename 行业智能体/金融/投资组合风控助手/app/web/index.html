@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>投资组合风控助手 · 本地演示</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px/1.6 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+         background:#f5f7fa; color:#1f2937; }
+  header { background:#1e3a5f; color:#fff; padding:14px 22px; }
+  header h1 { margin:0; font-size:19px; }
+  .disclaimer { margin:0; padding:11px 22px; background:#fff4e5; color:#8a4b00;
+                font-weight:600; border-bottom:2px solid #f0b357; }
+  main { max-width:1180px; margin:0 auto; padding:18px 22px 60px; }
+  section { background:#fff; border:1px solid #e3e8ef; border-radius:8px;
+            padding:16px 18px; margin-bottom:16px; }
+  h2 { font-size:16px; margin:0 0 12px; color:#1e3a5f; }
+  h3 { font-size:14px; margin:16px 0 8px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th,td { border:1px solid #e3e8ef; padding:6px 8px; text-align:left;
+          vertical-align:top; word-break:break-word; }
+  th { background:#f0f4f9; white-space:nowrap; }
+  tr:nth-child(even) td { background:#fafbfd; }
+  button { border:1px solid #2b6cb0; background:#2b6cb0; color:#fff;
+           border-radius:5px; padding:6px 13px; cursor:pointer; font-size:13px; }
+  button.secondary { background:#fff; color:#2b6cb0; }
+  button:hover { filter:brightness(1.08); }
+  input,select,textarea { border:1px solid #cbd5e1; border-radius:4px;
+                          padding:5px 7px; font:13px inherit; background:#fff; }
+  input[type=text] { width:100%; }
+  textarea { width:100%; min-height:74px; font-family:ui-monospace,Consolas,monospace; }
+  .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:9px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr));
+          gap:9px; }
+  .field { display:flex; flex-direction:column; gap:3px; font-size:12px; color:#475569; }
+  .stat { display:inline-block; background:#eef4fb; border:1px solid #d3e2f3;
+          border-radius:5px; padding:4px 10px; margin:0 6px 6px 0; }
+  .muted { color:#64748b; font-size:12px; }
+  .badge { display:inline-block; padding:1px 7px; border-radius:10px; font-size:12px;
+           background:#e8eef6; color:#254673; }
+  .badge.delivered { background:#e6f4ea; color:#1e6b36; }
+  .badge.failed { background:#fdeaea; color:#a02020; }
+  .badge.suppressed { background:#fff1d6; color:#8a5a00; }
+  .banner { margin:10px 0; padding:9px 12px; border-radius:5px;
+            background:#f1f5f9; border-left:4px solid #2b6cb0; font-size:13px; }
+  code { background:#f1f5f9; padding:1px 4px; border-radius:3px; }
+</style>
+</head>
+<body>
+<header><h1>投资组合风控助手 · 本地可操作演示</h1></header>
+<p class="disclaimer">⚠️ 风险提示仅供参考，不构成投资建议；系统输出为辅助建议，重大风险须人工核实。全部组合、标的、行情、舆情与接收人均为虚构模拟数据。</p>
+<main>
+  <section>
+    <h2>运行概览 <button class="secondary" onclick="refreshAll()">刷新全部</button></h2>
+    <div id="overview" class="muted">读取中…</div>
+    <div id="banner" class="banner" style="display:none"></div>
+  </section>
+
+  <section>
+    <h2>① 组合与持仓</h2>
+    <div class="row">
+      <button onclick="importDemo()">导入演示三组合</button>
+      <button class="secondary" onclick="refreshAll()">重启后查询</button>
+      <span class="muted">数据保存在 SQLite；重启服务后可重新查回。</span>
+    </div>
+    <div id="portfolios"></div>
+    <h3>手工录入 / 修改持仓</h3>
+    <div class="grid">
+      <label class="field">组合 ID<input id="f_pid" value="stock-demo"></label>
+      <label class="field">组合名称<input id="f_pname" value="虚构股票组合"></label>
+      <label class="field">组合类型<select id="f_ptype">
+        <option>股票</option><option>基金</option><option>混合</option></select></label>
+      <label class="field">标的<input id="f_symbol" value="SIM-STOCK-A"></label>
+      <label class="field">成本<input id="f_cost" value="100.00"></label>
+      <label class="field">数量<input id="f_qty" value="20"></label>
+      <label class="field">持仓日期<input id="f_date" value="2026-11-02"></label>
+      <label class="field">止损线<input id="f_sl" value="95.00"></label>
+      <label class="field">止盈线<input id="f_tp" value="106.00"></label>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button onclick="savePortfolio()">录入 / 覆盖该组合</button>
+      <button class="secondary" onclick="saveHolding()">仅修改这一项持仓</button>
+      <button class="secondary" onclick="deleteHolding()">删除这一项持仓</button>
+    </div>
+    <h3>批量导入（粘贴 JSON 数组或 {"portfolios":[…]}）</h3>
+    <textarea id="bulk" placeholder='[{"id":"p1","name":"…","type":"混合","holdings":[{…}]}]'></textarea>
+    <div class="row" style="margin-top:8px"><button onclick="bulkImport()">批量导入</button></div>
+  </section>
+
+  <section>
+    <h2>② 立即监控</h2>
+    <div class="row">
+      <button onclick="fillTriggerPrices()">填入模拟触发行情</button>
+      <button class="secondary" onclick="fillFlatPrices()">填入平稳行情</button>
+      <span class="muted">价格由页面录入，不经手工插库；修改后点「立即监控」。</span>
+    </div>
+    <div id="priceGrid" class="grid"></div>
+    <h3>可选：扩展风险输入（虚构模拟数据）</h3>
+    <div class="grid">
+      <label class="field">单日涨跌幅（SYMBOL=百分数，逗号分隔）
+        <input id="m_change" placeholder="SIM-STOCK-A=8.0"></label>
+      <label class="field">模拟成交量（SYMBOL=手数，逗号分隔）
+        <input id="m_volume" placeholder="SIM-STOCK-C=2"></label>
+      <label class="field">舆情原文（SYMBOL|主体全称|原文）
+        <input id="m_news" placeholder="SIM-STOCK-A|云岚科技股份有限公司|云岚科技股份有限公司公告称全厂停产，尚无复产日期。"></label>
+      <label class="field">快照时间（留空=当前北京时间）
+        <input id="m_ts" placeholder="2026-11-10T09:30:00+08:00"></label>
+      <label class="field">新闻发布时间（可选，须含时区）
+        <input id="m_published" placeholder="2026-11-10T10:00:00+08:00"></label>
+      <label class="field">新闻来源（可选）<input id="m_source" placeholder="原始来源说明"></label>
+      <label class="field">知识查询（组合 ID|查询，可选）
+        <input id="m_knowledge" placeholder="stock-demo|止损阈值如何触发"></label>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button onclick="runMonitor()">立即监控</button>
+      <button class="secondary" onclick="toggleFailure()" id="failBtn">注入模拟网关故障</button>
+      <span class="muted" id="gatewayNote"></span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Nexent 三工具联动</h2>
+    <div class="row">
+      <label class="field">冻结合成用例
+        <select id="nativeCase">
+          <option value="stock-demo-up">股票组合</option>
+          <option value="fund-demo-down">基金组合</option>
+          <option value="mixed-demo-down">混合组合</option>
+        </select>
+      </label>
+      <button id="nativeRun" onclick="runNativeMonitor()">运行已发布 Agent</button>
+    </div>
+    <div id="nativeResults" aria-live="polite"></div>
+    <p id="nativeStatus" class="muted" role="status"></p>
+  </section>
+
+  <section>
+    <h2>③ 信号、推送与运行记录查询</h2>
+    <div class="row">
+      <label class="field" style="min-width:190px">按组合筛选
+        <select id="filterPid" onchange="refreshAll()"><option value="">全部</option></select></label>
+      <button class="secondary" onclick="refreshAll()">刷新查询</button>
+      <label class="field" style="min-width:230px">重试失败推送（event_id）
+        <input id="retryId" placeholder="粘贴 event_id"></label>
+      <button class="secondary" onclick="retryPush()">重试</button>
+    </div>
+    <h3>风险信号</h3><div id="signals"></div>
+    <h3>推送回执</h3><div id="pushes"></div>
+    <h3>监控运行</h3><div id="runs"></div>
+    <h3>查看本次运行的依据</h3>
+    <div class="row"><input id="evidenceRun" placeholder="运行 ID"><button class="secondary" onclick="showEvidence()">查询完整业务记录</button></div>
+    <p class="muted">本地规则、真实平台、知识依据和模拟推送分别保留来源。检索无依据不表示无风险。</p>
+    <pre id="businessEvidence" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre>
+  </section>
+
+  <section>
+    <h2>④ 风险类别实现与验证情况</h2>
+    <div id="catalog"></div>
+  </section>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let state = { failure: false, symbols: [] };
+
+function banner(text, isError) {
+  const el = $('banner');
+  el.style.display = 'block';
+  el.style.borderLeftColor = isError ? '#c0392b' : '#2b6cb0';
+  el.textContent = text;
+}
+function esc(value) {
+  return String(value ?? '').replace(/[&<>"']/g, (c) => (
+    {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+async function api(path, method = 'GET', body) {
+  const options = { method, headers: {} };
+  if (body !== undefined) {
+    options.headers['Content-Type'] = 'application/json';
+    options.body = JSON.stringify(body);
+  }
+  const response = await fetch(path, options);
+  const data = await response.json();
+  if (!response.ok || data.ok === false) {
+    throw new Error(data.error || `HTTP ${response.status}`);
+  }
+  return data;
+}
+function table(headers, rows) {
+  if (!rows.length) return '<p class="muted">暂无记录</p>';
+  return '<table><thead><tr>' + headers.map(h => `<th>${esc(h)}</th>`).join('') +
+    '</tr></thead><tbody>' + rows.map(r => '<tr>' + r.map(
+      c => `<td>${c}</td>`).join('') + '</tr>').join('') + '</tbody></table>';
+}
+function badge(status) {
+  const cls = ['delivered','accepted','unknown','sending','failed','suppressed','pending'].includes(status) ? status : '';
+  return `<span class="badge ${cls}">${esc(status)}</span>`;
+}
+function parsePairs(text) {
+  const out = {};
+  String(text || '').split(/[,，]/).map(s => s.trim()).filter(Boolean).forEach(part => {
+    const i = part.indexOf('=');
+    if (i > 0) out[part.slice(0, i).trim()] = part.slice(i + 1).trim();
+  });
+  return out;
+}
+
+async function refreshAll() {
+  try {
+    const [health, records, catalog] = await Promise.all([
+      api('/api/health'),
+      api('/api/records' + (($('filterPid').value) ?
+        '?portfolio_id=' + encodeURIComponent($('filterPid').value) : '')),
+      api('/api/risk-catalog'),
+    ]);
+    const c = health.counts;
+    $('overview').innerHTML =
+      `<span class="stat">组合 ${c.portfolios}</span>` +
+      `<span class="stat">持仓 ${c.holdings}</span>` +
+      `<span class="stat">信号 ${c.signals}</span>` +
+      `<span class="stat">推送记录 ${c.push_records}</span>` +
+      `<span class="stat">模拟送达记录 ${c.simulated_delivered}</span>` +
+      `<span class="stat">限频抑制 ${c.suppressed}</span>` +
+      `<span class="stat">失败 ${c.failed}</span>` +
+      `<span class="stat">网关 ${esc(health.gateway.gateway_id)} / ` +
+      `${health.gateway.simulated ? '模拟' : 'Webhook（未证实送达）'}</span>`;
+    $('gatewayNote').textContent = health.gateway.simulated
+      ? '当前为本地模拟网关，回执明确标记 SIMULATED，未真实发送。'
+      : '当前为 Webhook 转发；受理不等于终端送达，不确定结果不会自动重发。';
+
+    const portfolios = records.portfolios;
+    $('portfolios').innerHTML = table(
+      ['组合', '类型', '标的', '成本', '数量', '持仓日期', '止损', '止盈', '操作'],
+      portfolios.flatMap(p => p.holdings.map(h => [
+        esc(p.id) + '<br><span class="muted">' + esc(p.name) + '</span>',
+        esc(p.type), esc(h.symbol), esc(h.cost), esc(h.quantity),
+        esc(h.holding_date), esc(h.stop_loss), esc(h.take_profit),
+        `<button class="secondary" onclick="editHolding('${esc(p.id)}','${esc(h.symbol)}')">载入修改</button>`
+      ])));
+    const options = ['<option value="">全部</option>'].concat(
+      portfolios.map(p => `<option value="${esc(p.id)}">${esc(p.id)}</option>`));
+    const current = $('filterPid').value;
+    $('filterPid').innerHTML = options.join('');
+    if (portfolios.some(p => p.id === current)) $('filterPid').value = current;
+
+    state.symbols = [...new Set(portfolios.flatMap(p => p.holdings.map(h => h.symbol)))];
+    renderPriceGrid();
+
+    $('signals').innerHTML = table(
+      ['event_id', '组合', '风险类型', '标的', '触发时间', '等级', '数据/舆情原文依据', '建议复核动作'],
+      records.signals.map(s => [
+        `<code>${esc(s.event_id.slice(0, 12))}…</code>`, esc(s.portfolio_id),
+        esc((s.detail && s.detail.risk_type_name) || s.risk_type_name || s.risk_type),
+        esc(s.symbol), esc(s.trigger_time),
+        esc(s.level), esc(s.evidence), esc(s.review_action)
+      ]));
+    $('pushes').innerHTML = table(
+      ['push_id', 'event_id', '接收人（脱敏）', '时间', '网关状态', '手机确认时间', '失败原因', '模拟', '消息'],
+      records.pushes.map(p => [
+        esc(p.id), `<code>${esc(p.event_id.slice(0, 12))}…</code>`,
+        esc(p.recipient_masked), esc(p.created_at), badge(p.status), esc(p.phone_confirmed_at || '—'),
+        esc(p.failure_reason || '—'), p.simulated ? '是' : '否',
+        esc(String(p.message).slice(0, 90)) + '…'
+      ]));
+    $('runs').innerHTML = table(
+      ['run_id', '开始', '完成', '状态', '信号数', '推送数'],
+      records.runs.map(r => [esc(r.run_id), esc(r.started_at),
+        esc(r.finished_at || '—'), esc(r.status), esc(r.signal_count),
+        esc(r.push_count)]));
+    $('catalog').innerHTML = table(
+      ['类别', '已实现', '判定来源', '验证情况', '默认等级'],
+      catalog.risk_catalog.map(c => [esc(c.name), c.implemented ? '是' : '否',
+        esc(c.source), esc(c.verification), esc(c.level)]));
+  } catch (error) { banner('查询失败：' + error.message, true); }
+}
+
+function renderPriceGrid() {
+  const grid = $('priceGrid');
+  const existing = {};
+  grid.querySelectorAll('input[data-symbol]').forEach(i => existing[i.dataset.symbol] = i.value);
+  grid.innerHTML = state.symbols.map(sym =>
+    `<label class="field">${esc(sym)} 快照价
+      <input type="text" data-symbol="${esc(sym)}" value="${esc(existing[sym] || '100.00')}">
+     </label>`).join('');
+}
+function currentPrices() {
+  const prices = {};
+  $('priceGrid').querySelectorAll('input[data-symbol]').forEach(i => {
+    prices[i.dataset.symbol] = i.value.trim();
+  });
+  return prices;
+}
+function fillTriggerPrices() {
+  const trigger = {'SIM-STOCK-A':'94.00','SIM-FUND-B':'1.0900',
+                   'SIM-STOCK-C':'47.00','SIM-FUND-D':'2.1300'};
+  $('priceGrid').querySelectorAll('input[data-symbol]').forEach(i => {
+    i.value = trigger[i.dataset.symbol] || i.value;
+  });
+  banner('已填入模拟触发行情（页面录入，非插库）。可修改后点「立即监控」。');
+}
+function fillFlatPrices() {
+  const flat = {'SIM-STOCK-A':'100.00','SIM-FUND-B':'1.0000',
+                'SIM-STOCK-C':'50.00','SIM-FUND-D':'2.0000'};
+  $('priceGrid').querySelectorAll('input[data-symbol]').forEach(i => {
+    i.value = flat[i.dataset.symbol] || i.value;
+  });
+}
+
+async function importDemo() {
+  try {
+    const r = await api('/api/import', 'POST', {source: 'demo'});
+    banner(`已通过公开接口导入 ${r.imported} 个组合（股票 / 基金 / 混合）。`);
+    await refreshAll();
+  } catch (e) { banner('导入失败：' + e.message, true); }
+}
+function formHolding() {
+  return {symbol: $('f_symbol').value.trim(), cost: $('f_cost').value.trim(),
+          quantity: $('f_qty').value.trim(), holding_date: $('f_date').value.trim(),
+          stop_loss: $('f_sl').value.trim(), take_profit: $('f_tp').value.trim()};
+}
+async function savePortfolio() {
+  try {
+    await api('/api/portfolios', 'POST', {
+      id: $('f_pid').value.trim(), name: $('f_pname').value.trim(),
+      type: $('f_ptype').value, holdings: [formHolding()]});
+    banner('组合已录入 / 覆盖。'); await refreshAll();
+  } catch (e) { banner('录入失败：' + e.message, true); }
+}
+async function saveHolding() {
+  try {
+    await api('/api/holdings', 'PUT', {
+      portfolio_id: $('f_pid').value.trim(), holding: formHolding()});
+    banner('持仓已修改并持久化。'); await refreshAll();
+  } catch (e) { banner('修改失败：' + e.message, true); }
+}
+async function deleteHolding() {
+  try {
+    await api('/api/holdings', 'DELETE', {
+      portfolio_id: $('f_pid').value.trim(), symbol: $('f_symbol').value.trim()});
+    banner('持仓已删除。'); await refreshAll();
+  } catch (e) { banner('删除失败：' + e.message, true); }
+}
+async function bulkImport() {
+  try {
+    const parsed = JSON.parse($('bulk').value);
+    const r = await api('/api/import', 'POST', parsed);
+    banner(`批量导入 ${r.imported} 个组合。`); await refreshAll();
+  } catch (e) { banner('批量导入失败：' + e.message, true); }
+}
+function editHolding(pid, symbol) {
+  $('f_pid').value = pid; $('f_symbol').value = symbol;
+  banner(`已载入 ${pid} / ${symbol}，修改字段后点「仅修改这一项持仓」。`);
+}
+
+async function runMonitor() {
+  try {
+    const body = {prices: currentPrices()};
+    if ($('m_ts').value.trim()) body.timestamp = $('m_ts').value.trim();
+    const change = parsePairs($('m_change').value);
+    const volume = parsePairs($('m_volume').value);
+    if (Object.keys(change).length || Object.keys(volume).length) {
+      body.market = {};
+      if (Object.keys(change).length) body.market.daily_change_pct = change;
+      if (Object.keys(volume).length) body.market.volumes = volume;
+    }
+    const news = $('m_news').value.trim();
+    if (news) {
+      const [symbol, name, ...rest] = news.split('|').map(s => s.trim());
+      body.news_items = [{symbol, name, text: rest.join('|')}];
+      if ($('m_published').value.trim()) body.news_items[0].published_at = $('m_published').value.trim();
+      if ($('m_source').value.trim()) body.news_items[0].source = $('m_source').value.trim();
+    }
+    if ($('m_knowledge').value.trim()) {
+      const [portfolio_id, ...parts] = $('m_knowledge').value.split('|');
+      body.knowledge_queries = [{portfolio_id:portfolio_id.trim(),query:parts.join('|').trim()}];
+    }
+    const r = await api('/api/monitor', 'POST', body);
+    const t = r.result;
+    $('evidenceRun').value = t.run_id;
+    banner(`监控完成 run_id=${t.run_id}；信号 ${t.signal_count} 条，推送尝试 ${t.push_count} 条。` +
+      ` 重复触发 ${t.pushes.filter(p => p.duplicate).length} 条被去重，` +
+      `限频抑制 ${t.pushes.filter(p => p.suppressed).length} 条。` +
+      (t.knowledge_review_required ? ' 知识依据待复核。' : '') +
+      (t.news_review_required ? ' 存在新闻执行错误，须复核。' : ''));
+    await refreshAll();
+  } catch (e) { banner('监控失败：' + e.message, true); }
+}
+async function runNativeMonitor() {
+  const button = document.getElementById('nativeRun');
+  const results = document.getElementById('nativeResults');
+  const status = document.getElementById('nativeStatus');
+  button.disabled = true;
+  results.replaceChildren();
+  status.textContent = '等待原生工具回执…';
+  delete status.dataset.terminal;
+  const render = event => {
+    if (event.type === 'price_verified') {
+      const result = document.createElement('p');
+      result.dataset.verifiedPrice = event.portfolio_id;
+      result.dataset.artifactSha256 = event.artifact_sha256;
+      result.dataset.runId = event.run_id;
+      const signals = event.signals.map(s =>
+        `${s.symbol} ${s.rule === 'stop_loss' ? '止损' : '止盈'}，价格 ${s.price}，阈值 ${s.threshold}`);
+      result.textContent = `${event.portfolio_id} 价格结果已核验，${signals.length ? signals.join('；') : '成功零命中'}。`;
+      results.append(result);
+      status.textContent = '价格已核验，等待舆情与知识证据。';
+    } else if (event.type === 'finished') {
+      status.dataset.terminal = event.evidence_complete ? 'verified' : 'review';
+      status.dataset.runId = event.run_id;
+      status.textContent = event.evidence_complete
+        ? `三工具证据已核验，落库信号 ${event.signal_count} 条。`
+        : `本次运行待复核，缺口 ${event.failures.join('、')}。`;
+      document.getElementById('evidenceRun').value = event.run_id;
+    } else if (event.type === 'failed') {
+      status.dataset.terminal = 'failed';
+      status.textContent = '工作流执行失败。';
+    }
+  };
+  try {
+    const response = await fetch('/api/integrated-monitor/stream', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({case_id:document.getElementById('nativeCase').value})
+    });
+    if (!response.ok || !response.body) throw new Error('工作流接口不可用');
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let pending = '';
+    while (true) {
+      const {done,value} = await reader.read();
+      pending += decoder.decode(value,{stream:!done});
+      const lines = pending.split('\n');
+      pending = lines.pop();
+      for (const line of lines) if (line) render(JSON.parse(line));
+      if (done) break;
+    }
+    if (pending || !status.dataset.terminal) throw new Error('工作流响应中断');
+  } catch (error) {
+    status.dataset.terminal = 'failed';
+    status.textContent = error.message;
+  } finally {
+    button.disabled = false;
+  }
+}
+
+async function showEvidence() {
+  try {
+    const r = await api('/api/business-run?run_id=' + encodeURIComponent($('evidenceRun').value.trim()));
+    $('businessEvidence').textContent = JSON.stringify(r.record, null, 2);
+  } catch (e) { banner('证据查询失败：' + e.message, true); }
+}
+async function toggleFailure() {
+  state.failure = !state.failure;
+  try {
+    await api('/api/gateway', 'POST',
+      {name: 'local-mock', failure_mode: state.failure});
+    $('failBtn').textContent = state.failure ? '恢复模拟网关' : '注入模拟网关故障';
+    banner(state.failure
+      ? '已注入模拟网关故障：新事件会记为 failed，可用「重试」验证恢复后不重复送达。'
+      : '模拟网关已恢复正常。');
+    await refreshAll();
+  } catch (e) { banner('切换失败：' + e.message, true); }
+}
+async function retryPush() {
+  const id = $('retryId').value.trim();
+  if (!id) { banner('请先填入 event_id。', true); return; }
+  try {
+    const r = await api('/api/retry', 'POST', {event_id: id});
+    banner(r.result.retried
+      ? `重试完成：${r.result.previous_status} → ${r.result.status}。`
+      : `未重发：${r.result.reason}`);
+    await refreshAll();
+  } catch (e) { banner('重试失败：' + e.message, true); }
+}
+
+refreshAll();
+</script>
+</body>
+</html>

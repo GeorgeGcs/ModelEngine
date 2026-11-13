@@ -1,0 +1,250 @@
+--- a/sdk/nexent/core/agents/managed_mcp.py
++++ b/sdk/nexent/core/agents/managed_mcp.py
+@@ -7,6 +7,8 @@
+ from concurrent.futures import Future as ConcurrentFuture
+ from concurrent.futures import TimeoutError as FutureTimeoutError
+ from contextlib import AsyncExitStack
++from contextvars import ContextVar
++from copy import deepcopy
+ from typing import Any, Callable
+ 
+ from ..concurrency import ManagedExecution, ManagedTaskSpec, RunCancellationScope, ThreadManager
+@@ -14,6 +16,100 @@
+ 
+ 
+ logger = logging.getLogger("managed_mcp")
++
++
++# Optional diagnostic capture. No sink is configured by the SDK itself.
++_receipt_capture = ContextVar("nexent_optional_mcp_receipt_capture", default=None)
++_RECEIPT_TOOL_NAME = "evaluate_portfolio_snapshot"
++
++
++class _MCPReceiptCapture:
++    def __init__(self, call_id):
++        self._lock = threading.Lock()
++        self._closed = False
++        self._call_id = call_id if isinstance(call_id, str) and call_id else None
++        self._requests = 0
++        self._name = None
++        self._arguments = None
++        self._raw = None
++        self._capture_error = None
++
++    def begin(self, name, arguments):
++        with self._lock:
++            if self._closed:
++                return
++            self._requests += 1
++            if self._requests != 1:
++                return
++            self._name = name
++            try:
++                self._arguments = deepcopy(arguments)
++            except Exception as exc:
++                self._capture_error = type(exc).__name__
++
++    def returned(self, result):
++        # exclude_unset preserves the difference between an explicit wire field
++        # and a Pydantic default, notably CallToolResult.isError == False.
++        try:
++            if hasattr(result, "model_dump"):
++                raw = result.model_dump(mode="json", by_alias=True, exclude_unset=True)
++            elif isinstance(result, dict):
++                raw = deepcopy(result)
++            else:
++                raw = None
++        except Exception as exc:
++            with self._lock:
++                if not self._closed:
++                    self._capture_error = type(exc).__name__
++            return
++        with self._lock:
++            if not self._closed and self._requests == 1:
++                self._raw = raw
++
++    def finish(self, *, accepted, error_type=None):
++        with self._lock:
++            if self._closed:
++                return None
++            self._closed = True
++            if self._name != _RECEIPT_TOOL_NAME:
++                return None
++            raw = self._raw
++            structured = raw.get("structuredContent") if isinstance(raw, dict) else None
++            has_array = (isinstance(structured, dict)
++                         and "result" in structured
++                         and isinstance(structured["result"], list))
++            explicit_ok = (isinstance(raw, dict)
++                           and "isError" in raw and raw["isError"] is False)
++            explicit_error = isinstance(raw, dict) and raw.get("isError") is True
++            arguments_ok = (isinstance(self._arguments, dict)
++                            and "portfolio" in self._arguments
++                            and "snapshot" in self._arguments)
++            success = bool(accepted and not error_type and explicit_ok and has_array
++                           and self._call_id and arguments_ok
++                           and self._requests == 1 and not self._capture_error)
++            status = ("success" if success else "failed"
++                      if not accepted or error_type or explicit_error else "insufficient")
++            record = {
++                "schema": "topic16-platform-mcp-receipt-v1",
++                "source": "nexent-execution-record",
++                "tool_name": self._name,
++                "call_id": self._call_id,
++                "arguments": self._arguments,
++                "tool_success": success,
++                "status": status,
++                "outer_result_accepted": bool(accepted),
++                "rpc_count": self._requests,
++                "explicit_is_error_false": explicit_ok,
++                "explicit_result_array": has_array,
++                "mcp_raw_result": raw,
++            }
++            if has_array:
++                record["result"] = deepcopy(structured["result"])
++            if error_type:
++                record["error_type"] = error_type
++            if self._capture_error:
++                record["capture_error_type"] = self._capture_error
++            return record
+ 
+ 
+ class ManagedMCPToolCollection:
+@@ -31,6 +127,8 @@
+         connect_timeout_seconds: float | None = None,
+         session_context_factory: Callable[..., Any] | None = None,
+         tool_adapter_factory: Callable[[], Any] | None = None,
++        tool_call_id_reader: Callable[[], str | None] | None = None,
++        receipt_sink: Callable[[dict], None] | None = None,
+     ):
+         if tool_timeout_seconds <= 0:
+             raise ValueError("MCP tool timeout must be greater than zero")
+@@ -52,6 +150,8 @@
+         self.connect_timeout_seconds = connect_timeout_seconds
+         self._session_context_factory = session_context_factory
+         self._tool_adapter_factory = tool_adapter_factory
++        self._tool_call_id_reader = tool_call_id_reader
++        self._receipt_sink = receipt_sink
+         self._execution: ManagedExecution | None = None
+         self._scope_token = None
+         self._ready = threading.Event()
+@@ -80,12 +180,37 @@
+ 
+         return lambda: SmolAgentsAdapter(structured_output=False)
+ 
++    def _new_receipt_capture(self):
++        if self._receipt_sink is None:
++            return None
++        try:
++            call_id = self._tool_call_id_reader() if self._tool_call_id_reader else None
++        except Exception:
++            call_id = None
++        return _MCPReceiptCapture(call_id)
++
++    def _publish_receipt(self, capture, *, accepted, error_type=None):
++        if capture is None:
++            return
++        try:
++            record = capture.finish(accepted=accepted, error_type=error_type)
++            if record is not None:
++                self._receipt_sink(record)
++        except Exception as exc:
++            # Observation failures never rewrite the tool's actual outcome.
++            # No arguments, response bodies, credentials, or exception text.
++            logger.warning("event=mcp_receipt_observation_unavailable error_type=%s",
++                           type(exc).__name__)
++
+     def _call_tool(self, session: Any, name: str, arguments: dict | None = None) -> Any:
+         with self._lock:
+             loop = self._loop
+         if loop is None or self._close_requested.is_set():
+             raise RuntimeError("MCP session is closing")
+ 
++        capture = _receipt_capture.get() if self._receipt_sink is not None else None
++        if capture is not None:
++            capture.begin(name, arguments)
+         coroutine = session.call_tool(name, arguments)
+         try:
+             call_future = asyncio.run_coroutine_threadsafe(coroutine, loop)
+@@ -98,7 +223,10 @@
+         if self._close_requested.is_set():
+             call_future.cancel()
+         try:
+-            return call_future.result()
++            result = call_future.result()
++            if capture is not None:
++                capture.returned(result)
++            return result
+         finally:
+             with self._active_calls_lock:
+                 self._active_calls.discard(call_future)
+@@ -170,19 +298,25 @@
+             ):
+                 if self.cancellation_scope.cancelled:
+                     raise RuntimeError("MCP tool call cancelled")
+-                execution = self.manager.submit(
+-                    "model-tool-io",
+-                    ManagedTaskSpec(
+-                        task_name=__task_name,
+-                        owner="nexent.core.agents.managed_mcp",
+-                        close_hook=self.request_close,
+-                    ),
+-                    __forward,
+-                    *args,
+-                    **kwargs,
+-                )
++                capture = self._new_receipt_capture()
++                capture_token = _receipt_capture.set(capture) if capture is not None else None
+                 try:
+-                    return execution.future.result(timeout=self.tool_timeout_seconds)
++                    execution = self.manager.submit(
++                        "model-tool-io",
++                        ManagedTaskSpec(
++                            task_name=__task_name,
++                            owner="nexent.core.agents.managed_mcp",
++                            close_hook=self.request_close,
++                        ),
++                        __forward,
++                        *args,
++                        **kwargs,
++                    )
++                finally:
++                    if capture_token is not None:
++                        _receipt_capture.reset(capture_token)
++                try:
++                    result = execution.future.result(timeout=self.tool_timeout_seconds)
+                 except FutureTimeoutError as exc:
+                     logger.warning(
+                         "event=mcp_tool_timeout tool_name=%s timeout_seconds=%.3f execution_id=%s error_type=%s",
+@@ -198,9 +332,20 @@
+                         wait_timeout=self.close_timeout_seconds,
+                         mark_stuck_on_timeout=True,
+                     )
++                    self._publish_receipt(capture, accepted=False, error_type=type(exc).__name__)
+                     raise MCPToolTimeoutError(
+                         f"MCP tool request timed out after {self.tool_timeout_seconds:g} seconds"
+                     ) from exc
++                except BaseException as exc:
++                    self._publish_receipt(capture, accepted=False, error_type=type(exc).__name__)
++                    raise
++                else:
++                    cancelled = self.cancellation_scope.cancelled
++                    self._publish_receipt(
++                        capture, accepted=not cancelled,
++                        error_type="RunCancelled" if cancelled else None,
++                    )
++                    return result
+ 
+             tool.forward = managed_forward
+         return tools
+--- a/sdk/nexent/core/agents/run_agent.py
++++ b/sdk/nexent/core/agents/run_agent.py
+@@ -429,6 +429,8 @@
+                 tool_timeout_seconds=agent_run_info.mcp_tool_timeout_seconds,
+                 close_timeout_seconds=agent_run_info.mcp_close_timeout_seconds,
+                 connect_timeout_seconds=_resolve_mcp_request_timeout_seconds(agent_run_info),
++                tool_call_id_reader=lambda: agent_run_info.observer._tool_call_id.get(),
++                receipt_sink=getattr(agent_run_info.observer, "mcp_receipt_sink", None),
+             ) as tool_collection:
+                 nexent = NexentAgent(
+                     observer=agent_run_info.observer,

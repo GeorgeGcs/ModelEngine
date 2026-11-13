@@ -1,0 +1,119 @@
+{
+  "sdk": "mcp==2.3.0",
+  "tools": [
+    {
+      "name": "assess_news_risk",
+      "description": "研判一条虚构舆情，返回标的、风险判定、原文证据、等级与建议复核动作。\n\n    symbol 为监控标的代码（SIM-A / SIM-B / SIM-C / SIM-D），text 为舆情原文。\n    risk_verdict 只取 risk 或 no_risk；证据不足时降级为 no_risk 并给出待复核动作。\n    本工具只做辅助研判，不输出买卖结论；不得把评测样本答案写入提示词或知识库。\n    返回体同时含 content[0].text（完整 JSON 文本）与 structuredContent.result。\n    ",
+      "inputSchema": {
+        "$defs": {
+          "NewsItem": {
+            "properties": {
+              "symbol": {
+                "title": "Symbol",
+                "type": "string"
+              },
+              "text": {
+                "title": "Text",
+                "type": "string"
+              },
+              "sample_id": {
+                "title": "Sample Id",
+                "type": "string"
+              },
+              "published_at": {
+                "title": "Published At",
+                "type": "string"
+              },
+              "source": {
+                "title": "Source",
+                "type": "string"
+              }
+            },
+            "required": [
+              "symbol",
+              "text"
+            ],
+            "title": "NewsItem",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "news": {
+            "$ref": "#/$defs/NewsItem"
+          }
+        },
+        "required": [
+          "news"
+        ],
+        "title": "assess_news_riskArguments",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "assess_news_risk_v2",
+      "description": "增强研判（动态主体）：entities 为 {标的代码: {\"canonical\": 主体全称}}。\n\n    用于外部主体的舆情样本；规则覆盖部分否认仍触发、相似主体明确无关联不触发等情形。\n    输出契约与 assess_news_risk 一致：content[0].text 与 structuredContent.result 同源。\n    只读取传入原文，不读取任何参考判断或答案文件。\n    ",
+      "inputSchema": {
+        "$defs": {
+          "NewsItem": {
+            "properties": {
+              "symbol": {
+                "title": "Symbol",
+                "type": "string"
+              },
+              "text": {
+                "title": "Text",
+                "type": "string"
+              },
+              "sample_id": {
+                "title": "Sample Id",
+                "type": "string"
+              },
+              "published_at": {
+                "title": "Published At",
+                "type": "string"
+              },
+              "source": {
+                "title": "Source",
+                "type": "string"
+              }
+            },
+            "required": [
+              "symbol",
+              "text"
+            ],
+            "title": "NewsItem",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "news": {
+            "$ref": "#/$defs/NewsItem"
+          },
+          "entities": {
+            "additionalProperties": true,
+            "title": "Entities",
+            "type": "object"
+          }
+        },
+        "required": [
+          "news",
+          "entities"
+        ],
+        "title": "assess_news_risk_v2Arguments",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    }
+  ]
+}

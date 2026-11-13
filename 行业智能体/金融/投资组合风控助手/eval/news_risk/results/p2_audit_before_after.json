@@ -1,0 +1,71 @@
+{
+  "schema": "topic16-news-risk-p2-before-after-v1",
+  "scope": "p2-regression-reproduction",
+  "diagnostic_only": true,
+  "not_acceptance_evidence": true,
+  "not_human_judgment_agreement": true,
+  "before_commit": "2786c70",
+  "before_tree": "git archive 2786c70 \"行业智能体/金融/投资组合风控助手\" 导出的干净树",
+  "after_tree": "本提交的工作树",
+  "reproduce": "python eval/news_risk/repro_p2_audit.py --root <tree> --mode before|after",
+  "note": "四项均为合成 fixture 或冻结样本的结构校验，不含人工金标，不作为验收证据。路径均为相对路径，原始 fixture 不入库。",
+  "before": {
+    "p2_1_other_entity_bad_news": {
+      "risk_verdict": "risk",
+      "evidence_status": "sufficient"
+    },
+    "p2_2_residual_adverse": {
+      "risk_verdict": "no_risk",
+      "evidence_status": "negated"
+    },
+    "p2_3_frozen_samples_v2": {
+      "documented_command_before": {
+        "exit": 1,
+        "stderr": "研判失败：--profile v2 需要输入文件提供 entities 主体映射"
+      }
+    },
+    "p2_4_sealed_at_no_tz_future": {
+      "sealed_at": "2099-01-01T00:00:00",
+      "exit": 0,
+      "formal": true,
+      "status": "pass",
+      "missing": []
+    }
+  },
+  "after": {
+    "p2_1_other_entity_bad_news": {
+      "risk_verdict": "no_risk",
+      "evidence_status": "entity_mismatch"
+    },
+    "p2_2_residual_adverse": {
+      "risk_verdict": "risk",
+      "evidence_status": "partial_denial_confirmed"
+    },
+    "p2_3_frozen_samples_v2": {
+      "documented_command_before": {
+        "exit": 1,
+        "stderr": "研判失败：--profile v2 需要输入文件提供 entities 主体映射，或用 --entities 指定独立主体文件"
+      },
+      "documented_command_after": {
+        "exit": 0,
+        "stderr": ""
+      }
+    },
+    "p2_4_sealed_at_no_tz_future": {
+      "sealed_at": "2099-01-01T00:00:00",
+      "exit": 1,
+      "formal": false,
+      "status": "unverified-source",
+      "missing": [
+        "封存记录 sealed_at 须带显式时区（ISO 8601，例如 +08:00）"
+      ]
+    }
+  },
+  "summary": [
+    "P2-1 v1 其他主体负面事件：修复前 risk/sufficient → 修复后 no_risk/entity_mismatch",
+    "P2-2 v2 部分产线恢复但另一条仍暂停：修复前 no_risk/negated → 修复后 risk/partial_denial_confirmed",
+    "P2-3 冻结 samples_50.json 配 --profile v2：修复前示例命令退出 1 → 修复后用 --entities 独立主体文件退出 0（不修改冻结件）",
+    "P2-4 sealed_at=2099-01-01T00:00:00 无时区且在未来：修复前 formal=true/退出 0 → 修复后 formal=false/退出 1"
+  ],
+  "disclaimer": "风险提示仅供参考，不构成投资建议；系统输出为辅助建议，重大舆情须人工核实。"
+}

@@ -1,0 +1,101 @@
+{
+  "schema": "topic16-news-risk-vocab-overlap-v1",
+  "scope": "overfit-diagnostic",
+  "diagnostic_only": true,
+  "not_acceptance_evidence": true,
+  "not_an_agreement_metric": true,
+  "samples": "data/news_risk/dev_eval_samples.json",
+  "rules": "news_risk/rules_v2.py",
+  "sample_count": 50,
+  "total_markers": 216,
+  "verbatim_in_samples": 164,
+  "verbatim_rate": 0.7593,
+  "breakdown": {
+    "ADVERSE_PATTERNS": {
+      "markers": 76,
+      "verbatim_in_50_samples": 75,
+      "rate": 0.9868
+    },
+    "CLARIFICATION_MARKERS": {
+      "markers": 13,
+      "verbatim_in_50_samples": 7,
+      "rate": 0.5385
+    },
+    "CONFIRMED_ADVERSE_MARKERS": {
+      "markers": 32,
+      "verbatim_in_50_samples": 26,
+      "rate": 0.8125
+    },
+    "CONFIRMED_RECOVERY_MARKERS": {
+      "markers": 19,
+      "verbatim_in_50_samples": 11,
+      "rate": 0.5789
+    },
+    "CONFIRM_MARKERS": {
+      "markers": 10,
+      "verbatim_in_50_samples": 3,
+      "rate": 0.3
+    },
+    "DENIAL_MARKERS": {
+      "markers": 6,
+      "verbatim_in_50_samples": 1,
+      "rate": 0.1667
+    },
+    "ENTITY_EXCLUSION_MARKERS": {
+      "markers": 16,
+      "verbatim_in_50_samples": 10,
+      "rate": 0.625
+    },
+    "EXPLANATORY_MARKERS": {
+      "markers": 29,
+      "verbatim_in_50_samples": 29,
+      "rate": 1.0
+    },
+    "GENERIC_MARKERS": {
+      "markers": 8,
+      "verbatim_in_50_samples": 4,
+      "rate": 0.5
+    },
+    "HISTORICAL_MARKERS": {
+      "markers": 8,
+      "verbatim_in_50_samples": 3,
+      "rate": 0.375
+    },
+    "HYPOTHETICAL_MARKERS": {
+      "markers": 8,
+      "verbatim_in_50_samples": 7,
+      "rate": 0.875
+    },
+    "INSUFFICIENT_MARKERS": {
+      "markers": 8,
+      "verbatim_in_50_samples": 4,
+      "rate": 0.5
+    }
+  },
+  "not_verbatim_examples": [
+    "评级下调",
+    "核对后确认",
+    "已辟谣",
+    "澄清公告",
+    "系不实信息",
+    "原报道已撤回",
+    "核查后确认",
+    "闲置",
+    "整修",
+    "未复产",
+    "下滑",
+    "收回",
+    "减值",
+    "运转正常",
+    "恢复正常",
+    "已复产",
+    "全部正常",
+    "未受影响",
+    "无异常",
+    "已排除"
+  ],
+  "adverse_patterns_included": true,
+  "audit_note": "",
+  "note": "比例越高，说明词表越贴近本批原文，开发评测的高一致率越可能是同批拟合；该数字不能证明或否定泛化能力，只提示正式验收须用独立人工判定，并建议增加留出集或新增样本。",
+  "disclaimer": "风险提示仅供参考，不构成投资建议；系统输出为辅助建议，重大舆情须人工核实。"
+}

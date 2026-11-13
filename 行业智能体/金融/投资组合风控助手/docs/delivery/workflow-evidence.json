@@ -1,0 +1,1014 @@
+{
+  "workflow3-action-candidate": {
+    "candidate_sha": "aeafe7e52193fefb3d5b9e0c25995b825e7de81f",
+    "tree": "d4461969c1165138fd7d6b993a9e00f49e31e429",
+    "base_sha": "e06bd08dfb66a65c527ae3917bc0bb86f49b5d8f",
+    "bundle_sha256": "2932d40c6f1b05813a5b58ca467705f68bd9a2042b377dd4f1aaec61e801cd8b",
+    "files": [
+      "eval/nexent/deployment/observation-manifest.json",
+      "eval/nexent/deployment/startup/topic16_workflow_dispatch.py",
+      "integration/tests/test_dispatch.py"
+    ],
+    "tests": {
+      "knowledge": {
+        "exit_code": 0,
+        "count": 34,
+        "skip": 0,
+        "log_sha256": "54b28bc950adf0431e27a8484c70b3af99322892ee54c6d5b3d3f45dc4aafb4b"
+      },
+      "knowledge_mcp": {
+        "exit_code": 0,
+        "count": 5,
+        "skip": 0,
+        "log_sha256": "5c5c851622ca0ae498aaa37b9be46230a0344eed24414cbc308dc6fccaeebd19"
+      },
+      "integration": {
+        "exit_code": 0,
+        "count": 43,
+        "skip": 0,
+        "log_sha256": "41375f09a2c645325884000ee902fdf4fe6b647a7e33c636f5ae38c8a0d8a818"
+      },
+      "app": {
+        "exit_code": 0,
+        "count": 49,
+        "skip": 0,
+        "log_sha256": "d33d8310f6c06899b172e1d6b9c155e1c3c9b2c84ce43ca6dd84b508bd4c4419"
+      }
+    },
+    "changed_files": [
+      "eval/nexent/deployment/observation-manifest.json",
+      "eval/nexent/deployment/startup/topic16_workflow_dispatch.py",
+      "integration/tests/test_dispatch.py"
+    ],
+    "server_source_matches_local_git_commit": true
+  },
+  "workflow3-action-deploy": {
+    "candidate_sha": "aeafe7e52193fefb3d5b9e0c25995b825e7de81f",
+    "tool_id": 39,
+    "schema_match": true,
+    "new_private_database": true,
+    "old_retrieval_db_hash_unchanged": true,
+    "first_integrated_db_hash_unchanged": true,
+    "actual_sources_reverified": 3,
+    "captured_native_rows_matched": 6,
+    "new_uploads": 0,
+    "agent_requests": 0
+  },
+  "workflow3-runtime": {
+    "agent_name": "portfolio_integrated_workflow_v3_20261111",
+    "source_candidate_runtime_replaced": true,
+    "previous_candidate_receipt_unchanged": true,
+    "workflow_receipt_initially_empty": true,
+    "runtime_workflow_hook_loaded": true,
+    "runtime_reachable_from_northbound": true,
+    "observation_count": 28,
+    "observation_skips": 0,
+    "observation_exit": 0,
+    "core_sha256": "0d470f0b687e2b453c9c0e8d8da18827737a4208936ef9cc358dddaf60f36cdf",
+    "protocol_sha256": "6f3957a2ce3f916b3b8efdbfeaec93a6c571e2c17ef4ae946cf68a95abe0d1a2"
+  },
+  "workflow3-action-batch": {
+    "candidate_sha": "aeafe7e52193fefb3d5b9e0c25995b825e7de81f",
+    "agent_id": 12,
+    "agent_name": "portfolio_integrated_workflow_v3_20261111",
+    "published_version": 1,
+    "published_config_sha256": "9cdec4a624e4affcefe86b28a455a5e040b111a955f7fbdb575e0ba1dca63a9f",
+    "tool_names": [
+      "evaluate_portfolio_snapshot",
+      "assess_news_risk_v2",
+      "search_portfolio_knowledge"
+    ],
+    "actual_agent_thinking_override": false,
+    "manifest_exit": 0,
+    "native_preflight_exit": 0,
+    "same_kb_and_app_db": true,
+    "gateway": "local-mock",
+    "cases": [
+      {
+        "case_id": "stock-demo-up",
+        "run_id": "topic16-integrated-workflow3-action-stock-demo-up",
+        "exit_code": 0,
+        "status": "review_required",
+        "failures": [],
+        "workflow_ms": 3129.561,
+        "first_visible_ms": 1770.41,
+        "timings": [
+          {
+            "component": "price:stock-demo",
+            "start_offset_ms": 0.006,
+            "first_visible_ms": 1770.404,
+            "end_to_end_ms": 1771.884,
+            "first_visible_policy": "first nonempty final_answer.content string; otherwise unavailable"
+          },
+          {
+            "component": "news:stock-demo:0",
+            "start_offset_ms": 1778.598,
+            "first_visible_ms": 563.522,
+            "end_to_end_ms": 564.249,
+            "first_visible_policy": "first nonempty final_answer.content string; otherwise unavailable"
+          },
+          {
+            "component": "knowledge:stock-demo:0",
+            "start_offset_ms": 2347.612,
+            "first_visible_ms": 764.363,
+            "end_to_end_ms": 765.031,
+            "first_visible_policy": "first nonempty final_answer.content string; otherwise unavailable"
+          }
+        ],
+        "signal_count": 1,
+        "native_checks": [
+          {
+            "component": "knowledge:stock-demo:0",
+            "tool": "search_portfolio_knowledge",
+            "unique_native_and_arguments": true,
+            "artifact_hash_matches": true,
+            "evidence_status": "verified",
+            "reason": null,
+            "return_kind": "dict",
+            "business_status": "no_match"
+          },
+          {
+            "component": "news:stock-demo:0",
+            "tool": "assess_news_risk_v2",
+            "unique_native_and_arguments": true,
+            "artifact_hash_matches": true,
+            "evidence_status": "verified",
+            "reason": null,
+            "return_kind": "dict",
+            "business_status": "no_risk"
+          },
+          {
+            "component": "price:stock-demo",
+            "tool": "evaluate_portfolio_snapshot",
+            "unique_native_and_arguments": true,
+            "artifact_hash_matches": true,
+            "evidence_status": "verified",
+            "reason": null,
+            "return_kind": "list",
+            "business_status": null
+          }
+        ],
+        "persisted_checks": {
+          "input_equal": true,
+          "api_components_match_sqlite": true,
+          "knowledge_matches_sqlite": true,
+          "signal_links_match": true,
+          "all_pushes_simulated": true
+        },
+        "pass_evidence": true,
+        "workflow_within_60s": true,
+        "first_answer_event_within_5s": true
+      },
+      {
+        "case_id": "fund-demo-down",
+        "run_id": "topic16-integrated-workflow3-action-fund-demo-down",
+        "exit_code": 0,
+        "status": "completed",
+        "failures": [],
+        "workflow_ms": 1972.475,
+        "first_visible_ms": 577.038,
+        "timings": [
+          {
+            "component": "price:fund-demo",
+            "start_offset_ms": 0.007,
+            "first_visible_ms": 577.031,
+            "end_to_end_ms": 577.814,
+            "first_visible_policy": "first nonempty final_answer.content string; otherwise unavailable"
+          },
+          {
+            "component": "news:fund-demo:0",
+            "start_offset_ms": 583.353,
+            "first_visible_ms": 560.644,
+            "end_to_end_ms": 561.36,
+            "first_visible_policy": "first nonempty final_answer.content string; otherwise unavailable"
+          },
+          {
+            "component": "knowledge:fund-demo:0",
+            "start_offset_ms": 1148.671,
+            "first_visible_ms": 805.819,
+            "end_to_end_ms": 806.533,
+            "first_visible_policy": "first nonempty final_answer.content string; otherwise unavailable"
+          }
+        ],
+        "signal_count": 2,
+        "native_checks": [
+          {
+            "component": "knowledge:fund-demo:0",
+            "tool": "search_portfolio_knowledge",
+            "unique_native_and_arguments": true,
+            "artifact_hash_matches": true,
+            "evidence_status": "verified",
+            "reason": null,
+            "return_kind": "dict",
+            "business_status": "hit"
+          },
+          {
+            "component": "news:fund-demo:0",
+            "tool": "assess_news_risk_v2",
+            "unique_native_and_arguments": true,
+            "artifact_hash_matches": true,
+            "evidence_status": "verified",
+            "reason": null,
+            "return_kind": "dict",
+            "business_status": "risk"
+          },
+          {
+            "component": "price:fund-demo",
+            "tool": "evaluate_portfolio_snapshot",
+            "unique_native_and_arguments": true,
+            "artifact_hash_matches": true,
+            "evidence_status": "verified",
+            "reason": null,
+            "return_kind": "list",
+            "business_status": null
+          }
+        ],
+        "persisted_checks": {
+          "input_equal": true,
+          "api_components_match_sqlite": true,
+          "knowledge_matches_sqlite": true,
+          "signal_links_match": true,
+          "all_pushes_simulated": true
+        },
+        "pass_evidence": true,
+        "workflow_within_60s": true,
+        "first_answer_event_within_5s": true
+      },
+      {
+        "case_id": "mixed-demo-down",
+        "run_id": "topic16-integrated-workflow3-action-mixed-demo-down",
+        "exit_code": 0,
+        "status": "completed",
+        "failures": [],
+        "workflow_ms": 1924.5,
+        "first_visible_ms": 584.928,
+        "timings": [
+          {
+            "component": "price:mixed-demo",
+            "start_offset_ms": 0.006,
+            "first_visible_ms": 584.922,
+            "end_to_end_ms": 585.896,
+            "first_visible_policy": "first nonempty final_answer.content string; otherwise unavailable"
+          },
+          {
+            "component": "news:mixed-demo:0",
+            "start_offset_ms": 593.633,
+            "first_visible_ms": 550.392,
+            "end_to_end_ms": 551.155,
+            "first_visible_policy": "first nonempty final_answer.content string; otherwise unavailable"
+          },
+          {
+            "component": "knowledge:mixed-demo:0",
+            "start_offset_ms": 1149.203,
+            "first_visible_ms": 750.685,
+            "end_to_end_ms": 751.144,
+            "first_visible_policy": "first nonempty final_answer.content string; otherwise unavailable"
+          }
+        ],
+        "signal_count": 3,
+        "native_checks": [
+          {
+            "component": "knowledge:mixed-demo:0",
+            "tool": "search_portfolio_knowledge",
+            "unique_native_and_arguments": true,
+            "artifact_hash_matches": true,
+            "evidence_status": "verified",
+            "reason": null,
+            "return_kind": "dict",
+            "business_status": "hit"
+          },
+          {
+            "component": "news:mixed-demo:0",
+            "tool": "assess_news_risk_v2",
+            "unique_native_and_arguments": true,
+            "artifact_hash_matches": true,
+            "evidence_status": "verified",
+            "reason": null,
+            "return_kind": "dict",
+            "business_status": "risk"
+          },
+          {
+            "component": "price:mixed-demo",
+            "tool": "evaluate_portfolio_snapshot",
+            "unique_native_and_arguments": true,
+            "artifact_hash_matches": true,
+            "evidence_status": "verified",
+            "reason": null,
+            "return_kind": "list",
+            "business_status": null
+          }
+        ],
+        "persisted_checks": {
+          "input_equal": true,
+          "api_components_match_sqlite": true,
+          "knowledge_matches_sqlite": true,
+          "signal_links_match": true,
+          "all_pushes_simulated": true
+        },
+        "pass_evidence": true,
+        "workflow_within_60s": true,
+        "first_answer_event_within_5s": true
+      }
+    ],
+    "integration_evidence_passed": true,
+    "timing_targets_met_for_visible_event_and_total": true,
+    "published_config_unchanged_across_batch": true,
+    "browser_first_paint_measured": false
+  },
+  "workflow3-product-browser": {
+    "candidate_sha": "aeafe7e52193fefb3d5b9e0c25995b825e7de81f",
+    "browser": "148.0.7778.0",
+    "browser_image_id": "sha256:48887be1c4f7b4800e4879a96a5f761038b6fb616e6d03961768d8f2cb9d0a8f",
+    "browser_exit": 0,
+    "cases": [
+      {
+        "case_id": "stock-demo-up",
+        "first_result_ms": 675,
+        "artifact_sha256": "f650e1a372835b317ec86305244aaa5a7c1aa6fc48b9a1798539b3f309a7872e",
+        "result_run_id": "browser-608ea08e5c5a48b8826155c11f9d69f3",
+        "end_to_end_ms": 2042,
+        "terminal": "verified",
+        "run_id": "browser-608ea08e5c5a48b8826155c11f9d69f3",
+        "passed": true,
+        "persisted_price_and_original_receipt_match": true,
+        "pass_all": true,
+        "screenshot_sha256": "a98430b371e4e0ff6b8804612b9ce14e1a8f9cbaa752fdc652c4d8e3b17278a9"
+      },
+      {
+        "case_id": "fund-demo-down",
+        "first_result_ms": 612,
+        "artifact_sha256": "5126be926a3663320908dcb6dbc17e1392f1376ff98fe9bd97658eee25104575",
+        "result_run_id": "browser-bd50e78f2945410faadefd879cad65f1",
+        "end_to_end_ms": 2028,
+        "terminal": "verified",
+        "run_id": "browser-bd50e78f2945410faadefd879cad65f1",
+        "passed": true,
+        "persisted_price_and_original_receipt_match": true,
+        "pass_all": true,
+        "screenshot_sha256": "db8498fb6688abe92bfe3060746fe6821f5e1bc39459740bfd706de45516c6de"
+      },
+      {
+        "case_id": "mixed-demo-down",
+        "first_result_ms": 1493,
+        "artifact_sha256": "17350b636e0339edf7d03634dde2e2120ba51c2e6d63ea6c961d45ee144d23b7",
+        "result_run_id": "browser-a3434264bcc444dbb461a6fd71090a89",
+        "end_to_end_ms": 2877,
+        "terminal": "verified",
+        "run_id": "browser-a3434264bcc444dbb461a6fd71090a89",
+        "passed": true,
+        "persisted_price_and_original_receipt_match": true,
+        "pass_all": true,
+        "screenshot_sha256": "d8d23acc97c82da3ae84b6bec262504d2e6c45b03ef53b0ee4c381b125258afb"
+      }
+    ],
+    "browser_gates_passed": true
+  },
+  "workflow3-native-export": {
+    "candidate_sha": "aeafe7e52193fefb3d5b9e0c25995b825e7de81f",
+    "agent_name": "portfolio_integrated_workflow_v3_20261111",
+    "agent_id": 12,
+    "published_version": 1,
+    "published_config_sha256": "9cdec4a624e4affcefe86b28a455a5e040b111a955f7fbdb575e0ba1dca63a9f",
+    "http_status": 200,
+    "business_code": 0,
+    "content_type": "application/json",
+    "expected_tool_names": [
+      "evaluate_portfolio_snapshot",
+      "assess_news_risk_v2",
+      "search_portfolio_knowledge"
+    ],
+    "model_binding_match": true,
+    "published_version_pre_post_equal": true,
+    "raw_export_sha256": "001089587e3a3b4b75d629eaedf09f9aa78e891df9de444cb03693496a1a0703",
+    "raw_export_bytes": 5764,
+    "sanitized_export_sha256": "a2b232151259d46756e8a15d0f611fb47adb600efdd9e2040dd366ef4d002f9e",
+    "sanitized_export_bytes": 6919,
+    "redacted_field_paths": [
+      "data.agent_info.12.tenant_id",
+      "data.mcp_info.0.mcp_url",
+      "data.mcp_info.1.mcp_url",
+      "data.mcp_info.2.mcp_url"
+    ],
+    "functional_integration_passed": true,
+    "timing_gate_passed": true,
+    "browser_first_paint_measured": false,
+    "clean_import_proven": false,
+    "artifact_scope": "native export of the exact workflow version that passed three portfolios",
+    "agent_requests": 0
+  },
+  "workflow3-live-controls": {
+    "controls": [
+      {
+        "case": "valid",
+        "http_status": 200,
+        "native_target_id_count": 1,
+        "error_or_http_rejection": false
+      },
+      {
+        "case": "replay",
+        "http_status": 200,
+        "native_target_id_count": 0,
+        "error_or_http_rejection": true
+      },
+      {
+        "case": "expired",
+        "http_status": 200,
+        "native_target_id_count": 0,
+        "error_or_http_rejection": true
+      },
+      {
+        "case": "tampered",
+        "http_status": 200,
+        "native_target_id_count": 0,
+        "error_or_http_rejection": true
+      },
+      {
+        "case": "wrong-agent",
+        "http_status": 200,
+        "native_target_id_count": 0,
+        "error_or_http_rejection": true
+      }
+    ],
+    "new_receipts": 1,
+    "valid_target_observed_and_replay_rejected": true,
+    "original_receipt_prefix_unchanged": true
+  },
+  "workflow-clean-boot": {
+    "clean_instance": "topic16-workflow-clean-20261111",
+    "agents_before_import": 0,
+    "fresh_writable_storage": true,
+    "platform_history_restored": false,
+    "independent_elasticsearch_key": true,
+    "workflow_hook_loaded": true,
+    "runtime_writer_process_reachable": true,
+    "fresh_receipt_bytes": 0,
+    "candidate_sha": "e06bd08dfb66a65c527ae3917bc0bb86f49b5d8f"
+  },
+  "workflow-clean-model": {
+    "model_label": "Qwen3.8-27B",
+    "model_id": 1,
+    "independent_model_record": true,
+    "model_parameters_match": {
+      "model_name": true,
+      "model_type": true,
+      "model_factory": true,
+      "max_output_tokens": true,
+      "default_output_reserve_tokens": true,
+      "context_window_tokens": true,
+      "temperature": true,
+      "top_p": true,
+      "extra_params": true
+    },
+    "clean_agent_count": 0
+  },
+  "workflow-clean-knowledge": {
+    "clean_instance": "topic16-workflow-clean-20261111",
+    "embedding_model": "bge-m3",
+    "embedding_dimension": 1024,
+    "independent_index": true,
+    "index_sha256": "335f264172c3a276612cd2b8b8acb1e0fb74206d8ae8bfc4d0f7863aa1332a40",
+    "index_create_http_status": 200,
+    "clean_agent_requests": 0,
+    "imports": [
+      {
+        "command_exit": 2,
+        "status": null,
+        "uploads": 3,
+        "documents": [
+          {
+            "doc_id": "topic16-policy",
+            "version": "1.0",
+            "status": "indexing_pending"
+          },
+          {
+            "doc_id": "topic16-review",
+            "version": "1.0",
+            "status": "indexing_pending"
+          },
+          {
+            "doc_id": "topic16-guide",
+            "version": "1.0",
+            "status": "indexing_pending"
+          }
+        ]
+      },
+      {
+        "command_exit": 2,
+        "status": null,
+        "uploads": 0,
+        "documents": [
+          {
+            "doc_id": "topic16-policy",
+            "version": "1.0",
+            "status": "indexing_pending"
+          },
+          {
+            "doc_id": "topic16-review",
+            "version": "1.0",
+            "status": "indexing_pending"
+          },
+          {
+            "doc_id": "topic16-guide",
+            "version": "1.0",
+            "status": "indexing_pending"
+          }
+        ]
+      },
+      {
+        "command_exit": 0,
+        "status": null,
+        "uploads": 0,
+        "documents": [
+          {
+            "doc_id": "topic16-policy",
+            "version": "1.0",
+            "status": "verified"
+          },
+          {
+            "doc_id": "topic16-review",
+            "version": "1.0",
+            "status": "verified"
+          },
+          {
+            "doc_id": "topic16-guide",
+            "version": "1.0",
+            "status": "verified"
+          }
+        ]
+      }
+    ],
+    "assets_exit": 0,
+    "verified_documents": [
+      {
+        "doc_id": "topic16-guide",
+        "version": "1.0",
+        "sha256": "134c8f82b368872043a3410549bcaa87bb2c86fae0d0ecc0c2d7f1f83fbaa500"
+      },
+      {
+        "doc_id": "topic16-policy",
+        "version": "1.0",
+        "sha256": "bda76581ccab6df1344340cde25e30254130fc95b83229d8a26d083dee70c96f"
+      },
+      {
+        "doc_id": "topic16-review",
+        "version": "1.0",
+        "sha256": "e917637df70856a3624b52374c7bb3830504c3ee88852b663902ee400d5dd2c2"
+      }
+    ],
+    "owner_source_http_status": 200,
+    "default_user_source_http_status": 403,
+    "permission_verified": true
+  },
+  "workflow3-clean-runtime": {
+    "agent_name": "portfolio_integrated_workflow_v3_20261111",
+    "clean_runtime_replaced_before_agent_import": true,
+    "previous_candidate_receipt_unchanged": true,
+    "workflow_receipt_initially_empty": true,
+    "runtime_workflow_hook_loaded": true,
+    "runtime_reachable_from_northbound": true,
+    "observation_count": 28,
+    "observation_skips": 0,
+    "observation_exit": 0,
+    "core_sha256": "0d470f0b687e2b453c9c0e8d8da18827737a4208936ef9cc358dddaf60f36cdf",
+    "protocol_sha256": "6f3957a2ce3f916b3b8efdbfeaec93a6c571e2c17ef4ae946cf68a95abe0d1a2"
+  },
+  "workflow3-clean-import": {
+    "candidate_sha": "aeafe7e52193fefb3d5b9e0c25995b825e7de81f",
+    "scope": "native import of the verified same-version workflow",
+    "source_export_http": 200,
+    "source_export_sha256": "001089587e3a3b4b75d629eaedf09f9aa78e891df9de444cb03693496a1a0703",
+    "source_published_config_unchanged": true,
+    "clean_document_count": 3,
+    "clean_model_parameters_match": true,
+    "rebased_mcp_endpoints": 3,
+    "model_id_rebased": false,
+    "import_request_sha256": "cfe0cb346ba3770290ec55b4c843edb71b497373b3142c3ef91f8f9f5403716c",
+    "exact_tool_schemas_before_import": true,
+    "retired_unavailable_target_catalog_entries": 0,
+    "clean_agent_requests": 0,
+    "model_label_rebased": false,
+    "import_http_status": 200,
+    "import_business_code": null,
+    "native_import_response_sha256": "1a4429a5a6d4d5836dc98ff7817af45e4b5412394619adfed98abb9a39ac45e0",
+    "native_import_passed": true,
+    "import_return_shape": "native agent_id and agent_id_mapping",
+    "clean_agent_id": 1,
+    "source_id_maps_to_clean_id": true,
+    "clean_version": 1,
+    "clean_published_config_sha256": "7e5da59a77d01589383a48cdb8b178a1e017661a2d5fb934385f9c4de7309ce5",
+    "published_checks": {
+      "prompt_match": true,
+      "model_ids_match": true,
+      "exact_tool_binding": true,
+      "model_override_match": true,
+      "agent_settings_match": true
+    },
+    "clean_configuration_parity": true
+  },
+  "workflow3-clean-replay": {
+    "unique_native_receipts_and_actions_27": true,
+    "native_receipt_count": 27,
+    "scope": "same-version 3×3 live native Nexent replay after fresh import",
+    "candidate_sha": "aeafe7e52193fefb3d5b9e0c25995b825e7de81f",
+    "plan_sha256": "23e13cc510d46a7e600d2d7b01c9f9816eb7d866bf9f82a530044c12bbe9f547",
+    "seed": 161118,
+    "native_import_verified": true,
+    "case_count": 3,
+    "scheduled_repeats": 9,
+    "completed_repeats": 9,
+    "repeats_with_verified_evidence": 9,
+    "all_direction_consistent_with_verified_evidence": true,
+    "cases": [
+      {
+        "case_id": "stock-demo-up",
+        "input_sha256": "56759c36c696acc899d6fa01819629ca0372baa832f7e88a68fecfa258a47427",
+        "direction_consistent": true,
+        "runs": [
+          {
+            "run_id": "rehearsal-76694642d5fa43c4ac34bc0f235ae222",
+            "pass": true,
+            "workflow_ms": 3684.424,
+            "native_first_answer_event_ms": 1884.561,
+            "error_type": null
+          },
+          {
+            "run_id": "rehearsal-b3ebbc0058c14f97bc29835b505e90f1",
+            "pass": true,
+            "workflow_ms": 1933.453,
+            "native_first_answer_event_ms": 593.234,
+            "error_type": null
+          },
+          {
+            "run_id": "rehearsal-fe2f24e2a4144a05988ce77b4ca93616",
+            "pass": true,
+            "workflow_ms": 1984.941,
+            "native_first_answer_event_ms": 567.387,
+            "error_type": null
+          }
+        ]
+      },
+      {
+        "case_id": "fund-demo-down",
+        "input_sha256": "9a901a8884c1c144a98af25e2717bd2758a0418429f02792534f2fc997893698",
+        "direction_consistent": true,
+        "runs": [
+          {
+            "run_id": "rehearsal-5fe31e0a41104e098ba16dd1920b6b5e",
+            "pass": true,
+            "workflow_ms": 1917.234,
+            "native_first_answer_event_ms": 563.89,
+            "error_type": null
+          },
+          {
+            "run_id": "rehearsal-b551588bc9a04ef9ace91480f496bef0",
+            "pass": true,
+            "workflow_ms": 1925.295,
+            "native_first_answer_event_ms": 556.594,
+            "error_type": null
+          },
+          {
+            "run_id": "rehearsal-5c86d16ef8584ae6840938a5e26224f3",
+            "pass": true,
+            "workflow_ms": 2394.914,
+            "native_first_answer_event_ms": 556.323,
+            "error_type": null
+          }
+        ]
+      },
+      {
+        "case_id": "mixed-demo-down",
+        "input_sha256": "5bb2422c60e1b078bc00bbd83c4b6adc1fc2c96278e67e01e004cf3c4310f421",
+        "direction_consistent": true,
+        "runs": [
+          {
+            "run_id": "rehearsal-16806b4dd9234c709d6d4ff679872611",
+            "pass": true,
+            "workflow_ms": 1962.682,
+            "native_first_answer_event_ms": 576.64,
+            "error_type": null
+          },
+          {
+            "run_id": "rehearsal-abca6855b8894ff58df7807b7c6d1aa7",
+            "pass": true,
+            "workflow_ms": 1941.393,
+            "native_first_answer_event_ms": 567.063,
+            "error_type": null
+          },
+          {
+            "run_id": "rehearsal-9a5293c743ef4926af9c68b808e0467e",
+            "pass": true,
+            "workflow_ms": 1972.107,
+            "native_first_answer_event_ms": 563.844,
+            "error_type": null
+          }
+        ]
+      }
+    ],
+    "audited_runs": [
+      {
+        "case_id": "stock-demo-up",
+        "run_id": "rehearsal-76694642d5fa43c4ac34bc0f235ae222",
+        "client_evidence_complete": true,
+        "independent_receipts_passed": true,
+        "failures": [],
+        "checks": [
+          {
+            "tool": "search_portfolio_knowledge",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "assess_news_risk_v2",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "evaluate_portfolio_snapshot",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          }
+        ],
+        "workflow_ms": 3684.424,
+        "native_first_answer_event_ms": 1884.561
+      },
+      {
+        "case_id": "stock-demo-up",
+        "run_id": "rehearsal-b3ebbc0058c14f97bc29835b505e90f1",
+        "client_evidence_complete": true,
+        "independent_receipts_passed": true,
+        "failures": [],
+        "checks": [
+          {
+            "tool": "search_portfolio_knowledge",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "assess_news_risk_v2",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "evaluate_portfolio_snapshot",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          }
+        ],
+        "workflow_ms": 1933.453,
+        "native_first_answer_event_ms": 593.234
+      },
+      {
+        "case_id": "stock-demo-up",
+        "run_id": "rehearsal-fe2f24e2a4144a05988ce77b4ca93616",
+        "client_evidence_complete": true,
+        "independent_receipts_passed": true,
+        "failures": [],
+        "checks": [
+          {
+            "tool": "search_portfolio_knowledge",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "assess_news_risk_v2",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "evaluate_portfolio_snapshot",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          }
+        ],
+        "workflow_ms": 1984.941,
+        "native_first_answer_event_ms": 567.387
+      },
+      {
+        "case_id": "fund-demo-down",
+        "run_id": "rehearsal-5fe31e0a41104e098ba16dd1920b6b5e",
+        "client_evidence_complete": true,
+        "independent_receipts_passed": true,
+        "failures": [],
+        "checks": [
+          {
+            "tool": "search_portfolio_knowledge",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "assess_news_risk_v2",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "evaluate_portfolio_snapshot",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          }
+        ],
+        "workflow_ms": 1917.234,
+        "native_first_answer_event_ms": 563.89
+      },
+      {
+        "case_id": "fund-demo-down",
+        "run_id": "rehearsal-b551588bc9a04ef9ace91480f496bef0",
+        "client_evidence_complete": true,
+        "independent_receipts_passed": true,
+        "failures": [],
+        "checks": [
+          {
+            "tool": "search_portfolio_knowledge",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "assess_news_risk_v2",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "evaluate_portfolio_snapshot",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          }
+        ],
+        "workflow_ms": 1925.295,
+        "native_first_answer_event_ms": 556.594
+      },
+      {
+        "case_id": "fund-demo-down",
+        "run_id": "rehearsal-5c86d16ef8584ae6840938a5e26224f3",
+        "client_evidence_complete": true,
+        "independent_receipts_passed": true,
+        "failures": [],
+        "checks": [
+          {
+            "tool": "search_portfolio_knowledge",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "assess_news_risk_v2",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "evaluate_portfolio_snapshot",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          }
+        ],
+        "workflow_ms": 2394.914,
+        "native_first_answer_event_ms": 556.323
+      },
+      {
+        "case_id": "mixed-demo-down",
+        "run_id": "rehearsal-16806b4dd9234c709d6d4ff679872611",
+        "client_evidence_complete": true,
+        "independent_receipts_passed": true,
+        "failures": [],
+        "checks": [
+          {
+            "tool": "search_portfolio_knowledge",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "assess_news_risk_v2",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "evaluate_portfolio_snapshot",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          }
+        ],
+        "workflow_ms": 1962.682,
+        "native_first_answer_event_ms": 576.64
+      },
+      {
+        "case_id": "mixed-demo-down",
+        "run_id": "rehearsal-abca6855b8894ff58df7807b7c6d1aa7",
+        "client_evidence_complete": true,
+        "independent_receipts_passed": true,
+        "failures": [],
+        "checks": [
+          {
+            "tool": "search_portfolio_knowledge",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "assess_news_risk_v2",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "evaluate_portfolio_snapshot",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          }
+        ],
+        "workflow_ms": 1941.393,
+        "native_first_answer_event_ms": 567.063
+      },
+      {
+        "case_id": "mixed-demo-down",
+        "run_id": "rehearsal-9a5293c743ef4926af9c68b808e0467e",
+        "client_evidence_complete": true,
+        "independent_receipts_passed": true,
+        "failures": [],
+        "checks": [
+          {
+            "tool": "search_portfolio_knowledge",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "assess_news_risk_v2",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          },
+          {
+            "tool": "evaluate_portfolio_snapshot",
+            "native_id_count": 1,
+            "matched_receipts": 1,
+            "artifact_hash_matches": true,
+            "verified": true
+          }
+        ],
+        "workflow_ms": 1972.107,
+        "native_first_answer_event_ms": 563.844
+      }
+    ],
+    "clean_receipt_stream_started_empty": true,
+    "published_version_unchanged": true,
+    "source_functional_batch_gate_passed": true,
+    "formal_acceptance": false
+  },
+  "clean_replay_progress": {
+    "attempted": 9,
+    "verified": 9
+  },
+  "gates": {
+    "same_tested_git_commit": true,
+    "source_three_portfolios": true,
+    "actual_page_first_result_and_total": true,
+    "native_import_configuration_matches": true,
+    "clean_nine_runs_and_27_unique_receipts": true,
+    "rejects_invalid_signed_actions": true
+  }
+}

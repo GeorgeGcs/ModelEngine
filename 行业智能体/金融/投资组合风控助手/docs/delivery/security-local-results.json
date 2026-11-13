@@ -1,0 +1,23 @@
+{
+  "scanner": "bandit",
+  "version": "1.9.4",
+  "command": "python -m bandit -r . --ignore-nosec --severity-level high -f json",
+  "exit": 0,
+  "high_findings": 0,
+  "scan_errors": 0,
+  "metrics": {
+    "CONFIDENCE.HIGH": 95,
+    "CONFIDENCE.LOW": 0,
+    "CONFIDENCE.MEDIUM": 17,
+    "CONFIDENCE.UNDEFINED": 0,
+    "SEVERITY.HIGH": 0,
+    "SEVERITY.LOW": 97,
+    "SEVERITY.MEDIUM": 15,
+    "SEVERITY.UNDEFINED": 0,
+    "loc": 16281,
+    "nosec": 0,
+    "skipped_tests": 0
+  },
+  "report_sha256": "78f64287093e4f176d3df5505a0a0599aaecf3148a538bad071b27630f1e1d49",
+  "scope": "Python static analysis, all project directories including tests; high-severity CI gate; not a dependency or platform vulnerability audit"
+}

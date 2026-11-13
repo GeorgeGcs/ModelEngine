@@ -1,0 +1,57 @@
+{
+  "schema": "topic16-nexent-observation-package-v1",
+  "target_version": "v2.8.3",
+  "upstream_tag_commit": "046d77c8c479d30ccd1ed44cd37f727547798d0f",
+  "upstream_source_url": "https://codeload.github.com/ModelEngine-Group/nexent/tar.gz/refs/tags/v2.8.3",
+  "upstream_archive_sha256": "622d868c5f528074f487ede7257990a505204ec643f5ee492958d2c361bb7537",
+  "patch_file": "sdk-observation.patch",
+  "patch_sha256": "1bd147ecf044974f2fc91591b0073c4bae051d8223835a5fbe5a986474391037",
+  "sdk_files": [
+    {
+      "path": "sdk/nexent/core/agents/managed_mcp.py",
+      "baseline_sha256": "68a6adda00669c0d01d1058eeb27e0b0a1c83d88f5f85ec58b04bd70cd24d8d7",
+      "candidate_sha256": "d64ffb9157d6407398cd481d7af09ddd56abf0b2adef34ebbabf66706fed3d96",
+      "baseline_lines": 336,
+      "candidate_lines": 481
+    },
+    {
+      "path": "sdk/nexent/core/agents/run_agent.py",
+      "baseline_sha256": "873b1206e8dd7e5ec49b2d66aa9f7aacc482b1cdf1440b9c603c20af121c7bc6",
+      "candidate_sha256": "ff63686b478d484beb8ec45e84a460be7c18fd7d8a76df8f172a3334fadb8e95",
+      "baseline_lines": 566,
+      "candidate_lines": 568
+    }
+  ],
+  "startup_files": [
+    {
+      "path": "startup/topic16_receipt_sink.py",
+      "sha256": "f3b6bcb7fc548d265e7a3488f5bd5d04999728dad913d2532b49ebb547b13c6d"
+    },
+    {
+      "path": "startup/sitecustomize.py",
+      "sha256": "349253bf33a77b054a0608937258e2c87ba8da3445499f44c36f5e5868def54a"
+    },
+    {
+      "path": "startup/topic16_object_observation.py",
+      "sha256": "d53b1174b0eb9f7eed024c5c2851dd578052ef9cf1019e1517f4836d019e5327"
+    },
+    {
+      "path": "startup/topic16_workflow_dispatch.py",
+      "sha256": "3d2c97d803b0f59eecc5c1e55e1331506e7ea20dcad128a2dc733efd07091554"
+    }
+  ],
+  "receipt_schema": "topic16-platform-mcp-receipt-v1",
+  "runtime_policy": "optional sink only; business return values and exceptions are preserved",
+  "evidence_policy": "Only actual runtime calls can produce platform evidence; unit tests are not platform evidence.",
+  "optional_object_receipts": {
+    "enabled_by": "TOPIC16_OBJECT_RECEIPTS=1",
+    "schema": "topic16-platform-mcp-object-receipt-v1",
+    "target": "same patched Nexent v2.8.3; independent runtime only"
+  },
+  "optional_published_workflow": {
+    "enabled_by": "TOPIC16_WORKFLOW_AGENT",
+    "core_agent_sha256": "0d470f0b687e2b453c9c0e8d8da18827737a4208936ef9cc358dddaf60f36cdf",
+    "protocol_project_path": "integration/dispatch.py",
+    "protocol_sha256": "dc131ea3496e2365fa97c658477150764c2177d956ed07c2031685a216656c7e"
+  }
+}

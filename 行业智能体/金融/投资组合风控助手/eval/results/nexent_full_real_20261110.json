@@ -1,0 +1,254 @@
+{
+  "run_id": "topic16-live-20261110-025739",
+  "code_sha": "63d1a743cf00e7160862a4e1f014f9c5a82320a9",
+  "mode_finished": "full",
+  "execution_exit": 0,
+  "command_exits": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0
+  },
+  "database_run_status": "completed",
+  "completed_tasks": 24,
+  "unique_tasks": 24,
+  "completed_holding_cells": 48,
+  "smoke_reused_tasks": 4,
+  "full_new_tasks": 20,
+  "platform_zero_hit_tasks": 10,
+  "counts": {
+    "database_raw_rows": 20,
+    "exported_rows": 20,
+    "comparator_rows": 20
+  },
+  "metrics": {
+    "TP": 20,
+    "FP": 0,
+    "FN": 0,
+    "duplicates": 0,
+    "mismatches": 0,
+    "expected_triggers": 20,
+    "expected_cells": 48,
+    "actual_signals": 20
+  },
+  "structural_errors": [],
+  "first_difference": null,
+  "compare_pass": true,
+  "task_verifier_pass": true,
+  "first_failed_task_check": null,
+  "independent_native_receipt_checks": [
+    {
+      "task_key": "P-STOCK|2026-11-09T09:30:00+08:00",
+      "call_id_sha256_12": "01b394260e7c",
+      "signal_count": 0,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T09:30:00+08:00",
+      "call_id_sha256_12": "b5d36464712d",
+      "signal_count": 0,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T09:30:00+08:00",
+      "call_id_sha256_12": "56d41a5e64d8",
+      "signal_count": 0,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T10:00:00+08:00",
+      "call_id_sha256_12": "33a219f946d2",
+      "signal_count": 1,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T10:00:00+08:00",
+      "call_id_sha256_12": "40b89fc252b8",
+      "signal_count": 0,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T10:00:00+08:00",
+      "call_id_sha256_12": "3eb9f42b80c3",
+      "signal_count": 0,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T10:30:00+08:00",
+      "call_id_sha256_12": "edba99488c22",
+      "signal_count": 1,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T10:30:00+08:00",
+      "call_id_sha256_12": "8dc47682e24d",
+      "signal_count": 0,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T10:30:00+08:00",
+      "call_id_sha256_12": "c39adeb1ecda",
+      "signal_count": 0,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T11:00:00+08:00",
+      "call_id_sha256_12": "a6ab38bf103f",
+      "signal_count": 1,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T11:00:00+08:00",
+      "call_id_sha256_12": "87c7a2880f5d",
+      "signal_count": 1,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T11:00:00+08:00",
+      "call_id_sha256_12": "dbab0030fd10",
+      "signal_count": 0,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T05:00:00Z",
+      "call_id_sha256_12": "d91cee3b3c46",
+      "signal_count": 1,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T05:00:00Z",
+      "call_id_sha256_12": "8b4ed63b1499",
+      "signal_count": 1,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T05:00:00Z",
+      "call_id_sha256_12": "6dbb5e67b311",
+      "signal_count": 0,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T13:30:00+08:00",
+      "call_id_sha256_12": "3f4003c45801",
+      "signal_count": 1,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T13:30:00+08:00",
+      "call_id_sha256_12": "16ca5086ce31",
+      "signal_count": 0,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T13:30:00+08:00",
+      "call_id_sha256_12": "0a4c415bb3c9",
+      "signal_count": 1,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T14:00:00+08:00",
+      "call_id_sha256_12": "6ee03d31bc35",
+      "signal_count": 2,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T14:00:00+08:00",
+      "call_id_sha256_12": "39a5ae500307",
+      "signal_count": 2,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T14:00:00+08:00",
+      "call_id_sha256_12": "619c08f2c797",
+      "signal_count": 2,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T14:30:00+08:00",
+      "call_id_sha256_12": "cf1f88e63402",
+      "signal_count": 2,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T14:30:00+08:00",
+      "call_id_sha256_12": "c9e7f1164e7a",
+      "signal_count": 2,
+      "pass": true,
+      "problems": []
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T14:30:00+08:00",
+      "call_id_sha256_12": "4b3e981c4e0b",
+      "signal_count": 2,
+      "pass": true,
+      "problems": []
+    }
+  ],
+  "native_receipt_count": 24,
+  "first_native_evidence_failure": null,
+  "smoke_preservation": {
+    "smoke_task_rows_unchanged": true,
+    "smoke_payload_hash_and_mtime_unchanged": true,
+    "smoke_receipt_prefix_unchanged": true,
+    "smoke_call_ids_occur_once": true,
+    "smoke_arguments_called_once": true
+  },
+  "frozen_files_unchanged": true,
+  "artifact_sha256": {
+    "query.json": "d8811e31034dce17e1220b3edff64e3100a874326f0e5fd29e316ba6b8acd0b3",
+    "signals.json": "ed811072358707215109d8f88cedaa99a9ca1573e1f59b45795456ee1c4fdf9c",
+    "export-trace.json": "27e595de0e9371e8539aaf45b3e7d28fe3489907cb17f0f0edd1633c5b962e89",
+    "compare.json": "0cab99dc57565cd17c1a7d9d36134eb7ed13c3281eb7edc4971147aaa3c262c1",
+    "tasks.json": "1851c2b679756e6c2b683ae0d321538efd5750be24dd9b80114e37055c8b5f3f"
+  },
+  "scope": "real Nexent end-to-end over frozen synthetic price inputs only",
+  "native_calls_per_task": {
+    "P-STOCK|2026-11-09T09:30:00+08:00": 1,
+    "P-FUND|2026-11-09T09:30:00+08:00": 1,
+    "P-MIXED|2026-11-09T09:30:00+08:00": 1,
+    "P-STOCK|2026-11-09T10:00:00+08:00": 1,
+    "P-FUND|2026-11-09T10:00:00+08:00": 1,
+    "P-MIXED|2026-11-09T10:00:00+08:00": 1,
+    "P-STOCK|2026-11-09T10:30:00+08:00": 1,
+    "P-FUND|2026-11-09T10:30:00+08:00": 1,
+    "P-MIXED|2026-11-09T10:30:00+08:00": 1,
+    "P-STOCK|2026-11-09T11:00:00+08:00": 1,
+    "P-FUND|2026-11-09T11:00:00+08:00": 1,
+    "P-MIXED|2026-11-09T11:00:00+08:00": 1,
+    "P-STOCK|2026-11-09T05:00:00Z": 1,
+    "P-FUND|2026-11-09T05:00:00Z": 1,
+    "P-MIXED|2026-11-09T05:00:00Z": 1,
+    "P-STOCK|2026-11-09T13:30:00+08:00": 1,
+    "P-FUND|2026-11-09T13:30:00+08:00": 1,
+    "P-MIXED|2026-11-09T13:30:00+08:00": 1,
+    "P-STOCK|2026-11-09T14:00:00+08:00": 1,
+    "P-FUND|2026-11-09T14:00:00+08:00": 1,
+    "P-MIXED|2026-11-09T14:00:00+08:00": 1,
+    "P-STOCK|2026-11-09T14:30:00+08:00": 1,
+    "P-FUND|2026-11-09T14:30:00+08:00": 1,
+    "P-MIXED|2026-11-09T14:30:00+08:00": 1
+  },
+  "full_pass": true
+}

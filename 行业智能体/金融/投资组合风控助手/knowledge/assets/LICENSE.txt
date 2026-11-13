@@ -1,0 +1,4 @@
+The three project-authored text assets in this directory are dedicated to the public domain under CC0-1.0.
+https://creativecommons.org/publicdomain/zero/1.0/
+These are original project instructions and synthetic demonstrations, not regulatory publications or third-party research.
+This notice applies only to these new assets, not to other repository files or third-party software.

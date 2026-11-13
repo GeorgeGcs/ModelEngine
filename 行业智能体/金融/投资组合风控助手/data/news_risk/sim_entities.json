@@ -1,0 +1,23 @@
+{
+  "schema": "topic16-news-entity-map-v1",
+  "note": "v2 研判所需的虚构监控主体映射，内容只含主体全称与别名，与 news_risk/rules.py 的 ENTITIES 及 docs/舆情风险标注说明.md 第 2 节一致。不含任何标签、答案、参考判断或样本 ID。用于在不修改冻结样本 samples_50.json 的前提下，让正式评测也能写定 v2 profile。",
+  "entities": {
+    "SIM-A": {
+      "canonical": "云岚科技股份有限公司",
+      "aliases": ["云岚科技", "云岚股份"]
+    },
+    "SIM-B": {
+      "canonical": "北辰智造集团股份有限公司",
+      "aliases": ["北辰智造", "北辰股份"]
+    },
+    "SIM-C": {
+      "canonical": "沣泽消费服务控股有限公司",
+      "aliases": ["沣泽消费", "沣泽控股"]
+    },
+    "SIM-D": {
+      "canonical": "星渚生物医药有限公司",
+      "aliases": ["星渚生物", "星渚医药"]
+    }
+  },
+  "disclaimer": "风险提示仅供参考，不构成投资建议；系统输出为辅助建议，重大舆情须人工核实。"
+}

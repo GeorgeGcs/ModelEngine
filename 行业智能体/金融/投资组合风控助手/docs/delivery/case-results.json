@@ -1,0 +1,164 @@
+{
+  "scope": "native Nexent and simulated push",
+  "passed": 10,
+  "total": 10,
+  "cases": [
+    {
+      "case_id": "stock-demo-down",
+      "run_id": "acceptance-8789cccb6228-stock-demo-down",
+      "http": 200,
+      "input_sha256": "54fa6c7214dd8f687f624db238ae6c457b0de841a2ce250dcaeec63e0a57d593",
+      "elapsed_ms": 2150.893,
+      "price_rules": {
+        "SIM-STOCK-A": "stop_loss"
+      },
+      "news": "risk",
+      "knowledge": "hit",
+      "push_count": 2,
+      "simulated_pushes": true,
+      "native_receipts_verified": true,
+      "passed": true
+    },
+    {
+      "case_id": "stock-demo-up",
+      "run_id": "acceptance-8789cccb6228-stock-demo-up",
+      "http": 200,
+      "input_sha256": "75970883d4045985553dccf5b44184671d652f368ac0f30e68309526e71dbffa",
+      "elapsed_ms": 2036.673,
+      "price_rules": {
+        "SIM-STOCK-A": "take_profit"
+      },
+      "news": "no_risk",
+      "knowledge": "no_match",
+      "push_count": 1,
+      "simulated_pushes": true,
+      "native_receipts_verified": true,
+      "passed": true
+    },
+    {
+      "case_id": "fund-demo-down",
+      "run_id": "acceptance-8789cccb6228-fund-demo-down",
+      "http": 200,
+      "input_sha256": "5580470ec1c884807652f36d2d5e513445eea1942573e5593f6b73fb7f1e0c9c",
+      "elapsed_ms": 2078.293,
+      "price_rules": {
+        "SIM-FUND-B": "stop_loss"
+      },
+      "news": "risk",
+      "knowledge": "hit",
+      "push_count": 2,
+      "simulated_pushes": true,
+      "native_receipts_verified": true,
+      "passed": true
+    },
+    {
+      "case_id": "fund-demo-up",
+      "run_id": "acceptance-8789cccb6228-fund-demo-up",
+      "http": 200,
+      "input_sha256": "b56643dfd3ea9db0fb05ddc461430b08b934206b4373dcbac558a66e6171ed78",
+      "elapsed_ms": 2023.969,
+      "price_rules": {
+        "SIM-FUND-B": "take_profit"
+      },
+      "news": "no_risk",
+      "knowledge": "no_match",
+      "push_count": 1,
+      "simulated_pushes": true,
+      "native_receipts_verified": true,
+      "passed": true
+    },
+    {
+      "case_id": "mixed-demo-down",
+      "run_id": "acceptance-8789cccb6228-mixed-demo-down",
+      "http": 200,
+      "input_sha256": "f234e5692da7dcc87e2f86a4fcd82eaf91578973ae1f51b7a2078959c23740c5",
+      "elapsed_ms": 2548.742,
+      "price_rules": {
+        "SIM-STOCK-C": "stop_loss",
+        "SIM-FUND-D": "stop_loss"
+      },
+      "news": "risk",
+      "knowledge": "hit",
+      "push_count": 3,
+      "simulated_pushes": true,
+      "native_receipts_verified": true,
+      "passed": true
+    },
+    {
+      "case_id": "mixed-demo-up",
+      "run_id": "acceptance-8789cccb6228-mixed-demo-up",
+      "http": 200,
+      "input_sha256": "98df536480f05dc498896ccc169aa8300d216c2cabde04d90cab4741fa69169b",
+      "elapsed_ms": 2305.907,
+      "price_rules": {
+        "SIM-STOCK-C": "take_profit",
+        "SIM-FUND-D": "take_profit"
+      },
+      "news": "no_risk",
+      "knowledge": "no_match",
+      "push_count": 2,
+      "simulated_pushes": true,
+      "native_receipts_verified": true,
+      "passed": true
+    },
+    {
+      "case_id": "stock-exact-stop-loss",
+      "run_id": "acceptance-8789cccb6228-stock-exact-stop-loss",
+      "http": 200,
+      "input_sha256": "bda6f8d7fc15b348ee1b50ecf4d61bac2ec1bfa61fadcd596a5c28ab9c4a037d",
+      "elapsed_ms": 2086.482,
+      "price_rules": {
+        "SIM-STOCK-A": "stop_loss"
+      },
+      "news": "no_risk",
+      "knowledge": "no_match",
+      "push_count": 1,
+      "simulated_pushes": true,
+      "native_receipts_verified": true,
+      "passed": true
+    },
+    {
+      "case_id": "fund-exact-take-profit",
+      "run_id": "acceptance-8789cccb6228-fund-exact-take-profit",
+      "http": 200,
+      "input_sha256": "7dd3aed3f4b82d2a93fb60913daad236dcc15be6f3a661967b81bf2e33a0b2bb",
+      "elapsed_ms": 2016.555,
+      "price_rules": {
+        "SIM-FUND-B": "take_profit"
+      },
+      "news": "no_risk",
+      "knowledge": "no_match",
+      "push_count": 1,
+      "simulated_pushes": true,
+      "native_receipts_verified": true,
+      "passed": true
+    },
+    {
+      "case_id": "mixed-normal-zero",
+      "run_id": "acceptance-8789cccb6228-mixed-normal-zero",
+      "http": 200,
+      "input_sha256": "854848fdee1860334361ee7286fd9c2023d848048c4074c0e3c2438af27c0547",
+      "elapsed_ms": 2937.964,
+      "price_rules": {},
+      "news": "no_risk",
+      "knowledge": "no_match",
+      "push_count": 0,
+      "simulated_pushes": true,
+      "native_receipts_verified": true,
+      "passed": true
+    },
+    {
+      "case_id": "mixed-missing-price",
+      "run_id": "acceptance-8789cccb6228-mixed-missing-price",
+      "http": 400,
+      "input_sha256": "5d334ed0c6c4ab51eebc2fc526167c730336e4db3fca6e8825e19dfbe3581b9f",
+      "elapsed_ms": 1.373,
+      "rejected_before_persistence": true,
+      "absent_lookup_http": 500,
+      "passed": true,
+      "absent_in_sqlite": true
+    }
+  ],
+  "runtime_commit": "aeafe7e52193fefb3d5b9e0c25995b825e7de81f",
+  "command_exit": 0
+}

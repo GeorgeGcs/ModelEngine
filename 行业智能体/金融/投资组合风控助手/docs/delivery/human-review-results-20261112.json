@@ -1,0 +1,65 @@
+{
+  "schema": "topic16-user-confirmed-human-review-summary-v1",
+  "run_id": "topic16-human-final-wpp-20261112-223143",
+  "reviewer": "wpp",
+  "review_basis": "user-confirmed final human review; previous AI-reference exposure disclosed",
+  "sample_set_id": "NR-2026-11-09",
+  "profile": "v2",
+  "candidate_commit": "43f80e1fb2814cd39374e4c2e387852922e32b9d",
+  "executed_checkout": "bcc9759ddabd9c1121efb97d30b3085dcb3c9324",
+  "code_identity_sha256": "20aa9417e27abc5cc36eb985ebcfed6e5af624b4e0b3b69e93b1e4cca4f7bdee",
+  "human_labels_sha256": "b53af018d8591f7ff7d9202fa044884fd7a52187b5b149eacb43a2122ea3a731",
+  "samples_sha256": "22dfb8652a0d5b6d69bb611525bccc97a591c5c2e4f1b959e65ad86b08635878",
+  "entities_sha256": "4a27094d4e428d1395eb635ad34db6a3191f865311eea320f4763e427455ef12",
+  "annotation_started_at": "2026-11-12T21:46:00+08:00",
+  "annotation_completed_at": "2026-11-12T22:02:00+08:00",
+  "sealed_at": "2026-11-12T22:31:43.623179+08:00",
+  "prediction_generated_at": "2026-11-12T14:31:43.759789+00:00",
+  "denominator": 50,
+  "threshold": 43,
+  "consistent_count": 31,
+  "consistency_rate": 0.62,
+  "false_positive_count": 1,
+  "false_negative_count": 18,
+  "structural_error_count": 0,
+  "meets_85_percent": false,
+  "formal": false,
+  "pass": false,
+  "scorer_status": "unverified-source",
+  "formal_requirements_missing": [
+    "封存记录未声明 independent_review=true"
+  ],
+  "prediction_exit_code": 0,
+  "score_exit_code": 1,
+  "original_files_preserved": 17,
+  "original_files_unchanged": true,
+  "server_execution": false,
+  "source": "frozen synthetic news; local deterministic rule execution; not a new Nexent platform run",
+  "independent_recount": {
+    "method": "Fresh process; standard-library CSV and JSON reads; no imports of the assessed rules or scorer",
+    "count": 31,
+    "denominator": 50,
+    "false_positive_count": 1,
+    "false_negative_count": 18,
+    "agrees_with_scorer": true,
+    "exit_code": 0
+  },
+  "diagnosis": {
+    "first_observed_gap": "A stated regulatory investigation is returned as no_risk; none of the current ADVERSE_PATTERNS markers matches this input.",
+    "component": "news_risk/rules_v2.py",
+    "patterns_source_line": 113,
+    "existing_adverse_marker_matches": 0,
+    "difference_evidence_status_counts": {
+      "not_applicable": 17,
+      "insufficient": 1,
+      "sufficient": 1
+    },
+    "difference_reason_counts": {
+      "未检出可核查的不利进展": 17,
+      "行政处罚信息的主体、事实或冲突未能明确核实": 1,
+      "检出与指定标的有关、可核查的重大或高影响不利进展": 1
+    },
+    "first_case_only_root_cause_confirmed": true,
+    "all_19_root_causes_proven": false
+  }
+}

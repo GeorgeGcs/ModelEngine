@@ -1,0 +1,54 @@
+{
+  "schema": "topic16-local-fixture-summary-v1",
+  "scope": "local-fixture",
+  "platform_evidence": false,
+  "generated_at": "2026-11-08T12:29:10+00:00",
+  "run_id": "LOCAL-FIXTURE-RUN-0001",
+  "notice": "本地替身自检，不是 Nexent 平台运行证据；未生成 end-to-end 通过报告。",
+  "exit_codes": {
+    "query": 0,
+    "export": 0,
+    "compare": 0,
+    "verify": 0,
+    "retry": 0
+  },
+  "task_stats": {
+    "task_count": 24,
+    "task_status_counts": {
+      "completed": 24
+    },
+    "zero_hit_task_count": 10,
+    "cell_count": 48,
+    "platform_identified_task_count": 24,
+    "raw_signal_row_count": 20
+  },
+  "compare_metrics": {
+    "TP": 20,
+    "FP": 0,
+    "FN": 0,
+    "duplicates": 0,
+    "mismatches": 0,
+    "expected_triggers": 20,
+    "expected_cells": 48,
+    "actual_signals": 20
+  },
+  "reconciliation_pass": true,
+  "retry_pass": true,
+  "retry_before_rows": 20,
+  "retry_after_rows": 20,
+  "zero_hit_task_example": "P-STOCK|2026-11-09T09:30:00+08:00",
+  "retried_task": "P-STOCK|2026-11-09T10:00:00+08:00",
+  "artifacts": [
+    "eval/results/local_fixture_query_run.json",
+    "eval/results/local_fixture_final_signals.json",
+    "eval/results/local_fixture_export_trace.json",
+    "eval/results/local_fixture_compare_report.json",
+    "eval/results/local_fixture_task_reconciliation.json",
+    "eval/results/local_fixture_retry_evidence.json"
+  ],
+  "artifacts_not_generated": [
+    "eval/results/nexent_final_signals.json",
+    "eval/results/compare_report_end_to_end.json",
+    "eval/results/nexent_task_reconciliation.json"
+  ]
+}

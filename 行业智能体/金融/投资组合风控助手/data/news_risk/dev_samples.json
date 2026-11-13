@@ -1,0 +1,74 @@
+{
+  "schema": "topic16-news-risk-dev-samples-v1",
+  "purpose": "engineering-selftest",
+  "not_gold_standard": true,
+  "not_formal_evaluation": true,
+  "note": "仅供模块开发调试的工程自测样例，不是人工金标，也不参与 50 条正式一致率评测。ID 使用 DEV- 前缀，与 NR-001..NR-050 完全不重叠；文本另行构造，不作为提示词、知识库或工具参数注入。expect 是工程自测期望，用于回归测试，不得称为人工判定。",
+  "disclaimer": "风险提示仅供参考，不构成投资建议；系统输出为辅助建议，重大舆情须人工核实。",
+  "items": [
+    {
+      "sample_id": "DEV-001",
+      "symbol": "SIM-D",
+      "published_at": "2026-11-09T09:00:00+08:00",
+      "source": "开发自测样例",
+      "text": "星渚生物医药明确表示，公司并未收到任何产品召回通知，相关报道不属实。",
+      "expect": {"risk_verdict": "no_risk", "evidence_status": "negated", "level": "无"}
+    },
+    {
+      "sample_id": "DEV-002",
+      "symbol": "SIM-A",
+      "published_at": "2026-11-09T09:05:00+08:00",
+      "source": "开发自测样例",
+      "text": "云岚科技（苏州）有限公司因排污问题被处以行政处罚，该主体为独立法人。",
+      "expect": {"risk_verdict": "no_risk", "evidence_status": "entity_mismatch", "level": "无"}
+    },
+    {
+      "sample_id": "DEV-003",
+      "symbol": "SIM-B",
+      "published_at": "2026-11-09T09:10:00+08:00",
+      "source": "开发自测样例",
+      "text": "关于北辰智造集团股份有限公司，仅有标题，正文缺失，无法确认具体事项。",
+      "expect": {"risk_verdict": "no_risk", "evidence_status": "insufficient", "level": "待复核"}
+    },
+    {
+      "sample_id": "DEV-004",
+      "symbol": "SIM-C",
+      "published_at": "2026-11-09T09:15:00+08:00",
+      "source": "开发自测样例",
+      "text": "沣泽消费发布澄清公告，此前传闻的重大诉讼系不实信息，原报道已撤回。",
+      "expect": {"risk_verdict": "no_risk", "evidence_status": "clarified", "level": "无"}
+    },
+    {
+      "sample_id": "DEV-005",
+      "symbol": "SIM-A",
+      "published_at": "2026-11-09T09:20:00+08:00",
+      "source": "开发自测样例",
+      "text": "据知情人士透露，云岚科技或涉监管调查，目前没有官方确认。",
+      "expect": {"risk_verdict": "no_risk", "evidence_status": "insufficient", "level": "待复核"}
+    },
+    {
+      "sample_id": "DEV-006",
+      "symbol": "SIM-D",
+      "published_at": "2026-11-09T09:25:00+08:00",
+      "source": "开发自测样例",
+      "text": "行业回顾：星渚生物医药曾在 2024 年收到监管问询函，本次为历史资料整理。",
+      "expect": {"risk_verdict": "no_risk", "evidence_status": "historical", "level": "无"}
+    },
+    {
+      "sample_id": "DEV-007",
+      "symbol": "SIM-B",
+      "published_at": "2026-11-09T09:30:00+08:00",
+      "source": "开发自测样例",
+      "text": "北辰智造集团股份有限公司收到监管部门立案调查通知书，相关事项正在核实。",
+      "expect": {"risk_verdict": "risk", "evidence_status": "sufficient", "level": "高"}
+    },
+    {
+      "sample_id": "DEV-008",
+      "symbol": "SIM-C",
+      "published_at": "2026-11-09T09:35:00+08:00",
+      "source": "开发自测样例",
+      "text": "沣泽消费服务控股有限公司公布模拟季度经营简报，各项业务正常推进。",
+      "expect": {"risk_verdict": "no_risk", "evidence_status": "not_applicable", "level": "无"}
+    }
+  ]
+}

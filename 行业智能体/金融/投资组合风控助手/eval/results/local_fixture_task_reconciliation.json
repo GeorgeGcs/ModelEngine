@@ -1,0 +1,140 @@
+{
+  "schema": "topic16-task-reconciliation-v2",
+  "scope": "local-fixture",
+  "run_id": "LOCAL-FIXTURE-RUN-0001",
+  "checked_at": "2026-11-08T12:29:10+00:00",
+  "pass": true,
+  "checks": [
+    {
+      "check": "数据库可查询且可独立重读原始信号",
+      "ok": true,
+      "detail": "重读 20 行，覆盖 24 个任务"
+    },
+    {
+      "check": "清单 SHA256 与冻结锁一致",
+      "ok": true,
+      "detail": "清单=79e12464adbfbb9696fdbb9a41b482de241aea0a8488eaadccb4b629e3c1c338 锁=79e12464adbfbb9696fdbb9a41b482de241aea0a8488eaadccb4b629e3c1c338"
+    },
+    {
+      "check": "任务清单为 24 个任务 / 48 个持仓格",
+      "ok": true,
+      "detail": "清单: 24 任务 / 48 格"
+    },
+    {
+      "check": "24 个预定逻辑任务全部有执行记录",
+      "ok": true,
+      "detail": "库内 24 个，缺失 []"
+    },
+    {
+      "check": "24 个任务状态全部 completed",
+      "ok": true,
+      "detail": "completed=24；状态分布={'completed': 24}"
+    },
+    {
+      "check": "48 个持仓格都经过处理",
+      "ok": true,
+      "detail": "合计 cell_count=48"
+    },
+    {
+      "check": "每个任务都有可核对的平台标识与原始载荷引用",
+      "ok": true,
+      "detail": "具备=24/24"
+    },
+    {
+      "check": "24 个任务的原始载荷文件均通过验真",
+      "ok": true,
+      "detail": "问题数=0；样例=[]"
+    },
+    {
+      "check": "端到端载荷含计划/实际入参与同次调用配对证据",
+      "ok": true,
+      "detail": "scope=local-fixture；问题数=0；样例=[]"
+    },
+    {
+      "check": "零命中任务具备平台成功完成证据",
+      "ok": true,
+      "detail": "零命中任务=10，具备证据=10"
+    },
+    {
+      "check": "无失败 / 超时 / 未执行任务",
+      "ok": true,
+      "detail": "状态分布={'completed': 24}"
+    },
+    {
+      "check": "run 状态为 completed",
+      "ok": true,
+      "detail": "completed"
+    },
+    {
+      "check": "数据库原始行与导出信号逐行七字段一致",
+      "ok": true,
+      "detail": "逐行比对 20 行；问题=[]"
+    },
+    {
+      "check": "导出文件 signal_count 与数组长度一致",
+      "ok": true,
+      "detail": "signal_count=20 数组=20"
+    },
+    {
+      "check": "数据库原始行数 = 导出条数",
+      "ok": true,
+      "detail": "库=20 导出=20"
+    },
+    {
+      "check": "导出条数 = 比对器读到的条数",
+      "ok": true,
+      "detail": "导出=20 比对器=20"
+    },
+    {
+      "check": "比对报告存在且 scope 为 local-fixture",
+      "ok": true,
+      "detail": "local-fixture"
+    },
+    {
+      "check": "比对报告使用冻结标注（哈希与锁一致）",
+      "ok": true,
+      "detail": "报告=386fb579b50f34a5841700c2e92efb3fcaec7b3c9be289d563ee642ded65418e 锁=386fb579b50f34a5841700c2e92efb3fcaec7b3c9be289d563ee642ded65418e"
+    },
+    {
+      "check": "比对报告可追溯到本次导出文件",
+      "ok": true,
+      "detail": "报告=ed811072358707215109d8f88cedaa99a9ca1573e1f59b45795456ee1c4fdf9c 文件=ed811072358707215109d8f88cedaa99a9ca1573e1f59b45795456ee1c4fdf9c"
+    },
+    {
+      "check": "TP=20 FP=0 FN=0 且无重复/字段偏差",
+      "ok": true,
+      "detail": "{\"TP\": 20, \"FP\": 0, \"FN\": 0, \"duplicates\": 0, \"mismatches\": 0, \"expected_triggers\": 20, \"expected_cells\": 48, \"actual_signals\": 20}"
+    },
+    {
+      "check": "比对报告 pass=true 且无结构错误",
+      "ok": true,
+      "detail": "pass=True 结构错误=0"
+    },
+    {
+      "check": "平台运行记录可追溯（run 含输入与清单哈希）",
+      "ok": true,
+      "detail": "输入=d33871cd2dcc2ba18964cdb28f10543e5a392e4329c6bf1353aa6c7c3e983b71 清单=fixture-manifest"
+    }
+  ],
+  "evidence": {
+    "database": "eval/nexent/state/fixture_demo.db",
+    "task_manifest": "eval/nexent/task_manifest.json",
+    "task_manifest_sha256": "79e12464adbfbb9696fdbb9a41b482de241aea0a8488eaadccb4b629e3c1c338",
+    "task_manifest_lock": "79e12464adbfbb9696fdbb9a41b482de241aea0a8488eaadccb4b629e3c1c338",
+    "records_root": "eval/nexent/state",
+    "exported_signals": "eval/results/local_fixture_final_signals.json",
+    "compare_report": "eval/results/local_fixture_compare_report.json",
+    "exported_sha256": "ed811072358707215109d8f88cedaa99a9ca1573e1f59b45795456ee1c4fdf9c",
+    "task_status_counts": {
+      "completed": 24
+    },
+    "zero_hit_task_count": 10,
+    "raw_signal_row_count": 20,
+    "reread_signal_row_count": 20,
+    "verified_record_count": 24,
+    "content_mismatches": [],
+    "record_problems": [],
+    "task_failures": []
+  },
+  "note": "逐行核对库中原始信号与导出内容，并打开每个任务的原始载荷验真；仅凭条数或最终比对报告无法证明任务执行与数据未被改写。"
+}

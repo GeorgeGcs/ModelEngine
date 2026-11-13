@@ -1,0 +1,14 @@
+{
+  "schema": "topic16-human-annotation-registration-v1",
+  "sample_set_id": "NR-2026-11-09",
+  "samples_sha256": "<填 data/news_risk/samples_50.json 的 SHA256>",
+  "human_labels_sha256": "<人工标注封存后填 human_labels.csv 的 SHA256>",
+  "annotator": "<独立复核者姓名或代号；不得填模型名>",
+  "independent_review": true,
+  "sealed_at": "<ISO 8601 封存时间，必须带显式时区，例如 2026-11-20T18:00:00+08:00；无时区或未来时间会被评分器拒绝>",
+  "profile": "v2",
+  "entities_sha256": null,
+  "blind_sheet": "data/news_risk/blind_annotation_sheet.csv",
+  "declaration": "复核者未查看 AI 参考判断、系统输出或开发评测报告，仅依据所选 50 条原文独立作出二分类判定；标注完成后封存，不再修改。",
+  "usage_note": "本文件是模板，不是已完成的封存记录。请在人工标注开始前复制为 eval/news_risk/annotation_registration.json 并提交，标注封存后补齐人工表 SHA256；文件名与路径可按实际情况调整，但不得在评分结果产生后补写。NR-2026-11-09 冻结样本不含 entities，正式评测用 --profile v2 时必须同时传 --entities data/news_risk/sim_entities.json，并把该文件 SHA256 填入 entities_sha256（登记清单与系统输出头会三方核对）；若写定 v1 则把 profile 改为 v1 并保持 entities_sha256 为 null。sealed_at 必须带时区且不得晚于评分时刻。"
+}

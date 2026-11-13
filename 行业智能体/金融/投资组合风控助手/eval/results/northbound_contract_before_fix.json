@@ -1,0 +1,70 @@
+{
+  "schema": "topic16-northbound-pre-fix-reproduction-v1",
+  "scope": "pre-fix-reproduction",
+  "platform_evidence": false,
+  "note": "修复前实测：官方 health 原样响应被拒；tool_error / 超时标记 / 推理事件携带 tool_result / 计划与实际入参不一致，均被当作 0 条信号（合法零命中）。本地 mock 复刻，不是真实平台记录。",
+  "defects": {
+    "defect_a_official_health_rejected": {
+      "input_health": {
+        "status": "healthy",
+        "service": "northbound-api"
+      },
+      "probe_status": "health-identity-unconfirmed",
+      "identity_confirmed": false,
+      "blocked_at": "健康响应中找不到 Nexent 身份标识；请用 NEXENT_HEALTH_IDENTITY 指定该实例实际返回的服务名，或提供一次真实 health 响应样例。不在此处硬闯后续接口。"
+    },
+    "tool_error_with_empty_array": {
+      "signals_returned": [],
+      "signal_count": 0,
+      "event_type_accepted": "tool_error",
+      "actual_arguments_checked": false,
+      "planned_arguments": null
+    },
+    "timeout_marker_with_empty_array": {
+      "signals_returned": [],
+      "signal_count": 0,
+      "event_type_accepted": "tool_result",
+      "actual_arguments_checked": false,
+      "planned_arguments": null
+    },
+    "reasoning_event_with_empty_array": {
+      "signals_returned": null,
+      "signal_count": null,
+      "event_type_accepted": null,
+      "actual_arguments_checked": false,
+      "planned_arguments": null
+    },
+    "planned_A_actual_B_even_with_empty_array": {
+      "signals_returned": [],
+      "signal_count": 0,
+      "event_type_accepted": "tool_result",
+      "actual_arguments_checked": false,
+      "planned_arguments": {
+        "portfolio": {
+          "id": "P-STOCK",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "stop_loss": "95.00",
+              "take_profit": "106.00"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T10:00:00+08:00",
+          "prices": {
+            "SIM-A": "95.00"
+          }
+        }
+      }
+    },
+    "reasoning_event_with_tool_result_empty_array": {
+      "signals_returned": [],
+      "signal_count": 0,
+      "event_type_accepted": "reasoning",
+      "actual_arguments_checked": false,
+      "planned_arguments": null,
+      "note": "旧代码的 structuredContent/tool_result 分支不检查事件类型，推理事件也会被接受。"
+    }
+  }
+}

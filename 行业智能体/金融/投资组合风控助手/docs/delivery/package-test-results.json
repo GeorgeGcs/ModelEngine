@@ -1,0 +1,47 @@
+[
+  {
+    "suite": "tests",
+    "tests": 8,
+    "exit_code": 0
+  },
+  {
+    "suite": "app/tests",
+    "tests": 49,
+    "exit_code": 0
+  },
+  {
+    "suite": "integration/tests",
+    "tests": 43,
+    "exit_code": 0
+  },
+  {
+    "suite": "knowledge/tests",
+    "tests": 34,
+    "exit_code": 0
+  },
+  {
+    "suite": "eval/nexent/tests",
+    "tests": 96,
+    "exit_code": 0
+  },
+  {
+    "suite": "eval/news_risk/tests",
+    "tests": 136,
+    "exit_code": 0
+  },
+  {
+    "suite": "mcps/portfolio_rules/tests",
+    "tests": 4,
+    "exit_code": 0
+  },
+  {
+    "suite": "mcps/news_risk/tests",
+    "tests": 10,
+    "exit_code": 0
+  },
+  {
+    "suite": "mcps/knowledge/tests",
+    "tests": 5,
+    "exit_code": 0
+  }
+]

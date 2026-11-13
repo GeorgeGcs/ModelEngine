@@ -1,0 +1,15 @@
+{
+  "scope": "synthetic-business-acceptance",
+  "cases": [
+    {"id": "stock-demo-down", "base": "stock-demo-down", "price_rules": {"SIM-STOCK-A": "stop_loss"}, "news": "risk", "knowledge": "hit", "push_count": 2},
+    {"id": "stock-demo-up", "base": "stock-demo-up", "price_rules": {"SIM-STOCK-A": "take_profit"}, "news": "no_risk", "knowledge": "no_match", "push_count": 1},
+    {"id": "fund-demo-down", "base": "fund-demo-down", "price_rules": {"SIM-FUND-B": "stop_loss"}, "news": "risk", "knowledge": "hit", "push_count": 2},
+    {"id": "fund-demo-up", "base": "fund-demo-up", "price_rules": {"SIM-FUND-B": "take_profit"}, "news": "no_risk", "knowledge": "no_match", "push_count": 1},
+    {"id": "mixed-demo-down", "base": "mixed-demo-down", "price_rules": {"SIM-STOCK-C": "stop_loss", "SIM-FUND-D": "stop_loss"}, "news": "risk", "knowledge": "hit", "push_count": 3},
+    {"id": "mixed-demo-up", "base": "mixed-demo-up", "price_rules": {"SIM-STOCK-C": "take_profit", "SIM-FUND-D": "take_profit"}, "news": "no_risk", "knowledge": "no_match", "push_count": 2},
+    {"id": "stock-exact-stop-loss", "base": "stock-demo-up", "prices": {"SIM-STOCK-A": "95.00"}, "price_rules": {"SIM-STOCK-A": "stop_loss"}, "news": "no_risk", "knowledge": "no_match", "push_count": 1},
+    {"id": "fund-exact-take-profit", "base": "fund-demo-up", "prices": {"SIM-FUND-B": "1.0800"}, "price_rules": {"SIM-FUND-B": "take_profit"}, "news": "no_risk", "knowledge": "no_match", "push_count": 1},
+    {"id": "mixed-normal-zero", "base": "mixed-demo-up", "prices": {"SIM-STOCK-C": "50.00", "SIM-FUND-D": "2.0000"}, "price_rules": {}, "news": "no_risk", "knowledge": "no_match", "push_count": 0},
+    {"id": "mixed-missing-price", "base": "mixed-demo-up", "prices": {"SIM-STOCK-C": "50.00"}, "http_error": 400}
+  ]
+}

@@ -1,0 +1,1716 @@
+{
+  "schema": "topic16-task-manifest-v1",
+  "source_input": "data/eval_20.json",
+  "source_sha256": "d33871cd2dcc2ba18964cdb28f10543e5a392e4329c6bf1353aa6c7c3e983b71",
+  "portfolio_count": 3,
+  "snapshot_count": 8,
+  "task_count": 24,
+  "cell_count": 48,
+  "note": "只含输入，不含任何预期触发结果；任务键 = 组合 | 快照原始时间。",
+  "tasks": [
+    {
+      "task_key": "P-STOCK|2026-11-09T09:30:00+08:00",
+      "task_index": 1,
+      "portfolio_id": "P-STOCK",
+      "snapshot_index": 1,
+      "timestamp": "2026-11-09T09:30:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-B"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "95.00",
+          "take_profit": "106.00"
+        },
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "48.00",
+          "take_profit": "55.00"
+        }
+      ],
+      "prices": {
+        "SIM-A": "95.01",
+        "SIM-B": "54.99",
+        "SIM-C": "1.9001",
+        "SIM-D": "2.4999"
+      },
+      "cell_keys": [
+        "P-STOCK|2026-11-09T09:30:00+08:00|SIM-A",
+        "P-STOCK|2026-11-09T09:30:00+08:00|SIM-B"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-STOCK",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "95.00",
+              "take_profit": "106.00"
+            },
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "48.00",
+              "take_profit": "55.00"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T09:30:00+08:00",
+          "prices": {
+            "SIM-A": "95.01",
+            "SIM-B": "54.99",
+            "SIM-C": "1.9001",
+            "SIM-D": "2.4999"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T09:30:00+08:00",
+      "task_index": 2,
+      "portfolio_id": "P-FUND",
+      "snapshot_index": 1,
+      "timestamp": "2026-11-09T09:30:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-C"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "92.00",
+          "take_profit": "110.00"
+        },
+        {
+          "symbol": "SIM-C",
+          "cost": "2.0000",
+          "quantity": 1000,
+          "holding_date": "2026-11-02",
+          "stop_loss": "1.9000",
+          "take_profit": "2.1200"
+        }
+      ],
+      "prices": {
+        "SIM-A": "95.01",
+        "SIM-B": "54.99",
+        "SIM-C": "1.9001",
+        "SIM-D": "2.4999"
+      },
+      "cell_keys": [
+        "P-FUND|2026-11-09T09:30:00+08:00|SIM-A",
+        "P-FUND|2026-11-09T09:30:00+08:00|SIM-C"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-FUND",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "92.00",
+              "take_profit": "110.00"
+            },
+            {
+              "symbol": "SIM-C",
+              "cost": "2.0000",
+              "quantity": 1000,
+              "holding_date": "2026-11-02",
+              "stop_loss": "1.9000",
+              "take_profit": "2.1200"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T09:30:00+08:00",
+          "prices": {
+            "SIM-A": "95.01",
+            "SIM-B": "54.99",
+            "SIM-C": "1.9001",
+            "SIM-D": "2.4999"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T09:30:00+08:00",
+      "task_index": 3,
+      "portfolio_id": "P-MIXED",
+      "snapshot_index": 1,
+      "timestamp": "2026-11-09T09:30:00+08:00",
+      "input_symbols": [
+        "SIM-B",
+        "SIM-D"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "45.00",
+          "take_profit": "58.00"
+        },
+        {
+          "symbol": "SIM-D",
+          "cost": "2.2000",
+          "quantity": 500,
+          "holding_date": "2026-11-02",
+          "stop_loss": "2.0000",
+          "take_profit": "2.5000"
+        }
+      ],
+      "prices": {
+        "SIM-A": "95.01",
+        "SIM-B": "54.99",
+        "SIM-C": "1.9001",
+        "SIM-D": "2.4999"
+      },
+      "cell_keys": [
+        "P-MIXED|2026-11-09T09:30:00+08:00|SIM-B",
+        "P-MIXED|2026-11-09T09:30:00+08:00|SIM-D"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-MIXED",
+          "holdings": [
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "45.00",
+              "take_profit": "58.00"
+            },
+            {
+              "symbol": "SIM-D",
+              "cost": "2.2000",
+              "quantity": 500,
+              "holding_date": "2026-11-02",
+              "stop_loss": "2.0000",
+              "take_profit": "2.5000"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T09:30:00+08:00",
+          "prices": {
+            "SIM-A": "95.01",
+            "SIM-B": "54.99",
+            "SIM-C": "1.9001",
+            "SIM-D": "2.4999"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T10:00:00+08:00",
+      "task_index": 4,
+      "portfolio_id": "P-STOCK",
+      "snapshot_index": 2,
+      "timestamp": "2026-11-09T10:00:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-B"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "95.00",
+          "take_profit": "106.00"
+        },
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "48.00",
+          "take_profit": "55.00"
+        }
+      ],
+      "prices": {
+        "SIM-A": "95.00",
+        "SIM-B": "50.00",
+        "SIM-C": "2.0000",
+        "SIM-D": "2.2000"
+      },
+      "cell_keys": [
+        "P-STOCK|2026-11-09T10:00:00+08:00|SIM-A",
+        "P-STOCK|2026-11-09T10:00:00+08:00|SIM-B"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-STOCK",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "95.00",
+              "take_profit": "106.00"
+            },
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "48.00",
+              "take_profit": "55.00"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T10:00:00+08:00",
+          "prices": {
+            "SIM-A": "95.00",
+            "SIM-B": "50.00",
+            "SIM-C": "2.0000",
+            "SIM-D": "2.2000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T10:00:00+08:00",
+      "task_index": 5,
+      "portfolio_id": "P-FUND",
+      "snapshot_index": 2,
+      "timestamp": "2026-11-09T10:00:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-C"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "92.00",
+          "take_profit": "110.00"
+        },
+        {
+          "symbol": "SIM-C",
+          "cost": "2.0000",
+          "quantity": 1000,
+          "holding_date": "2026-11-02",
+          "stop_loss": "1.9000",
+          "take_profit": "2.1200"
+        }
+      ],
+      "prices": {
+        "SIM-A": "95.00",
+        "SIM-B": "50.00",
+        "SIM-C": "2.0000",
+        "SIM-D": "2.2000"
+      },
+      "cell_keys": [
+        "P-FUND|2026-11-09T10:00:00+08:00|SIM-A",
+        "P-FUND|2026-11-09T10:00:00+08:00|SIM-C"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-FUND",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "92.00",
+              "take_profit": "110.00"
+            },
+            {
+              "symbol": "SIM-C",
+              "cost": "2.0000",
+              "quantity": 1000,
+              "holding_date": "2026-11-02",
+              "stop_loss": "1.9000",
+              "take_profit": "2.1200"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T10:00:00+08:00",
+          "prices": {
+            "SIM-A": "95.00",
+            "SIM-B": "50.00",
+            "SIM-C": "2.0000",
+            "SIM-D": "2.2000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T10:00:00+08:00",
+      "task_index": 6,
+      "portfolio_id": "P-MIXED",
+      "snapshot_index": 2,
+      "timestamp": "2026-11-09T10:00:00+08:00",
+      "input_symbols": [
+        "SIM-B",
+        "SIM-D"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "45.00",
+          "take_profit": "58.00"
+        },
+        {
+          "symbol": "SIM-D",
+          "cost": "2.2000",
+          "quantity": 500,
+          "holding_date": "2026-11-02",
+          "stop_loss": "2.0000",
+          "take_profit": "2.5000"
+        }
+      ],
+      "prices": {
+        "SIM-A": "95.00",
+        "SIM-B": "50.00",
+        "SIM-C": "2.0000",
+        "SIM-D": "2.2000"
+      },
+      "cell_keys": [
+        "P-MIXED|2026-11-09T10:00:00+08:00|SIM-B",
+        "P-MIXED|2026-11-09T10:00:00+08:00|SIM-D"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-MIXED",
+          "holdings": [
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "45.00",
+              "take_profit": "58.00"
+            },
+            {
+              "symbol": "SIM-D",
+              "cost": "2.2000",
+              "quantity": 500,
+              "holding_date": "2026-11-02",
+              "stop_loss": "2.0000",
+              "take_profit": "2.5000"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T10:00:00+08:00",
+          "prices": {
+            "SIM-A": "95.00",
+            "SIM-B": "50.00",
+            "SIM-C": "2.0000",
+            "SIM-D": "2.2000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T10:30:00+08:00",
+      "task_index": 7,
+      "portfolio_id": "P-STOCK",
+      "snapshot_index": 3,
+      "timestamp": "2026-11-09T10:30:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-B"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "95.00",
+          "take_profit": "106.00"
+        },
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "48.00",
+          "take_profit": "55.00"
+        }
+      ],
+      "prices": {
+        "SIM-A": "100.00",
+        "SIM-B": "47.99",
+        "SIM-C": "2.0000",
+        "SIM-D": "2.2000"
+      },
+      "cell_keys": [
+        "P-STOCK|2026-11-09T10:30:00+08:00|SIM-A",
+        "P-STOCK|2026-11-09T10:30:00+08:00|SIM-B"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-STOCK",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "95.00",
+              "take_profit": "106.00"
+            },
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "48.00",
+              "take_profit": "55.00"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T10:30:00+08:00",
+          "prices": {
+            "SIM-A": "100.00",
+            "SIM-B": "47.99",
+            "SIM-C": "2.0000",
+            "SIM-D": "2.2000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T10:30:00+08:00",
+      "task_index": 8,
+      "portfolio_id": "P-FUND",
+      "snapshot_index": 3,
+      "timestamp": "2026-11-09T10:30:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-C"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "92.00",
+          "take_profit": "110.00"
+        },
+        {
+          "symbol": "SIM-C",
+          "cost": "2.0000",
+          "quantity": 1000,
+          "holding_date": "2026-11-02",
+          "stop_loss": "1.9000",
+          "take_profit": "2.1200"
+        }
+      ],
+      "prices": {
+        "SIM-A": "100.00",
+        "SIM-B": "47.99",
+        "SIM-C": "2.0000",
+        "SIM-D": "2.2000"
+      },
+      "cell_keys": [
+        "P-FUND|2026-11-09T10:30:00+08:00|SIM-A",
+        "P-FUND|2026-11-09T10:30:00+08:00|SIM-C"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-FUND",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "92.00",
+              "take_profit": "110.00"
+            },
+            {
+              "symbol": "SIM-C",
+              "cost": "2.0000",
+              "quantity": 1000,
+              "holding_date": "2026-11-02",
+              "stop_loss": "1.9000",
+              "take_profit": "2.1200"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T10:30:00+08:00",
+          "prices": {
+            "SIM-A": "100.00",
+            "SIM-B": "47.99",
+            "SIM-C": "2.0000",
+            "SIM-D": "2.2000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T10:30:00+08:00",
+      "task_index": 9,
+      "portfolio_id": "P-MIXED",
+      "snapshot_index": 3,
+      "timestamp": "2026-11-09T10:30:00+08:00",
+      "input_symbols": [
+        "SIM-B",
+        "SIM-D"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "45.00",
+          "take_profit": "58.00"
+        },
+        {
+          "symbol": "SIM-D",
+          "cost": "2.2000",
+          "quantity": 500,
+          "holding_date": "2026-11-02",
+          "stop_loss": "2.0000",
+          "take_profit": "2.5000"
+        }
+      ],
+      "prices": {
+        "SIM-A": "100.00",
+        "SIM-B": "47.99",
+        "SIM-C": "2.0000",
+        "SIM-D": "2.2000"
+      },
+      "cell_keys": [
+        "P-MIXED|2026-11-09T10:30:00+08:00|SIM-B",
+        "P-MIXED|2026-11-09T10:30:00+08:00|SIM-D"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-MIXED",
+          "holdings": [
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "45.00",
+              "take_profit": "58.00"
+            },
+            {
+              "symbol": "SIM-D",
+              "cost": "2.2000",
+              "quantity": 500,
+              "holding_date": "2026-11-02",
+              "stop_loss": "2.0000",
+              "take_profit": "2.5000"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T10:30:00+08:00",
+          "prices": {
+            "SIM-A": "100.00",
+            "SIM-B": "47.99",
+            "SIM-C": "2.0000",
+            "SIM-D": "2.2000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T11:00:00+08:00",
+      "task_index": 10,
+      "portfolio_id": "P-STOCK",
+      "snapshot_index": 4,
+      "timestamp": "2026-11-09T11:00:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-B"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "95.00",
+          "take_profit": "106.00"
+        },
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "48.00",
+          "take_profit": "55.00"
+        }
+      ],
+      "prices": {
+        "SIM-A": "94.99",
+        "SIM-B": "50.00",
+        "SIM-C": "1.8999",
+        "SIM-D": "2.2000"
+      },
+      "cell_keys": [
+        "P-STOCK|2026-11-09T11:00:00+08:00|SIM-A",
+        "P-STOCK|2026-11-09T11:00:00+08:00|SIM-B"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-STOCK",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "95.00",
+              "take_profit": "106.00"
+            },
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "48.00",
+              "take_profit": "55.00"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T11:00:00+08:00",
+          "prices": {
+            "SIM-A": "94.99",
+            "SIM-B": "50.00",
+            "SIM-C": "1.8999",
+            "SIM-D": "2.2000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T11:00:00+08:00",
+      "task_index": 11,
+      "portfolio_id": "P-FUND",
+      "snapshot_index": 4,
+      "timestamp": "2026-11-09T11:00:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-C"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "92.00",
+          "take_profit": "110.00"
+        },
+        {
+          "symbol": "SIM-C",
+          "cost": "2.0000",
+          "quantity": 1000,
+          "holding_date": "2026-11-02",
+          "stop_loss": "1.9000",
+          "take_profit": "2.1200"
+        }
+      ],
+      "prices": {
+        "SIM-A": "94.99",
+        "SIM-B": "50.00",
+        "SIM-C": "1.8999",
+        "SIM-D": "2.2000"
+      },
+      "cell_keys": [
+        "P-FUND|2026-11-09T11:00:00+08:00|SIM-A",
+        "P-FUND|2026-11-09T11:00:00+08:00|SIM-C"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-FUND",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "92.00",
+              "take_profit": "110.00"
+            },
+            {
+              "symbol": "SIM-C",
+              "cost": "2.0000",
+              "quantity": 1000,
+              "holding_date": "2026-11-02",
+              "stop_loss": "1.9000",
+              "take_profit": "2.1200"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T11:00:00+08:00",
+          "prices": {
+            "SIM-A": "94.99",
+            "SIM-B": "50.00",
+            "SIM-C": "1.8999",
+            "SIM-D": "2.2000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T11:00:00+08:00",
+      "task_index": 12,
+      "portfolio_id": "P-MIXED",
+      "snapshot_index": 4,
+      "timestamp": "2026-11-09T11:00:00+08:00",
+      "input_symbols": [
+        "SIM-B",
+        "SIM-D"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "45.00",
+          "take_profit": "58.00"
+        },
+        {
+          "symbol": "SIM-D",
+          "cost": "2.2000",
+          "quantity": 500,
+          "holding_date": "2026-11-02",
+          "stop_loss": "2.0000",
+          "take_profit": "2.5000"
+        }
+      ],
+      "prices": {
+        "SIM-A": "94.99",
+        "SIM-B": "50.00",
+        "SIM-C": "1.8999",
+        "SIM-D": "2.2000"
+      },
+      "cell_keys": [
+        "P-MIXED|2026-11-09T11:00:00+08:00|SIM-B",
+        "P-MIXED|2026-11-09T11:00:00+08:00|SIM-D"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-MIXED",
+          "holdings": [
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "45.00",
+              "take_profit": "58.00"
+            },
+            {
+              "symbol": "SIM-D",
+              "cost": "2.2000",
+              "quantity": 500,
+              "holding_date": "2026-11-02",
+              "stop_loss": "2.0000",
+              "take_profit": "2.5000"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T11:00:00+08:00",
+          "prices": {
+            "SIM-A": "94.99",
+            "SIM-B": "50.00",
+            "SIM-C": "1.8999",
+            "SIM-D": "2.2000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T05:00:00Z",
+      "task_index": 13,
+      "portfolio_id": "P-STOCK",
+      "snapshot_index": 5,
+      "timestamp": "2026-11-09T05:00:00Z",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-B"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "95.00",
+          "take_profit": "106.00"
+        },
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "48.00",
+          "take_profit": "55.00"
+        }
+      ],
+      "prices": {
+        "SIM-A": "106.00",
+        "SIM-B": "50.00",
+        "SIM-C": "1.9000",
+        "SIM-D": "2.2000"
+      },
+      "cell_keys": [
+        "P-STOCK|2026-11-09T05:00:00Z|SIM-A",
+        "P-STOCK|2026-11-09T05:00:00Z|SIM-B"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-STOCK",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "95.00",
+              "take_profit": "106.00"
+            },
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "48.00",
+              "take_profit": "55.00"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T05:00:00Z",
+          "prices": {
+            "SIM-A": "106.00",
+            "SIM-B": "50.00",
+            "SIM-C": "1.9000",
+            "SIM-D": "2.2000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T05:00:00Z",
+      "task_index": 14,
+      "portfolio_id": "P-FUND",
+      "snapshot_index": 5,
+      "timestamp": "2026-11-09T05:00:00Z",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-C"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "92.00",
+          "take_profit": "110.00"
+        },
+        {
+          "symbol": "SIM-C",
+          "cost": "2.0000",
+          "quantity": 1000,
+          "holding_date": "2026-11-02",
+          "stop_loss": "1.9000",
+          "take_profit": "2.1200"
+        }
+      ],
+      "prices": {
+        "SIM-A": "106.00",
+        "SIM-B": "50.00",
+        "SIM-C": "1.9000",
+        "SIM-D": "2.2000"
+      },
+      "cell_keys": [
+        "P-FUND|2026-11-09T05:00:00Z|SIM-A",
+        "P-FUND|2026-11-09T05:00:00Z|SIM-C"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-FUND",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "92.00",
+              "take_profit": "110.00"
+            },
+            {
+              "symbol": "SIM-C",
+              "cost": "2.0000",
+              "quantity": 1000,
+              "holding_date": "2026-11-02",
+              "stop_loss": "1.9000",
+              "take_profit": "2.1200"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T05:00:00Z",
+          "prices": {
+            "SIM-A": "106.00",
+            "SIM-B": "50.00",
+            "SIM-C": "1.9000",
+            "SIM-D": "2.2000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T05:00:00Z",
+      "task_index": 15,
+      "portfolio_id": "P-MIXED",
+      "snapshot_index": 5,
+      "timestamp": "2026-11-09T05:00:00Z",
+      "input_symbols": [
+        "SIM-B",
+        "SIM-D"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "45.00",
+          "take_profit": "58.00"
+        },
+        {
+          "symbol": "SIM-D",
+          "cost": "2.2000",
+          "quantity": 500,
+          "holding_date": "2026-11-02",
+          "stop_loss": "2.0000",
+          "take_profit": "2.5000"
+        }
+      ],
+      "prices": {
+        "SIM-A": "106.00",
+        "SIM-B": "50.00",
+        "SIM-C": "1.9000",
+        "SIM-D": "2.2000"
+      },
+      "cell_keys": [
+        "P-MIXED|2026-11-09T05:00:00Z|SIM-B",
+        "P-MIXED|2026-11-09T05:00:00Z|SIM-D"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-MIXED",
+          "holdings": [
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "45.00",
+              "take_profit": "58.00"
+            },
+            {
+              "symbol": "SIM-D",
+              "cost": "2.2000",
+              "quantity": 500,
+              "holding_date": "2026-11-02",
+              "stop_loss": "2.0000",
+              "take_profit": "2.5000"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T05:00:00Z",
+          "prices": {
+            "SIM-A": "106.00",
+            "SIM-B": "50.00",
+            "SIM-C": "1.9000",
+            "SIM-D": "2.2000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T13:30:00+08:00",
+      "task_index": 16,
+      "portfolio_id": "P-STOCK",
+      "snapshot_index": 6,
+      "timestamp": "2026-11-09T13:30:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-B"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "95.00",
+          "take_profit": "106.00"
+        },
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "48.00",
+          "take_profit": "55.00"
+        }
+      ],
+      "prices": {
+        "SIM-A": "105.99",
+        "SIM-B": "55.01",
+        "SIM-C": "2.1199",
+        "SIM-D": "2.5000"
+      },
+      "cell_keys": [
+        "P-STOCK|2026-11-09T13:30:00+08:00|SIM-A",
+        "P-STOCK|2026-11-09T13:30:00+08:00|SIM-B"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-STOCK",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "95.00",
+              "take_profit": "106.00"
+            },
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "48.00",
+              "take_profit": "55.00"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T13:30:00+08:00",
+          "prices": {
+            "SIM-A": "105.99",
+            "SIM-B": "55.01",
+            "SIM-C": "2.1199",
+            "SIM-D": "2.5000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T13:30:00+08:00",
+      "task_index": 17,
+      "portfolio_id": "P-FUND",
+      "snapshot_index": 6,
+      "timestamp": "2026-11-09T13:30:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-C"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "92.00",
+          "take_profit": "110.00"
+        },
+        {
+          "symbol": "SIM-C",
+          "cost": "2.0000",
+          "quantity": 1000,
+          "holding_date": "2026-11-02",
+          "stop_loss": "1.9000",
+          "take_profit": "2.1200"
+        }
+      ],
+      "prices": {
+        "SIM-A": "105.99",
+        "SIM-B": "55.01",
+        "SIM-C": "2.1199",
+        "SIM-D": "2.5000"
+      },
+      "cell_keys": [
+        "P-FUND|2026-11-09T13:30:00+08:00|SIM-A",
+        "P-FUND|2026-11-09T13:30:00+08:00|SIM-C"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-FUND",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "92.00",
+              "take_profit": "110.00"
+            },
+            {
+              "symbol": "SIM-C",
+              "cost": "2.0000",
+              "quantity": 1000,
+              "holding_date": "2026-11-02",
+              "stop_loss": "1.9000",
+              "take_profit": "2.1200"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T13:30:00+08:00",
+          "prices": {
+            "SIM-A": "105.99",
+            "SIM-B": "55.01",
+            "SIM-C": "2.1199",
+            "SIM-D": "2.5000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T13:30:00+08:00",
+      "task_index": 18,
+      "portfolio_id": "P-MIXED",
+      "snapshot_index": 6,
+      "timestamp": "2026-11-09T13:30:00+08:00",
+      "input_symbols": [
+        "SIM-B",
+        "SIM-D"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "45.00",
+          "take_profit": "58.00"
+        },
+        {
+          "symbol": "SIM-D",
+          "cost": "2.2000",
+          "quantity": 500,
+          "holding_date": "2026-11-02",
+          "stop_loss": "2.0000",
+          "take_profit": "2.5000"
+        }
+      ],
+      "prices": {
+        "SIM-A": "105.99",
+        "SIM-B": "55.01",
+        "SIM-C": "2.1199",
+        "SIM-D": "2.5000"
+      },
+      "cell_keys": [
+        "P-MIXED|2026-11-09T13:30:00+08:00|SIM-B",
+        "P-MIXED|2026-11-09T13:30:00+08:00|SIM-D"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-MIXED",
+          "holdings": [
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "45.00",
+              "take_profit": "58.00"
+            },
+            {
+              "symbol": "SIM-D",
+              "cost": "2.2000",
+              "quantity": 500,
+              "holding_date": "2026-11-02",
+              "stop_loss": "2.0000",
+              "take_profit": "2.5000"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T13:30:00+08:00",
+          "prices": {
+            "SIM-A": "105.99",
+            "SIM-B": "55.01",
+            "SIM-C": "2.1199",
+            "SIM-D": "2.5000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T14:00:00+08:00",
+      "task_index": 19,
+      "portfolio_id": "P-STOCK",
+      "snapshot_index": 7,
+      "timestamp": "2026-11-09T14:00:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-B"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "95.00",
+          "take_profit": "106.00"
+        },
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "48.00",
+          "take_profit": "55.00"
+        }
+      ],
+      "prices": {
+        "SIM-A": "92.00",
+        "SIM-B": "44.99",
+        "SIM-C": "2.1300",
+        "SIM-D": "2.6000"
+      },
+      "cell_keys": [
+        "P-STOCK|2026-11-09T14:00:00+08:00|SIM-A",
+        "P-STOCK|2026-11-09T14:00:00+08:00|SIM-B"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-STOCK",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "95.00",
+              "take_profit": "106.00"
+            },
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "48.00",
+              "take_profit": "55.00"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T14:00:00+08:00",
+          "prices": {
+            "SIM-A": "92.00",
+            "SIM-B": "44.99",
+            "SIM-C": "2.1300",
+            "SIM-D": "2.6000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T14:00:00+08:00",
+      "task_index": 20,
+      "portfolio_id": "P-FUND",
+      "snapshot_index": 7,
+      "timestamp": "2026-11-09T14:00:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-C"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "92.00",
+          "take_profit": "110.00"
+        },
+        {
+          "symbol": "SIM-C",
+          "cost": "2.0000",
+          "quantity": 1000,
+          "holding_date": "2026-11-02",
+          "stop_loss": "1.9000",
+          "take_profit": "2.1200"
+        }
+      ],
+      "prices": {
+        "SIM-A": "92.00",
+        "SIM-B": "44.99",
+        "SIM-C": "2.1300",
+        "SIM-D": "2.6000"
+      },
+      "cell_keys": [
+        "P-FUND|2026-11-09T14:00:00+08:00|SIM-A",
+        "P-FUND|2026-11-09T14:00:00+08:00|SIM-C"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-FUND",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "92.00",
+              "take_profit": "110.00"
+            },
+            {
+              "symbol": "SIM-C",
+              "cost": "2.0000",
+              "quantity": 1000,
+              "holding_date": "2026-11-02",
+              "stop_loss": "1.9000",
+              "take_profit": "2.1200"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T14:00:00+08:00",
+          "prices": {
+            "SIM-A": "92.00",
+            "SIM-B": "44.99",
+            "SIM-C": "2.1300",
+            "SIM-D": "2.6000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T14:00:00+08:00",
+      "task_index": 21,
+      "portfolio_id": "P-MIXED",
+      "snapshot_index": 7,
+      "timestamp": "2026-11-09T14:00:00+08:00",
+      "input_symbols": [
+        "SIM-B",
+        "SIM-D"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "45.00",
+          "take_profit": "58.00"
+        },
+        {
+          "symbol": "SIM-D",
+          "cost": "2.2000",
+          "quantity": 500,
+          "holding_date": "2026-11-02",
+          "stop_loss": "2.0000",
+          "take_profit": "2.5000"
+        }
+      ],
+      "prices": {
+        "SIM-A": "92.00",
+        "SIM-B": "44.99",
+        "SIM-C": "2.1300",
+        "SIM-D": "2.6000"
+      },
+      "cell_keys": [
+        "P-MIXED|2026-11-09T14:00:00+08:00|SIM-B",
+        "P-MIXED|2026-11-09T14:00:00+08:00|SIM-D"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-MIXED",
+          "holdings": [
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "45.00",
+              "take_profit": "58.00"
+            },
+            {
+              "symbol": "SIM-D",
+              "cost": "2.2000",
+              "quantity": 500,
+              "holding_date": "2026-11-02",
+              "stop_loss": "2.0000",
+              "take_profit": "2.5000"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T14:00:00+08:00",
+          "prices": {
+            "SIM-A": "92.00",
+            "SIM-B": "44.99",
+            "SIM-C": "2.1300",
+            "SIM-D": "2.6000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-STOCK|2026-11-09T14:30:00+08:00",
+      "task_index": 22,
+      "portfolio_id": "P-STOCK",
+      "snapshot_index": 8,
+      "timestamp": "2026-11-09T14:30:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-B"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "95.00",
+          "take_profit": "106.00"
+        },
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "48.00",
+          "take_profit": "55.00"
+        }
+      ],
+      "prices": {
+        "SIM-A": "110.00",
+        "SIM-B": "58.00",
+        "SIM-C": "1.8999",
+        "SIM-D": "2.0000"
+      },
+      "cell_keys": [
+        "P-STOCK|2026-11-09T14:30:00+08:00|SIM-A",
+        "P-STOCK|2026-11-09T14:30:00+08:00|SIM-B"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-STOCK",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "95.00",
+              "take_profit": "106.00"
+            },
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "48.00",
+              "take_profit": "55.00"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T14:30:00+08:00",
+          "prices": {
+            "SIM-A": "110.00",
+            "SIM-B": "58.00",
+            "SIM-C": "1.8999",
+            "SIM-D": "2.0000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-FUND|2026-11-09T14:30:00+08:00",
+      "task_index": 23,
+      "portfolio_id": "P-FUND",
+      "snapshot_index": 8,
+      "timestamp": "2026-11-09T14:30:00+08:00",
+      "input_symbols": [
+        "SIM-A",
+        "SIM-C"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-A",
+          "cost": "100.00",
+          "quantity": 20,
+          "holding_date": "2026-11-02",
+          "stop_loss": "92.00",
+          "take_profit": "110.00"
+        },
+        {
+          "symbol": "SIM-C",
+          "cost": "2.0000",
+          "quantity": 1000,
+          "holding_date": "2026-11-02",
+          "stop_loss": "1.9000",
+          "take_profit": "2.1200"
+        }
+      ],
+      "prices": {
+        "SIM-A": "110.00",
+        "SIM-B": "58.00",
+        "SIM-C": "1.8999",
+        "SIM-D": "2.0000"
+      },
+      "cell_keys": [
+        "P-FUND|2026-11-09T14:30:00+08:00|SIM-A",
+        "P-FUND|2026-11-09T14:30:00+08:00|SIM-C"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-FUND",
+          "holdings": [
+            {
+              "symbol": "SIM-A",
+              "cost": "100.00",
+              "quantity": 20,
+              "holding_date": "2026-11-02",
+              "stop_loss": "92.00",
+              "take_profit": "110.00"
+            },
+            {
+              "symbol": "SIM-C",
+              "cost": "2.0000",
+              "quantity": 1000,
+              "holding_date": "2026-11-02",
+              "stop_loss": "1.9000",
+              "take_profit": "2.1200"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T14:30:00+08:00",
+          "prices": {
+            "SIM-A": "110.00",
+            "SIM-B": "58.00",
+            "SIM-C": "1.8999",
+            "SIM-D": "2.0000"
+          }
+        }
+      }
+    },
+    {
+      "task_key": "P-MIXED|2026-11-09T14:30:00+08:00",
+      "task_index": 24,
+      "portfolio_id": "P-MIXED",
+      "snapshot_index": 8,
+      "timestamp": "2026-11-09T14:30:00+08:00",
+      "input_symbols": [
+        "SIM-B",
+        "SIM-D"
+      ],
+      "holdings": [
+        {
+          "symbol": "SIM-B",
+          "cost": "50.00",
+          "quantity": 30,
+          "holding_date": "2026-11-02",
+          "stop_loss": "45.00",
+          "take_profit": "58.00"
+        },
+        {
+          "symbol": "SIM-D",
+          "cost": "2.2000",
+          "quantity": 500,
+          "holding_date": "2026-11-02",
+          "stop_loss": "2.0000",
+          "take_profit": "2.5000"
+        }
+      ],
+      "prices": {
+        "SIM-A": "110.00",
+        "SIM-B": "58.00",
+        "SIM-C": "1.8999",
+        "SIM-D": "2.0000"
+      },
+      "cell_keys": [
+        "P-MIXED|2026-11-09T14:30:00+08:00|SIM-B",
+        "P-MIXED|2026-11-09T14:30:00+08:00|SIM-D"
+      ],
+      "tool_arguments": {
+        "portfolio": {
+          "id": "P-MIXED",
+          "holdings": [
+            {
+              "symbol": "SIM-B",
+              "cost": "50.00",
+              "quantity": 30,
+              "holding_date": "2026-11-02",
+              "stop_loss": "45.00",
+              "take_profit": "58.00"
+            },
+            {
+              "symbol": "SIM-D",
+              "cost": "2.2000",
+              "quantity": 500,
+              "holding_date": "2026-11-02",
+              "stop_loss": "2.0000",
+              "take_profit": "2.5000"
+            }
+          ]
+        },
+        "snapshot": {
+          "timestamp": "2026-11-09T14:30:00+08:00",
+          "prices": {
+            "SIM-A": "110.00",
+            "SIM-B": "58.00",
+            "SIM-C": "1.8999",
+            "SIM-D": "2.0000"
+          }
+        }
+      }
+    }
+  ]
+}

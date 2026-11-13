@@ -1,0 +1,97 @@
+{
+  "schema": "topic16-ai-reference-agreement-v2",
+  "scope": "ai-reference-development-evaluation",
+  "metric_name": "与 AI 参考答案的一致率",
+  "not_human_judgment_agreement": true,
+  "not_acceptance_evidence": true,
+  "not_an_acceptance_threshold": true,
+  "label_origin": "AI 起草的参考判断",
+  "human_review_status": "未经独立人工判定",
+  "reference_read_after_prediction_validation": true,
+  "ai_reference_sample_count": 50,
+  "ai_reference_match_count": 47,
+  "ai_reference_match_rate": 0.94,
+  "false_positive_count": 2,
+  "false_negative_count": 1,
+  "false_positives": [
+    {
+      "sample_id": "N003",
+      "symbol": "NEWS-B",
+      "text": "澜汀物流因叉车事故暂停作业。园区在通报中列明，澜汀物流与持仓公司澜汀精密没有股权、供货或场地关系。",
+      "reference_label": "无风险信号",
+      "reference_evidence_quote": "没有股权、供货或场地关系",
+      "reference_reason": "负面事件属于另一家主体。",
+      "predicted_verdict": "risk",
+      "predicted_level": "低",
+      "predicted_evidence": "澜汀物流因叉车事故暂停作业。园区在通报中列明，澜汀物流与持…",
+      "predicted_evidence_status": "sufficient",
+      "predicted_reason_codes": [
+        "检出与指定标的有关、可核查的一般不利线索"
+      ]
+    },
+    {
+      "sample_id": "N024",
+      "symbol": "NEWS-D",
+      "text": "一家芯片设计商发布大幅亏损预告。砾原成长基金说明，上期已卖清该证券，本期也没有相关衍生品头寸。",
+      "reference_label": "无风险信号",
+      "reference_evidence_quote": "本期也没有相关衍生品头寸",
+      "reference_reason": "本次事件发生时无已披露敞口。",
+      "predicted_verdict": "risk",
+      "predicted_level": "低",
+      "predicted_evidence": "一家芯片设计商发布大幅亏损预告。砾原成长基金说明，上期已卖清该…",
+      "predicted_evidence_status": "sufficient",
+      "predicted_reason_codes": [
+        "检出与指定标的有关、可核查的一般不利线索"
+      ]
+    }
+  ],
+  "false_negatives": [
+    {
+      "sample_id": "N038",
+      "symbol": "NEWS-A",
+      "text": "栖川储能否认网络所称“全厂停产”，同时确认事故造成一条产线暂停，涉及约四分之一产能，尚无复产日期。",
+      "reference_label": "有风险信号",
+      "reference_evidence_quote": "一条产线暂停",
+      "reference_reason": "澄清缩小了事件范围，但保留了具体不利事实。",
+      "predicted_verdict": "no_risk",
+      "predicted_level": "无",
+      "predicted_evidence": "栖川储能否认网络所称“全厂停产”，同时确认事故造…",
+      "predicted_evidence_status": "negated",
+      "predicted_reason_codes": [
+        "原文明确否定该不利事件"
+      ]
+    }
+  ],
+  "differences": [
+    {
+      "sample_id": "N003",
+      "kind": "false_positive",
+      "reference": "no_risk",
+      "predicted": "risk"
+    },
+    {
+      "sample_id": "N024",
+      "kind": "false_positive",
+      "reference": "no_risk",
+      "predicted": "risk"
+    },
+    {
+      "sample_id": "N038",
+      "kind": "false_negative",
+      "reference": "risk",
+      "predicted": "no_risk"
+    }
+  ],
+  "structural_errors": [],
+  "profile": "v2-baseline",
+  "variant": "baseline",
+  "run_id": "DEV-EVAL-BASELINE",
+  "evidence": {
+    "samples": "data/news_risk/dev_eval_samples.json",
+    "predictions": "eval/news_risk/results/dev_eval_predictions_baseline.json",
+    "ai_reference": "<outside-repo>/舆情参考判断_50条.json"
+  },
+  "note": "本结果仅与 AI 起草的参考答案比对，不是与人工判定一致率，不可作为活动验收证据。报告不含任何达标布尔值：达到 43/50 才达标的门槛只属于正式人工评测。报告只含差异条目的参考摘录，不含完整答案集。",
+  "generalization_caveat": "研判词表由本批原文归纳，本结果属于同批样本上的开发评测，不能外推到未见样本；正式验收应另用独立人工判定，并建议增加留出集或新增样本检验泛化能力。",
+  "disclaimer": "风险提示仅供参考，不构成投资建议；系统输出为辅助建议，重大舆情须人工核实。"
+}

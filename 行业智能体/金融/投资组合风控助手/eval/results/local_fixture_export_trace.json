@@ -1,0 +1,25 @@
+{
+  "schema": "topic16-export-trace-v1",
+  "scope": "end-to-end-export",
+  "run_id": "LOCAL-FIXTURE-RUN-0001",
+  "exported_at": "2026-11-08T12:29:09+00:00",
+  "database": "eval/nexent/state/fixture_demo.db",
+  "database_sha256": "b0bc0b3e3368b816bdeb550919386cc572d04c112fb5ebc879ee4e437946851c",
+  "query": "SELECT event_id, portfolio_id, timestamp, symbol, rule, price, threshold FROM final_signals WHERE run_id = ? ORDER BY timestamp, portfolio_id, symbol, rule, event_id",
+  "database_row_count": 20,
+  "exported_signal_count": 20,
+  "output_file": "eval/results/local_fixture_final_signals.json",
+  "output_sha256": "ed811072358707215109d8f88cedaa99a9ca1573e1f59b45795456ee1c4fdf9c",
+  "transformations": [
+    "字段同名映射",
+    "按 (timestamp, portfolio_id, symbol, rule, event_id) 稳定排序"
+  ],
+  "forbidden_operations_not_used": [
+    "DISTINCT",
+    "去重",
+    "过滤异常",
+    "补信号",
+    "重算阈值",
+    "改写数值"
+  ]
+}
